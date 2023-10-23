@@ -17,7 +17,10 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      return web;
+      throw UnsupportedError(
+        'DefaultFirebaseOptions have not been configured for web - '
+        'you can reconfigure this by running the FlutterFire CLI again.',
+      );
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -25,7 +28,10 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        return macos;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for macos - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -43,38 +49,22 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyBhq76wFn0rfRpI-eM0cZMZJ9NKVcNzyvY',
-    appId: '1:1001768142153:web:0d80b21f7c1f4fe67ec698',
-    messagingSenderId: '1001768142153',
-    projectId: 'microclimat-monitoring-app',
-    authDomain: 'microclimat-monitoring-app.firebaseapp.com',
-    storageBucket: 'microclimat-monitoring-app.appspot.com',
-  );
-
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCABVrAji5OfKd8CDBsipHbycRODD8R3FU',
-    appId: '1:1001768142153:android:d0509b625811a9657ec698',
-    messagingSenderId: '1001768142153',
-    projectId: 'microclimat-monitoring-app',
-    storageBucket: 'microclimat-monitoring-app.appspot.com',
+    apiKey: 'AIzaSyDo5JoYpHDhrbg1kKToQKVIagxsO_ctxrU',
+    appId: '1:532431655039:android:c195c2911913b71594af4a',
+    messagingSenderId: '532431655039',
+    projectId: 'microclimat-3eb37',
+    databaseURL: 'https://microclimat-3eb37-default-rtdb.firebaseio.com',
+    storageBucket: 'microclimat-3eb37.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyBj2kClHtJt2NkqpwA8DEekG6YpACGEqpE',
-    appId: '1:1001768142153:ios:f00b90db4679babf7ec698',
-    messagingSenderId: '1001768142153',
-    projectId: 'microclimat-monitoring-app',
-    storageBucket: 'microclimat-monitoring-app.appspot.com',
+    apiKey: 'AIzaSyCvo2ewna0aqhzhvKHZ_hhajte_ey78Bns',
+    appId: '1:532431655039:ios:24ece30b2f70bd9294af4a',
+    messagingSenderId: '532431655039',
+    projectId: 'microclimat-3eb37',
+    databaseURL: 'https://microclimat-3eb37-default-rtdb.firebaseio.com',
+    storageBucket: 'microclimat-3eb37.appspot.com',
     iosBundleId: 'com.boguszbrzoska.microclimatMonitoringApp',
-  );
-
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyBj2kClHtJt2NkqpwA8DEekG6YpACGEqpE',
-    appId: '1:1001768142153:ios:881aeee9354a13757ec698',
-    messagingSenderId: '1001768142153',
-    projectId: 'microclimat-monitoring-app',
-    storageBucket: 'microclimat-monitoring-app.appspot.com',
-    iosBundleId: 'com.boguszbrzoska.microclimatMonitoringApp.RunnerTests',
   );
 }

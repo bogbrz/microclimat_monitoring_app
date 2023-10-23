@@ -1,9 +1,10 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
+import 'package:flutter/foundation.dart';
+
+import 'package:microclimat_monitoring_app/data_source/remote_data_source.dart';
 import 'package:microclimat_monitoring_app/datamodel.dart';
-import 'package:microclimat_monitoring_app/repository.dart';
 
 part 'datapage_state.dart';
 
@@ -12,7 +13,7 @@ class DatapageCubit extends Cubit<DatapageState> {
       : super(const DatapageState(
             isLoading: false, errorMessage: '', dataModels: []));
   StreamSubscription? _streamSubscription;
-  final Repository _repository;
+  final RemoteData _repository;
 
   Future<void> start() async {
     _streamSubscription = _repository.getDataModelStream().listen(
@@ -32,6 +33,10 @@ class DatapageCubit extends Cubit<DatapageState> {
         );
       },
     );
+  }
+
+  Future<void> add(int day, int temp) async {
+    await _repository.add(temp: temp, day: day);
   }
 
   @override

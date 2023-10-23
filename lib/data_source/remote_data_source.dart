@@ -1,16 +1,23 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:microclimat_monitoring_app/datamodel.dart';
 
-class Repository {
+class RemoteData {
   Stream<List<DataModel>> getDataModelStream() {
     return FirebaseFirestore.instance
         .collection('sensor1')
-        .orderBy('date')
+        .orderBy('day', descending: false)
         .snapshots()
         .map((querySnapshot) {
       return querySnapshot.docs.map((doc) {
-        return DataModel(temperature: doc['temperature'], date: doc['date']);
+        return DataModel(temperature: doc['temp'], date: doc['day']);
       }).toList();
+    });
+  }
+
+  Future<void> add({required int temp, required int day}) async {
+    await FirebaseFirestore.instance.collection('sensor1').add({
+      'day': day,
+      'temp': temp,
     });
   }
 }

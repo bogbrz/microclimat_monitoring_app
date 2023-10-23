@@ -1,6 +1,6 @@
 class DataModel {
   final int temperature;
-  final String date;
+  final int date;
 
   DataModel({required this.temperature, required this.date});
 }
