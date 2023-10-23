@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "532431655039",
+    "firebase_url": "https://microclimat-3eb37-default-rtdb.firebaseio.com",
+    "project_id": "microclimat-3eb37",
+    "storage_bucket": "microclimat-3eb37.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:532431655039:android:c195c2911913b71594af4a",
+        "android_client_info": {
+          "package_name": "com.boguszbrzoska.microclimat_monitoring_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDo5JoYpHDhrbg1kKToQKVIagxsO_ctxrU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:532431655039:android:83d802bee71c939c94af4a",
+        "android_client_info": {
+          "package_name": "com.example.micro"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDo5JoYpHDhrbg1kKToQKVIagxsO_ctxrU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
