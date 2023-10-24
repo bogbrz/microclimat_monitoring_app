@@ -26,7 +26,10 @@ class DefaultFirebaseOptions {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        return ios;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for ios - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.macOS:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for macos - '
@@ -56,15 +59,5 @@ class DefaultFirebaseOptions {
     projectId: 'microclimat-3eb37',
     databaseURL: 'https://microclimat-3eb37-default-rtdb.firebaseio.com',
     storageBucket: 'microclimat-3eb37.appspot.com',
-  );
-
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyCvo2ewna0aqhzhvKHZ_hhajte_ey78Bns',
-    appId: '1:532431655039:ios:24ece30b2f70bd9294af4a',
-    messagingSenderId: '532431655039',
-    projectId: 'microclimat-3eb37',
-    databaseURL: 'https://microclimat-3eb37-default-rtdb.firebaseio.com',
-    storageBucket: 'microclimat-3eb37.appspot.com',
-    iosBundleId: 'com.boguszbrzoska.microclimatMonitoringApp',
   );
 }
