@@ -5,62 +5,97 @@ import 'package:microclimat_monitoring_app/datamodel.dart';
 import 'package:microclimat_monitoring_app/pages/data_page/cubit/datapage_cubit.dart';
 import 'package:microclimat_monitoring_app/repositories/repository.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
-import 'dart:math';
 
-class SensorOnePage extends StatefulWidget {
-  const SensorOnePage({
+class SensorPage extends StatefulWidget {
+  const SensorPage({
+    required this.sensorNumber,
     super.key,
   });
+  final sensorNumber;
 
   @override
-  State<SensorOnePage> createState() => _SensorOnePageState();
+  State<SensorPage> createState() => _SensorOnePageState();
 }
 
-class _SensorOnePageState extends State<SensorOnePage> {
-  var dayCount = 1.0;
-  var sliderMin = 0.0;
-  String errorMessage = '';
-
+class _SensorOnePageState extends State<SensorPage> {
+  var currentTemp = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(),
+        appBar: AppBar(
+          title: Text("Sensor ${widget.sensorNumber}"),
+        ),
         body: BlocProvider(
           create: (context) => DatapageCubit(Repository(RemoteData()))..start(),
           child: BlocConsumer<DatapageCubit, DatapageState>(
             listener: (context, state) {
-              if (state.errorMessage.isNotEmpty ||
-                  state.errorMessage == errorMessage) {
+              if (state.errorMessage.isNotEmpty) {
                 ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                  content: Text('something went wrong'),
+                  content: Text('${state.errorMessage}'),
                   backgroundColor: Colors.red,
                 ));
+              }
+              final dataModels = state.dataModels;
+              for (final dataModel in dataModels) {
+                setState(() {
+                  currentTemp = dataModel.temperature;
+                  print(currentTemp);
+                });
               }
             },
             builder: (context, state) {
               final dataModels = state.dataModels;
-              double sliderValue =
-                  dataModels.isNotEmpty ? dataModels.length.toDouble() : 1.0;
-              for (final dataModel in dataModels) {
-                dayCount++;
-              }
-              double sliderMax = dataModels.length.toDouble();
-              double chartVisibleMin = sliderValue - 8.0;
-              double chartVisibleMax = sliderValue;
-              double sliderMin = 0.0;
-
               return Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 15),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Container(
+                          width: (MediaQuery.of(context).size.width) / 3.75,
+                          padding: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                              color: Color.fromARGB(255, 37, 20, 20),
+                              border:
+                                  Border.all(width: 2, color: Colors.white)),
+                          alignment: Alignment.center,
+                          child: Text('Temperature'),
+                        ),
+                        Container(
+                          width: (MediaQuery.of(context).size.width) / 3.75,
+                          padding: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                              color: Color.fromARGB(255, 148, 145, 145),
+                              border:
+                                  Border.all(width: 2, color: Colors.white)),
+                          alignment: Alignment.center,
+                          child: Text('Humidity'),
+                        ),
+                        Container(
+                          width: (MediaQuery.of(context).size.width) / 3.75,
+                          padding: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                              color: Color.fromARGB(255, 148, 145, 145),
+                              border:
+                                  Border.all(width: 2, color: Colors.white)),
+                          alignment: Alignment.center,
+                          child: Text('Noise'),
+                        )
+                      ],
+                    ),
+                  ),
                   SizedBox(
-                    height: 400,
+                    height: 300,
                     width: double.infinity,
                     child: SfCartesianChart(
                       primaryXAxis: CategoryAxis(
                         labelAlignment: LabelAlignment.center,
                         interval: 1,
-                        visibleMinimum: chartVisibleMax,
-                        visibleMaximum: chartVisibleMin,
+                        visibleMinimum: 1,
+                        visibleMaximum: 8,
+                        isInversed: false,
                       ),
                       primaryYAxis: NumericAxis(plotBands: <PlotBand>[
                         PlotBand(
@@ -71,10 +106,11 @@ class _SensorOnePageState extends State<SensorOnePage> {
                             verticalTextAlignment: TextAnchor.middle,
                             text: "Critical value",
                             start: 25,
+                            end: 26,
                             color: Colors.red),
                         PlotBand(
-                            start: 0,
-                            end: 10,
+                            start: 10,
+                            end: 11,
                             verticalTextPadding: '5',
                             horizontalTextPadding: '5',
                             horizontalTextAlignment: TextAnchor.middle,
@@ -96,47 +132,59 @@ class _SensorOnePageState extends State<SensorOnePage> {
                           enablePinching: false, enablePanning: true),
                       trackballBehavior: TrackballBehavior(
                           enable: true,
-                          activationMode: ActivationMode.doubleTap,
+                          activationMode: ActivationMode.singleTap,
                           shouldAlwaysShow: true),
                     ),
                   ),
                   const SizedBox(
                     height: 30,
                   ),
-                  Slider(
-                      divisions: 1,
-                      min: 0.0,
-                      max: 100,
-                      value: sliderValue,
-                      onChanged: (value) {
-                        setState(() {
-                          sliderValue = value;
-                          chartVisibleMax = sliderValue - 8.0;
-                          chartVisibleMin = sliderValue;
-                          if (chartVisibleMin < 0) {
-                            chartVisibleMax = 8;
-                            chartVisibleMin = 0;
-                          }
-                        });
-                      },
-                      label: sliderValue.round().toString()),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  ElevatedButton(
-                      onPressed: () {
-                        int min = 5;
-                        int max = 35;
-                        Random random = Random();
-
-                        for (int i = 57; i <= 58; i++) {
-                          int randomInt = min + random.nextInt(max - min + 1);
-                          context
-                              .read<DatapageCubit>()
-                              .add(day: i, temp: randomInt);
-                        }
-                      },
-                      child: const Text("generate")),
+                  Container(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Column(
+                          children: [
+                            Container(
+                              child: Column(children: [
+                                Text('Current temperature'),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Text('$currentTemp°C')
+                              ]),
+                            )
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            Container(
+                              child: Column(children: [
+                                Text('Current humidity'),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Text('$currentTemp°C')
+                              ]),
+                            )
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            Container(
+                              child: Column(children: [
+                                Text('Current noise level'),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Text('$currentTemp°C')
+                              ]),
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
+                  )
                 ],
               );
             },

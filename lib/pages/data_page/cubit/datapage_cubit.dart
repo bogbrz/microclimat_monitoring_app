@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
@@ -34,8 +35,15 @@ class DatapageCubit extends Cubit<DatapageState> {
     );
   }
 
-  Future<void> add({required int day, required int temp}) async {
-    await _repository.add(temp, day);
+  Future<void> loop() async {
+    int min = 5;
+    int max = 35;
+    Random random = Random();
+    for (int i = 1; i <= 48; i++) {
+      int randomInt = min + random.nextInt(max - min + 1);
+
+      _repository.add(day: i, temp: randomInt);
+    }
   }
 
   @override

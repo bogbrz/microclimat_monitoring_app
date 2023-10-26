@@ -15,7 +15,7 @@ class Repository {
     });
   }
 
-  Future<void> add(int temp, int day) async {
+  Future<void> add({required int temp, required int day}) async {
     return _remoteData.add(temp: temp, day: day);
   }
 }

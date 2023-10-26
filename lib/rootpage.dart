@@ -22,7 +22,7 @@ class _AllSensorsDataState extends State<RootPage> {
           if (currentIndex == 0) {
             return const HomePage();
           }
-          return const SensorOnePage();
+          return Scaffold();
         },
       ),
       bottomNavigationBar: BottomNavigationBar(
