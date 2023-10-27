@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:microclimat_monitoring_app/pages/data_page/sensor_one_page.dart';
 import 'package:microclimat_monitoring_app/home.dart';
 
 class RootPage extends StatefulWidget {
@@ -22,7 +21,7 @@ class _AllSensorsDataState extends State<RootPage> {
           if (currentIndex == 0) {
             return const HomePage();
           }
-          return Scaffold();
+          return const Scaffold();
         },
       ),
       bottomNavigationBar: BottomNavigationBar(

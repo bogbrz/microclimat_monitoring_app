@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:microclimat_monitoring_app/data_source/remote_data_source.dart';
+import 'package:microclimat_monitoring_app/data_source/humidity_data_source.dart';
+import 'package:microclimat_monitoring_app/data_source/nosie_data_source.dart';
+import 'package:microclimat_monitoring_app/data_source/temperature_data_source.dart';
 import 'package:microclimat_monitoring_app/pages/data_page/cubit/datapage_cubit.dart';
-import 'package:microclimat_monitoring_app/pages/data_page/sensor_one_page.dart';
-import 'package:microclimat_monitoring_app/repositories/repository.dart';
+import 'package:microclimat_monitoring_app/pages/data_page/sesnor_page.dart';
+import 'package:microclimat_monitoring_app/repositories/humi_repository.dart';
+import 'package:microclimat_monitoring_app/repositories/nosie_repository.dart';
+import 'package:microclimat_monitoring_app/repositories/temp_repository.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({
@@ -27,7 +31,10 @@ class _HomePageState extends State<HomePage> {
         centerTitle: true,
       ),
       body: BlocProvider(
-        create: (context) => DatapageCubit(Repository(RemoteData())),
+        create: (context) => DatapageCubit(
+            TempRepository(TempDataSource()),
+            HumidityRepository(HumidityDataSource()),
+            NoiseRepository(NoiseDataSource())),
         child: BlocBuilder<DatapageCubit, DatapageState>(
           builder: (context, state) {
             return Column(
@@ -194,11 +201,26 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ),
                 ),
-                ElevatedButton(
-                    onPressed: () {
-                      context.read<DatapageCubit>().loop();
-                    },
-                    child: const Text("generate")),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    ElevatedButton(
+                        onPressed: () {
+                          context.read<DatapageCubit>().generateTemp();
+                        },
+                        child: const Text("generate temp")),
+                    ElevatedButton(
+                        onPressed: () {
+                          context.read<DatapageCubit>().generateHumidity();
+                        },
+                        child: const Text("generate humidity")),
+                    ElevatedButton(
+                        onPressed: () {
+                          context.read<DatapageCubit>().generateNoise();
+                        },
+                        child: const Text("generate noise")),
+                  ],
+                ),
               ],
             );
           },
