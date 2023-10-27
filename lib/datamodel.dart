@@ -1,6 +1,6 @@
 class DataModel {
-  final int temperature;
-  final int date;
+  final int value;
+  final int hour;
 
-  DataModel({required this.temperature, required this.date});
+  DataModel({required this.value, required this.hour});
 }
