@@ -80,28 +80,24 @@ class _SensorOnePageState extends State<SensorPage> {
               }
               final dataModels = state.dataModels;
               for (final dataModel in dataModels) {
-                if (lastDataModel != null &&
-                    dataModel.hour == lastDataModel?.hour) {
-                  continue;
-                }
                 setState(() {
                   sumValue += dataModel.value;
                   averageValue = (sumValue / dataModels.length.toInt());
                   currentValue = dataModel.value;
-                  lastDataModel = dataModel;
                 });
+
+                print(" current temp :$currentValue");
+                print(" current sum :$sumValue");
+                print(" current ave :$averageValue");
               }
-
-              print(" current temp :$currentValue");
-              print(" current sum :$sumValue");
-              print(" current ave :$averageValue");
-
-              // if (currentValue > 25 || currentValue < 11) {
-              //   colorNotifier.value = Colors.red;
-              // } else {
-              //   colorNotifier.value = null;
-              // }
             },
+
+            // if (currentValue > 25 || currentValue < 11) {
+            //   colorNotifier.value = Colors.red;
+            // } else {
+            //   colorNotifier.value = null;
+            // }
+
             builder: (context, state) {
               final dataModels = state.dataModels;
               return Column(
