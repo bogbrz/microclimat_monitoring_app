@@ -15,28 +15,52 @@ class DatapageCubit extends Cubit<DatapageState> {
   DatapageCubit(
       this._tempRepository, this._humidityRepository, this._noiseRepository)
       : super(const DatapageState(
-            status: Status.loading, errorMessage: '', dataModels: []));
+          status: Status.loading,
+          errorMessage: '',
+          dataModels: [],
+          averageValue: null,
+          currentValue: null,
+        ));
   StreamSubscription? _streamSubscription;
   final TempRepository _tempRepository;
   final HumidityRepository _humidityRepository;
   final NoiseRepository _noiseRepository;
 
   Future<void> tempData() async {
+    int currentValue = 0;
+    int sumValue = 0;
+    int averageValue = 0;
+    for (final datamodel in state.dataModels) {
+      currentValue = datamodel.value;
+      sumValue += datamodel.value;
+      averageValue = (sumValue ~/ state.dataModels.length).toInt();
+    }
     _streamSubscription = _tempRepository.getTempDataModel().listen(
       (dataModels) {
         emit(const DatapageState(
-            errorMessage: '', status: Status.loading, dataModels: []));
+          errorMessage: '',
+          status: Status.loading,
+          dataModels: [],
+          averageValue: null,
+          currentValue: null,
+        ));
         if (dataModels.isEmpty) {
           emit(const DatapageState(
-              errorMessage: 'Missing data',
-              status: Status.error,
-              dataModels: []));
+            errorMessage: 'Missing data',
+            status: Status.error,
+            dataModels: [],
+            averageValue: null,
+            currentValue: null,
+          ));
         }
+
         emit(
           DatapageState(
             errorMessage: '',
-            status: Status.success,
+            status: Status.isPressed,
             dataModels: dataModels,
+            averageValue: averageValue,
+            currentValue: currentValue,
           ),
         );
       },
@@ -44,21 +68,39 @@ class DatapageCubit extends Cubit<DatapageState> {
   }
 
   Future<void> humidityData() async {
+    int currentValue = 0;
+    int sumValue = 0;
+    int averageValue = 0;
+    for (final datamodel in state.dataModels) {
+      currentValue = datamodel.value;
+      sumValue += datamodel.value;
+      averageValue = (sumValue ~/ state.dataModels.length).toInt();
+    }
     _streamSubscription = _humidityRepository.getHumidityDataModel().listen(
       (dataModels) {
         emit(const DatapageState(
-            errorMessage: '', status: Status.loading, dataModels: []));
+          errorMessage: '',
+          status: Status.loading,
+          dataModels: [],
+          averageValue: null,
+          currentValue: null,
+        ));
         if (dataModels.isEmpty) {
           emit(const DatapageState(
-              errorMessage: 'Missing data',
-              status: Status.error,
-              dataModels: []));
+            errorMessage: 'Missing data',
+            status: Status.error,
+            dataModels: [],
+            averageValue: null,
+            currentValue: null,
+          ));
         }
         emit(
           DatapageState(
             errorMessage: '',
-            status: Status.success,
+            status: Status.isPressed,
             dataModels: dataModels,
+            averageValue: averageValue,
+            currentValue: currentValue,
           ),
         );
       },
@@ -66,21 +108,40 @@ class DatapageCubit extends Cubit<DatapageState> {
   }
 
   Future<void> noiseData() async {
+    int currentValue = 0;
+    int sumValue = 0;
+    int averageValue = 0;
+    for (final datamodel in state.dataModels) {
+      currentValue = datamodel.value;
+      sumValue += datamodel.value;
+      averageValue = (sumValue ~/ state.dataModels.length).toInt();
+    }
     _streamSubscription = _noiseRepository.getNoiseDataModel().listen(
       (dataModels) {
         emit(const DatapageState(
-            errorMessage: '', status: Status.loading, dataModels: []));
+          errorMessage: '',
+          status: Status.loading,
+          dataModels: [],
+          averageValue: null,
+          currentValue: null,
+        ));
         if (dataModels.isEmpty) {
           emit(const DatapageState(
-              errorMessage: 'Missing data',
-              status: Status.error,
-              dataModels: []));
+            errorMessage: 'Missing data',
+            status: Status.error,
+            dataModels: [],
+            averageValue: null,
+            currentValue: null,
+          ));
         }
+
         emit(
           DatapageState(
             errorMessage: '',
-            status: Status.success,
+            status: Status.isPressed,
             dataModels: dataModels,
+            averageValue: averageValue,
+            currentValue: currentValue,
           ),
         );
       },
