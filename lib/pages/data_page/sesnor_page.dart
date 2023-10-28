@@ -34,9 +34,6 @@ class _SensorOnePageState extends State<SensorPage> {
   //   });
   // }
 
-  var currentValue = 0;
-  var averageValue = 0.0;
-  var sumValue = 0.0;
   // var color = null;
   var isPressed1 = false;
   var isPressed2 = false;
@@ -78,18 +75,6 @@ class _SensorOnePageState extends State<SensorPage> {
                   backgroundColor: Colors.red,
                 ));
               }
-              final dataModels = state.dataModels;
-              for (final dataModel in dataModels) {
-                setState(() {
-                  sumValue += dataModel.value;
-                  averageValue = (sumValue / dataModels.length.toInt());
-                  currentValue = dataModel.value;
-                });
-
-                print(" current temp :$currentValue");
-                print(" current sum :$sumValue");
-                print(" current ave :$averageValue");
-              }
             },
 
             // if (currentValue > 25 || currentValue < 11) {
@@ -111,11 +96,6 @@ class _SensorOnePageState extends State<SensorPage> {
                         InkWell(
                           onTap: () {
                             context.read<DatapageCubit>().tempData();
-                            setState(() {
-                              isPressed1 = true;
-                              isPressed2 = false;
-                              isPressed3 = false;
-                            });
                           },
                           child: Container(
                             width: (MediaQuery.of(context).size.width) / 3.75,
@@ -250,7 +230,7 @@ class _SensorOnePageState extends State<SensorPage> {
                                       const SizedBox(
                                         height: 5,
                                       ),
-                                      Text('$currentValue°C')
+                                      Text('${state.currentValue}')
                                     ],
                                   ),
                                 ),
@@ -276,7 +256,7 @@ class _SensorOnePageState extends State<SensorPage> {
                                       const SizedBox(
                                         height: 5,
                                       ),
-                                      Text('$averageValue°C')
+                                      Text('${state.averageValue}°C')
                                     ],
                                   ),
                                 ),
@@ -303,7 +283,7 @@ class _SensorOnePageState extends State<SensorPage> {
                                       const SizedBox(
                                         height: 5,
                                       ),
-                                      Text('$currentValue °C')
+                                      Text('${state.currentValue} °C')
                                     ],
                                   ),
                                 ),
@@ -329,7 +309,7 @@ class _SensorOnePageState extends State<SensorPage> {
                                       const SizedBox(
                                         height: 5,
                                       ),
-                                      Text('$averageValue°C')
+                                      Text('${state.averageValue}°C')
                                     ],
                                   ),
                                 ),
@@ -356,7 +336,7 @@ class _SensorOnePageState extends State<SensorPage> {
                                       const SizedBox(
                                         height: 5,
                                       ),
-                                      Text('$currentValue °C')
+                                      Text('${state.currentValue} °C')
                                     ],
                                   ),
                                 ),
@@ -382,7 +362,7 @@ class _SensorOnePageState extends State<SensorPage> {
                                       const SizedBox(
                                         height: 5,
                                       ),
-                                      Text('$averageValue°C')
+                                      Text('${state.averageValue}°C')
                                     ],
                                   ),
                                 ),
