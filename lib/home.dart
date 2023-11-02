@@ -225,350 +225,368 @@ class _HomePageState extends State<HomePage> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          Container(
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(width: 2, color: Colors.white)),
-                            child: Expanded(
-                              child: Column(
-                                children: [
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Text(
-                                    "Sensor 1",
-                                    style: TextStyle(fontSize: 12.5),
-                                  ),
-                                  SizedBox(
-                                    height: 8,
-                                  ),
-                                  Text("Temperature:",
-                                      style: TextStyle(fontSize: 12.5)),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Container(
-                                    height: 40,
-                                    width: 40,
-                                    decoration: BoxDecoration(
-                                        color: Colors.green,
-                                        border: Border.all(
-                                            width: 2, color: Colors.white)),
-                                  ),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Text("Humidity:",
-                                      style: TextStyle(fontSize: 12.5)),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  BlocBuilder<HumidityDataCubit,
-                                      HumidityDataState>(
-                                    builder: (context, state) {
-                                      return Container(
-                                        height: 40,
-                                        width: 40,
-                                        decoration: BoxDecoration(
-                                            color: state.colorBox,
-                                            border: Border.all(
-                                                width: 2, color: Colors.white)),
-                                      );
-                                    },
-                                  ),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Text("Noise:",
-                                      style: TextStyle(fontSize: 12.5)),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  BlocBuilder<NoiseDataCubit, NoiseDataState>(
-                                    builder: (context, state) {
-                                      return Container(
-                                        height: 40,
-                                        width: 40,
-                                        decoration: BoxDecoration(
-                                            color: state.colorBox,
-                                            border: Border.all(
-                                                width: 2, color: Colors.white)),
-                                      );
-                                    },
-                                  ),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                ],
-                              ),
+                          Expanded(
+                            child: Column(
+                              children: [
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Text(
+                                  "Sensor 1",
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                SizedBox(
+                                  height: 8,
+                                ),
+                                Text("Temperature",
+                                    style: TextStyle(fontSize: 10)),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Container(
+                                  height: 40,
+                                  width: 40,
+                                  decoration: BoxDecoration(
+                                      color: Colors.green,
+                                      border: Border.all(
+                                          width: 2, color: Colors.white)),
+                                  child: Text("°C"),
+                                  alignment: Alignment.center,
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Text("Humidity",
+                                    style: TextStyle(fontSize: 12.5)),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                BlocBuilder<HumidityDataCubit,
+                                    HumidityDataState>(
+                                  builder: (context, state) {
+                                    return Container(
+                                      height: 40,
+                                      width: 40,
+                                      decoration: BoxDecoration(
+                                          color: state.colorBox,
+                                          border: Border.all(
+                                              width: 2, color: Colors.white)),
+                                      child: Icon(Icons.water_drop),
+                                      alignment: Alignment.center,
+                                    );
+                                  },
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Text("Noise", style: TextStyle(fontSize: 12.5)),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                BlocBuilder<NoiseDataCubit, NoiseDataState>(
+                                  builder: (context, state) {
+                                    return Container(
+                                      height: 40,
+                                      width: 40,
+                                      decoration: BoxDecoration(
+                                          color: state.colorBox,
+                                          border: Border.all(
+                                              width: 2, color: Colors.white)),
+                                      child: Icon(Icons.noise_aware_rounded),
+                                      alignment: Alignment.center,
+                                    );
+                                  },
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                              ],
                             ),
                           ),
-                          Container(
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(width: 2, color: Colors.white)),
-                            child: Expanded(
-                              child: Column(
-                                children: [
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Text("Sensor 2",
-                                      style: TextStyle(fontSize: 12.5)),
-                                  SizedBox(
-                                    height: 8,
-                                  ),
-                                  Text("Temperature:",
-                                      style: TextStyle(fontSize: 12.5)),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Container(
-                                    height: 40,
-                                    width: 40,
-                                    decoration: BoxDecoration(
-                                        color: Colors.green,
-                                        border: Border.all(
-                                            width: 2, color: Colors.white)),
-                                  ),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Text("Humidity:",
-                                      style: TextStyle(fontSize: 12.5)),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Container(
-                                    height: 40,
-                                    width: 40,
-                                    decoration: BoxDecoration(
-                                        color: Colors.green,
-                                        border: Border.all(
-                                            width: 2, color: Colors.white)),
-                                  ),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Text("Noise:",
-                                      style: TextStyle(fontSize: 12.5)),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Container(
-                                    height: 40,
-                                    width: 40,
-                                    decoration: BoxDecoration(
-                                        color: Colors.green,
-                                        border: Border.all(
-                                            width: 2, color: Colors.white)),
-                                  ),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                ],
-                              ),
+                          Expanded(
+                            child: Column(
+                              children: [
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Text(
+                                  "Sensor 2",
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                SizedBox(
+                                  height: 8,
+                                ),
+                                Text("Temperature",
+                                    style: TextStyle(fontSize: 10)),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Container(
+                                  height: 40,
+                                  width: 40,
+                                  decoration: BoxDecoration(
+                                      color: Colors.green,
+                                      border: Border.all(
+                                          width: 2, color: Colors.white)),
+                                  child: Text("°C"),
+                                  alignment: Alignment.center,
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Text("humidity",
+                                    style: TextStyle(fontSize: 12.5)),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Container(
+                                  height: 40,
+                                  width: 40,
+                                  decoration: BoxDecoration(
+                                      color: Colors.green,
+                                      border: Border.all(
+                                          width: 2, color: Colors.white)),
+                                  child: Icon(Icons.water_drop),
+                                  alignment: Alignment.center,
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Text("noise", style: TextStyle(fontSize: 12.5)),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Container(
+                                  height: 40,
+                                  width: 40,
+                                  decoration: BoxDecoration(
+                                      color: Colors.green,
+                                      border: Border.all(
+                                          width: 2, color: Colors.white)),
+                                  child: Icon(Icons.noise_aware_rounded),
+                                  alignment: Alignment.center,
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                              ],
                             ),
                           ),
-                          Container(
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(width: 2, color: Colors.white)),
-                            child: Expanded(
-                              child: Column(
-                                children: [
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Text("Sensor 3",
-                                      style: TextStyle(fontSize: 12.5)),
-                                  SizedBox(
-                                    height: 8,
-                                  ),
-                                  Text("Temperature:",
-                                      style: TextStyle(fontSize: 12.5)),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Container(
-                                    height: 40,
-                                    width: 40,
-                                    decoration: BoxDecoration(
-                                        color: Colors.green,
-                                        border: Border.all(
-                                            width: 2, color: Colors.white)),
-                                  ),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Text("Humidity:",
-                                      style: TextStyle(fontSize: 12.5)),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Container(
-                                    height: 40,
-                                    width: 40,
-                                    decoration: BoxDecoration(
-                                        color: Colors.green,
-                                        border: Border.all(
-                                            width: 2, color: Colors.white)),
-                                  ),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Text("Noise:",
-                                      style: TextStyle(fontSize: 12.5)),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Container(
-                                    height: 40,
-                                    width: 40,
-                                    decoration: BoxDecoration(
-                                        color: Colors.green,
-                                        border: Border.all(
-                                            width: 2, color: Colors.white)),
-                                  ),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                ],
-                              ),
+                          Expanded(
+                            child: Column(
+                              children: [
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Text(
+                                  "Sensor 3",
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                SizedBox(
+                                  height: 8,
+                                ),
+                                Text("Temperature",
+                                    style: TextStyle(fontSize: 10)),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Container(
+                                  height: 40,
+                                  width: 40,
+                                  decoration: BoxDecoration(
+                                      color: Colors.green,
+                                      border: Border.all(
+                                          width: 2, color: Colors.white)),
+                                  child: Text("°C"),
+                                  alignment: Alignment.center,
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Text("humidity",
+                                    style: TextStyle(fontSize: 12.5)),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Container(
+                                  height: 40,
+                                  width: 40,
+                                  decoration: BoxDecoration(
+                                      color: Colors.green,
+                                      border: Border.all(
+                                          width: 2, color: Colors.white)),
+                                  child: Icon(Icons.water_drop),
+                                  alignment: Alignment.center,
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Text("noise", style: TextStyle(fontSize: 12.5)),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Container(
+                                  height: 40,
+                                  width: 40,
+                                  decoration: BoxDecoration(
+                                      color: Colors.green,
+                                      border: Border.all(
+                                          width: 2, color: Colors.white)),
+                                  child: Icon(Icons.noise_aware_rounded),
+                                  alignment: Alignment.center,
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                              ],
                             ),
                           ),
-                          Container(
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(width: 2, color: Colors.white)),
-                            child: Expanded(
-                              child: Column(
-                                children: [
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Text("Sensor 4",
-                                      style: TextStyle(fontSize: 12.5)),
-                                  SizedBox(
-                                    height: 8,
-                                  ),
-                                  Text("Temperature:",
-                                      style: TextStyle(fontSize: 12.5)),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Container(
-                                    height: 40,
-                                    width: 40,
-                                    decoration: BoxDecoration(
-                                        color: Colors.green,
-                                        border: Border.all(
-                                            width: 2, color: Colors.white)),
-                                  ),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Text("Humidity:",
-                                      style: TextStyle(fontSize: 12.5)),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Container(
-                                    height: 40,
-                                    width: 40,
-                                    decoration: BoxDecoration(
-                                        color: Colors.green,
-                                        border: Border.all(
-                                            width: 2, color: Colors.white)),
-                                  ),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Text("Noise:",
-                                      style: TextStyle(fontSize: 12.5)),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Container(
-                                    height: 40,
-                                    width: 40,
-                                    decoration: BoxDecoration(
-                                        color: Colors.green,
-                                        border: Border.all(
-                                            width: 2, color: Colors.white)),
-                                  ),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                ],
-                              ),
+                          Expanded(
+                            child: Column(
+                              children: [
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Text(
+                                  "Sensor 4",
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                SizedBox(
+                                  height: 8,
+                                ),
+                                Text("Temperature",
+                                    style: TextStyle(fontSize: 10)),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Container(
+                                  alignment: Alignment.center,
+                                  height: 40,
+                                  width: 40,
+                                  decoration: BoxDecoration(
+                                      color: Colors.green,
+                                      border: Border.all(
+                                          width: 2, color: Colors.white)),
+                                  child: Text("°C"),
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Text("humidity",
+                                    style: TextStyle(fontSize: 12.5)),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Container(
+                                  height: 40,
+                                  width: 40,
+                                  decoration: BoxDecoration(
+                                      color: Colors.green,
+                                      border: Border.all(
+                                          width: 2, color: Colors.white)),
+                                  child: Icon(Icons.water_drop),
+                                  alignment: Alignment.center,
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Text("noise", style: TextStyle(fontSize: 12.5)),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Container(
+                                  height: 40,
+                                  width: 40,
+                                  decoration: BoxDecoration(
+                                      color: Colors.green,
+                                      border: Border.all(
+                                          width: 2, color: Colors.white)),
+                                  child: Icon(Icons.noise_aware_rounded),
+                                  alignment: Alignment.center,
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                              ],
                             ),
                           ),
-                          Container(
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(width: 2, color: Colors.white)),
-                            child: Expanded(
-                              child: Column(
-                                children: [
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Text("Sensor 5",
-                                      style: TextStyle(fontSize: 12.5)),
-                                  SizedBox(
-                                    height: 8,
-                                  ),
-                                  Text("Temperature:",
-                                      style: TextStyle(fontSize: 12.5)),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Container(
-                                    height: 40,
-                                    width: 40,
-                                    decoration: BoxDecoration(
-                                        color: Colors.green,
-                                        border: Border.all(
-                                            width: 2, color: Colors.white)),
-                                  ),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Text("Humidity:",
-                                      style: TextStyle(fontSize: 12.5)),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Container(
-                                    height: 40,
-                                    width: 40,
-                                    decoration: BoxDecoration(
-                                        color: Colors.green,
-                                        border: Border.all(
-                                            width: 2, color: Colors.white)),
-                                  ),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Text("Noise:",
-                                      style: TextStyle(fontSize: 12.5)),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Container(
-                                    height: 40,
-                                    width: 40,
-                                    decoration: BoxDecoration(
-                                        color: Colors.green,
-                                        border: Border.all(
-                                            width: 2, color: Colors.white)),
-                                  ),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                ],
-                              ),
+                          Expanded(
+                            child: Column(
+                              children: [
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Text(
+                                  "Sensor 5",
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Text("Temperature",
+                                    style: TextStyle(fontSize: 10)),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Container(
+                                  height: 40,
+                                  width: 40,
+                                  decoration: BoxDecoration(
+                                      color: Colors.green,
+                                      border: Border.all(
+                                          width: 2, color: Colors.white)),
+                                  child: Text("°C"),
+                                  alignment: Alignment.center,
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Text("humidity",
+                                    style: TextStyle(fontSize: 12.5)),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Container(
+                                  height: 40,
+                                  width: 40,
+                                  decoration: BoxDecoration(
+                                      color: Colors.green,
+                                      border: Border.all(
+                                          width: 2, color: Colors.white)),
+                                  child: Icon(Icons.water_drop),
+                                  alignment: Alignment.center,
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Text("noise", style: TextStyle(fontSize: 12.5)),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Container(
+                                  height: 40,
+                                  width: 40,
+                                  decoration: BoxDecoration(
+                                      color: Colors.green,
+                                      border: Border.all(
+                                          width: 2, color: Colors.white)),
+                                  child: Icon(Icons.noise_aware_rounded),
+                                  alignment: Alignment.center,
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                              ],
                             ),
                           )
                         ],

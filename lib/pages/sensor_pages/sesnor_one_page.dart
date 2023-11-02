@@ -389,7 +389,8 @@ class _SensorOnePageState extends State<SensorPage> {
                                               3.75,
                                           padding: const EdgeInsets.all(5),
                                           decoration: BoxDecoration(
-                                              color: state.colorBox,
+                                              color: const Color.fromARGB(
+                                                  255, 37, 20, 20),
                                               border: Border.all(
                                                   width: 2,
                                                   color: Colors.white)),
