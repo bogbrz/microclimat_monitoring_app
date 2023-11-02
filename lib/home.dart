@@ -217,7 +217,7 @@ class _HomePageState extends State<HomePage> {
                       Expanded(
                         child: ListView(
                           children: [
-                            SizedBox(
+                            const SizedBox(
                               height: 15,
                             ),
                             Padding(
@@ -228,11 +228,11 @@ class _HomePageState extends State<HomePage> {
                                         width: 3, color: Colors.white)),
                                 child: Column(
                                   children: [
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
+                                    const Padding(
+                                      padding: EdgeInsets.all(8.0),
                                       child: Text("Temp Status:"),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 5,
                                     ),
                                     Row(
@@ -243,7 +243,7 @@ class _HomePageState extends State<HomePage> {
                                           padding: const EdgeInsets.all(8.0),
                                           child: Column(
                                             children: [
-                                              Text('Sensor 1'),
+                                              const Text('Sensor 1'),
                                               Container(
                                                 width: 40,
                                                 height: 40,
@@ -260,7 +260,7 @@ class _HomePageState extends State<HomePage> {
                                           padding: const EdgeInsets.all(8.0),
                                           child: Column(
                                             children: [
-                                              Text('Sensor 2'),
+                                              const Text('Sensor 2'),
                                               Container(
                                                 width: 40,
                                                 height: 40,
@@ -277,7 +277,7 @@ class _HomePageState extends State<HomePage> {
                                           padding: const EdgeInsets.all(8.0),
                                           child: Column(
                                             children: [
-                                              Text('Sensor 3'),
+                                              const Text('Sensor 3'),
                                               Container(
                                                 width: 40,
                                                 height: 40,
@@ -294,7 +294,7 @@ class _HomePageState extends State<HomePage> {
                                           padding: const EdgeInsets.all(8.0),
                                           child: Column(
                                             children: [
-                                              Text('Sensor 4'),
+                                              const Text('Sensor 4'),
                                               Container(
                                                 width: 40,
                                                 height: 40,
@@ -311,7 +311,7 @@ class _HomePageState extends State<HomePage> {
                                           padding: const EdgeInsets.all(8.0),
                                           child: Column(
                                             children: [
-                                              Text('Sensor 5'),
+                                              const Text('Sensor 5'),
                                               Container(
                                                 width: 40,
                                                 height: 40,
@@ -338,11 +338,11 @@ class _HomePageState extends State<HomePage> {
                                         width: 3, color: Colors.white)),
                                 child: Column(
                                   children: [
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
+                                    const Padding(
+                                      padding: EdgeInsets.all(8.0),
                                       child: Text("Noise Status:"),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 5,
                                     ),
                                     Row(
@@ -353,7 +353,7 @@ class _HomePageState extends State<HomePage> {
                                           padding: const EdgeInsets.all(8.0),
                                           child: Column(
                                             children: [
-                                              Text('Sensor 1'),
+                                              const Text('Sensor 1'),
                                               Container(
                                                 width: 40,
                                                 height: 40,
@@ -370,7 +370,7 @@ class _HomePageState extends State<HomePage> {
                                           padding: const EdgeInsets.all(8.0),
                                           child: Column(
                                             children: [
-                                              Text('Sensor 2'),
+                                              const Text('Sensor 2'),
                                               Container(
                                                 width: 40,
                                                 height: 40,
@@ -387,7 +387,7 @@ class _HomePageState extends State<HomePage> {
                                           padding: const EdgeInsets.all(8.0),
                                           child: Column(
                                             children: [
-                                              Text('Sensor 3'),
+                                              const Text('Sensor 3'),
                                               Container(
                                                 width: 40,
                                                 height: 40,
@@ -404,7 +404,7 @@ class _HomePageState extends State<HomePage> {
                                           padding: const EdgeInsets.all(8.0),
                                           child: Column(
                                             children: [
-                                              Text('Sensor 4'),
+                                              const Text('Sensor 4'),
                                               Container(
                                                 width: 40,
                                                 height: 40,
@@ -421,7 +421,7 @@ class _HomePageState extends State<HomePage> {
                                           padding: const EdgeInsets.all(8.0),
                                           child: Column(
                                             children: [
-                                              Text('Sensor 5'),
+                                              const Text('Sensor 5'),
                                               Container(
                                                 width: 40,
                                                 height: 40,
@@ -448,11 +448,11 @@ class _HomePageState extends State<HomePage> {
                                         width: 3, color: Colors.white)),
                                 child: Column(
                                   children: [
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
+                                    const Padding(
+                                      padding: EdgeInsets.all(8.0),
                                       child: Text("Humidity Status:"),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 5,
                                     ),
                                     Row(
@@ -463,7 +463,7 @@ class _HomePageState extends State<HomePage> {
                                           padding: const EdgeInsets.all(8.0),
                                           child: Column(
                                             children: [
-                                              Text('Sensor 1'),
+                                              const Text('Sensor 1'),
                                               Container(
                                                 width: 40,
                                                 height: 40,
@@ -480,7 +480,7 @@ class _HomePageState extends State<HomePage> {
                                           padding: const EdgeInsets.all(8.0),
                                           child: Column(
                                             children: [
-                                              Text('Sensor 2'),
+                                              const Text('Sensor 2'),
                                               Container(
                                                 width: 40,
                                                 height: 40,
@@ -497,7 +497,7 @@ class _HomePageState extends State<HomePage> {
                                           padding: const EdgeInsets.all(8.0),
                                           child: Column(
                                             children: [
-                                              Text('Sensor 3'),
+                                              const Text('Sensor 3'),
                                               Container(
                                                 width: 40,
                                                 height: 40,
@@ -514,7 +514,7 @@ class _HomePageState extends State<HomePage> {
                                           padding: const EdgeInsets.all(8.0),
                                           child: Column(
                                             children: [
-                                              Text('Sensor 4'),
+                                              const Text('Sensor 4'),
                                               Container(
                                                 width: 40,
                                                 height: 40,
@@ -531,7 +531,7 @@ class _HomePageState extends State<HomePage> {
                                           padding: const EdgeInsets.all(8.0),
                                           child: Column(
                                             children: [
-                                              Text('Sensor 5'),
+                                              const Text('Sensor 5'),
                                               Container(
                                                 width: 40,
                                                 height: 40,

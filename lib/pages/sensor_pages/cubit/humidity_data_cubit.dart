@@ -25,17 +25,19 @@ class HumidityDataCubit extends Cubit<HumidityDataState> {
   final HumidityRepository _humidityRepository;
 
   Future<void> humidityData() async {
-    int currentValue = 0;
-    int sumValue = 0;
-    int averageValue = 0;
-    for (final datamodel in state.humidityModel) {
-      currentValue = datamodel.humidity;
-      sumValue += datamodel.humidity;
-      averageValue = (sumValue ~/ state.humidityModel.length).toInt();
-    }
     _streamSubscription = _humidityRepository.getHumidityDataModel().listen(
       (dataModels) {
-        if (dataModels.isEmpty) {
+        try {
+          emit(
+            HumidityDataState(
+              errorMessage: '',
+              status: Status.isPressed,
+              humidityModel: dataModels,
+              averageHumidity: null,
+              currentHumidity: null,
+            ),
+          );
+        } catch (error) {
           emit(const HumidityDataState(
             errorMessage: 'Missing data',
             status: Status.error,
@@ -44,11 +46,19 @@ class HumidityDataCubit extends Cubit<HumidityDataState> {
             currentHumidity: null,
           ));
         }
+        int? currentValue;
+        int sumValue = 0;
+        int? averageValue;
+        for (final datamodel in state.humidityModel) {
+          sumValue += datamodel.humidity;
+          currentValue = datamodel.humidity;
 
+          averageValue = (sumValue ~/ state.humidityModel.length).toInt();
+        }
         emit(
           HumidityDataState(
             errorMessage: '',
-            status: Status.isPressed,
+            status: Status.success,
             humidityModel: dataModels,
             averageHumidity: averageValue,
             currentHumidity: currentValue,
@@ -59,17 +69,19 @@ class HumidityDataCubit extends Cubit<HumidityDataState> {
   }
 
   Future<void> humidityData2() async {
-    int currentValue = 0;
-    int sumValue = 0;
-    int averageValue = 0;
-    for (final datamodel in state.humidityModel) {
-      currentValue = datamodel.humidity;
-      sumValue += datamodel.humidity;
-      averageValue = (sumValue ~/ state.humidityModel.length).toInt();
-    }
     _streamSubscription = _humidityRepository.getHumidityDataModel2().listen(
       (dataModels) {
-        if (dataModels.isEmpty) {
+        try {
+          emit(
+            HumidityDataState(
+              errorMessage: '',
+              status: Status.isPressed,
+              humidityModel: dataModels,
+              averageHumidity: null,
+              currentHumidity: null,
+            ),
+          );
+        } catch (error) {
           emit(const HumidityDataState(
             errorMessage: 'Missing data',
             status: Status.error,
@@ -78,11 +90,19 @@ class HumidityDataCubit extends Cubit<HumidityDataState> {
             currentHumidity: null,
           ));
         }
+        int? currentValue;
+        int sumValue = 0;
+        int? averageValue;
+        for (final datamodel in state.humidityModel) {
+          sumValue += datamodel.humidity;
+          currentValue = datamodel.humidity;
 
+          averageValue = (sumValue ~/ state.humidityModel.length).toInt();
+        }
         emit(
           HumidityDataState(
             errorMessage: '',
-            status: Status.isPressed,
+            status: Status.success,
             humidityModel: dataModels,
             averageHumidity: averageValue,
             currentHumidity: currentValue,
@@ -93,17 +113,19 @@ class HumidityDataCubit extends Cubit<HumidityDataState> {
   }
 
   Future<void> humidityData3() async {
-    int currentValue = 0;
-    int sumValue = 0;
-    int averageValue = 0;
-    for (final datamodel in state.humidityModel) {
-      currentValue = datamodel.humidity;
-      sumValue += datamodel.humidity;
-      averageValue = (sumValue ~/ state.humidityModel.length).toInt();
-    }
     _streamSubscription = _humidityRepository.getHumidityDataModel3().listen(
       (dataModels) {
-        if (dataModels.isEmpty) {
+        try {
+          emit(
+            HumidityDataState(
+              errorMessage: '',
+              status: Status.isPressed,
+              humidityModel: dataModels,
+              averageHumidity: null,
+              currentHumidity: null,
+            ),
+          );
+        } catch (error) {
           emit(const HumidityDataState(
             errorMessage: 'Missing data',
             status: Status.error,
@@ -112,11 +134,19 @@ class HumidityDataCubit extends Cubit<HumidityDataState> {
             currentHumidity: null,
           ));
         }
+        int? currentValue;
+        int sumValue = 0;
+        int? averageValue;
+        for (final datamodel in state.humidityModel) {
+          sumValue += datamodel.humidity;
+          currentValue = datamodel.humidity;
 
+          averageValue = (sumValue ~/ state.humidityModel.length).toInt();
+        }
         emit(
           HumidityDataState(
             errorMessage: '',
-            status: Status.isPressed,
+            status: Status.success,
             humidityModel: dataModels,
             averageHumidity: averageValue,
             currentHumidity: currentValue,
@@ -127,17 +157,19 @@ class HumidityDataCubit extends Cubit<HumidityDataState> {
   }
 
   Future<void> humidityData4() async {
-    int currentValue = 0;
-    int sumValue = 0;
-    int averageValue = 0;
-    for (final datamodel in state.humidityModel) {
-      currentValue = datamodel.humidity;
-      sumValue += datamodel.humidity;
-      averageValue = (sumValue ~/ state.humidityModel.length).toInt();
-    }
     _streamSubscription = _humidityRepository.getHumidityDataModel4().listen(
       (dataModels) {
-        if (dataModels.isEmpty) {
+        try {
+          emit(
+            HumidityDataState(
+              errorMessage: '',
+              status: Status.isPressed,
+              humidityModel: dataModels,
+              averageHumidity: null,
+              currentHumidity: null,
+            ),
+          );
+        } catch (error) {
           emit(const HumidityDataState(
             errorMessage: 'Missing data',
             status: Status.error,
@@ -146,11 +178,19 @@ class HumidityDataCubit extends Cubit<HumidityDataState> {
             currentHumidity: null,
           ));
         }
+        int? currentValue;
+        int sumValue = 0;
+        int? averageValue;
+        for (final datamodel in state.humidityModel) {
+          sumValue += datamodel.humidity;
+          currentValue = datamodel.humidity;
 
+          averageValue = (sumValue ~/ state.humidityModel.length).toInt();
+        }
         emit(
           HumidityDataState(
             errorMessage: '',
-            status: Status.isPressed,
+            status: Status.success,
             humidityModel: dataModels,
             averageHumidity: averageValue,
             currentHumidity: currentValue,
@@ -161,17 +201,19 @@ class HumidityDataCubit extends Cubit<HumidityDataState> {
   }
 
   Future<void> humidityData5() async {
-    int currentValue = 0;
-    int sumValue = 0;
-    int averageValue = 0;
-    for (final datamodel in state.humidityModel) {
-      currentValue = datamodel.humidity;
-      sumValue += datamodel.humidity;
-      averageValue = (sumValue ~/ state.humidityModel.length).toInt();
-    }
     _streamSubscription = _humidityRepository.getHumidityDataModel5().listen(
       (dataModels) {
-        if (dataModels.isEmpty) {
+        try {
+          emit(
+            HumidityDataState(
+              errorMessage: '',
+              status: Status.isPressed,
+              humidityModel: dataModels,
+              averageHumidity: null,
+              currentHumidity: null,
+            ),
+          );
+        } catch (error) {
           emit(const HumidityDataState(
             errorMessage: 'Missing data',
             status: Status.error,
@@ -180,11 +222,19 @@ class HumidityDataCubit extends Cubit<HumidityDataState> {
             currentHumidity: null,
           ));
         }
+        int? currentValue;
+        int sumValue = 0;
+        int? averageValue;
+        for (final datamodel in state.humidityModel) {
+          sumValue += datamodel.humidity;
+          currentValue = datamodel.humidity;
 
+          averageValue = (sumValue ~/ state.humidityModel.length).toInt();
+        }
         emit(
           HumidityDataState(
             errorMessage: '',
-            status: Status.isPressed,
+            status: Status.success,
             humidityModel: dataModels,
             averageHumidity: averageValue,
             currentHumidity: currentValue,

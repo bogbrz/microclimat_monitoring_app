@@ -22,17 +22,19 @@ class TempDataCubit extends Cubit<TempDataState> {
   final TempRepository _tempRepository;
 
   Future<void> tempData() async {
-    int currentValue = 0;
-    int sumValue = 0;
-    int averageValue = 0;
-    for (final datamodel in state.tempModels) {
-      currentValue = datamodel.temp;
-      sumValue += datamodel.temp;
-      averageValue = (sumValue ~/ state.tempModels.length).toInt();
-    }
     _streamSubscription = _tempRepository.getTempDataModel().listen(
       (dataModels) {
-        if (dataModels.isEmpty) {
+        try {
+          emit(
+            TempDataState(
+              errorMessage: '',
+              status: Status.isPressed,
+              tempModels: dataModels,
+              averagetemp: null,
+              currentTemp: null,
+            ),
+          );
+        } catch (error) {
           emit(const TempDataState(
             errorMessage: 'Missing data',
             status: Status.error,
@@ -41,11 +43,19 @@ class TempDataCubit extends Cubit<TempDataState> {
             currentTemp: null,
           ));
         }
+        int? currentValue;
+        int sumValue = 0;
+        int? averageValue;
+        for (final datamodel in state.tempModels) {
+          sumValue += datamodel.temp;
+          currentValue = datamodel.temp;
 
+          averageValue = (sumValue ~/ state.tempModels.length).toInt();
+        }
         emit(
           TempDataState(
             errorMessage: '',
-            status: Status.isPressed,
+            status: Status.success,
             tempModels: dataModels,
             averagetemp: averageValue,
             currentTemp: currentValue,
@@ -56,17 +66,19 @@ class TempDataCubit extends Cubit<TempDataState> {
   }
 
   Future<void> tempData2() async {
-    int currentValue = 0;
-    int sumValue = 0;
-    int averageValue = 0;
-    for (final datamodel in state.tempModels) {
-      currentValue = datamodel.temp;
-      sumValue += datamodel.temp;
-      averageValue = (sumValue ~/ state.tempModels.length).toInt();
-    }
     _streamSubscription = _tempRepository.getTempDataModel2().listen(
       (dataModels) {
-        if (dataModels.isEmpty) {
+        try {
+          emit(
+            TempDataState(
+              errorMessage: '',
+              status: Status.isPressed,
+              tempModels: dataModels,
+              averagetemp: null,
+              currentTemp: null,
+            ),
+          );
+        } catch (error) {
           emit(const TempDataState(
             errorMessage: 'Missing data',
             status: Status.error,
@@ -75,11 +87,19 @@ class TempDataCubit extends Cubit<TempDataState> {
             currentTemp: null,
           ));
         }
+        int? currentValue;
+        int sumValue = 0;
+        int? averageValue;
+        for (final datamodel in state.tempModels) {
+          sumValue += datamodel.temp;
+          currentValue = datamodel.temp;
 
+          averageValue = (sumValue ~/ state.tempModels.length).toInt();
+        }
         emit(
           TempDataState(
             errorMessage: '',
-            status: Status.isPressed,
+            status: Status.success,
             tempModels: dataModels,
             averagetemp: averageValue,
             currentTemp: currentValue,
@@ -90,17 +110,19 @@ class TempDataCubit extends Cubit<TempDataState> {
   }
 
   Future<void> tempData3() async {
-    int currentValue = 0;
-    int sumValue = 0;
-    int averageValue = 0;
-    for (final datamodel in state.tempModels) {
-      currentValue = datamodel.temp;
-      sumValue += datamodel.temp;
-      averageValue = (sumValue ~/ state.tempModels.length).toInt();
-    }
     _streamSubscription = _tempRepository.getTempDataModel3().listen(
       (dataModels) {
-        if (dataModels.isEmpty) {
+        try {
+          emit(
+            TempDataState(
+              errorMessage: '',
+              status: Status.isPressed,
+              tempModels: dataModels,
+              averagetemp: null,
+              currentTemp: null,
+            ),
+          );
+        } catch (error) {
           emit(const TempDataState(
             errorMessage: 'Missing data',
             status: Status.error,
@@ -109,11 +131,19 @@ class TempDataCubit extends Cubit<TempDataState> {
             currentTemp: null,
           ));
         }
+        int? currentValue;
+        int sumValue = 0;
+        int? averageValue;
+        for (final datamodel in state.tempModels) {
+          sumValue += datamodel.temp;
+          currentValue = datamodel.temp;
 
+          averageValue = (sumValue ~/ state.tempModels.length).toInt();
+        }
         emit(
           TempDataState(
             errorMessage: '',
-            status: Status.isPressed,
+            status: Status.success,
             tempModels: dataModels,
             averagetemp: averageValue,
             currentTemp: currentValue,
@@ -124,17 +154,19 @@ class TempDataCubit extends Cubit<TempDataState> {
   }
 
   Future<void> tempData4() async {
-    int currentValue = 0;
-    int sumValue = 0;
-    int averageValue = 0;
-    for (final datamodel in state.tempModels) {
-      currentValue = datamodel.temp;
-      sumValue += datamodel.temp;
-      averageValue = (sumValue ~/ state.tempModels.length).toInt();
-    }
     _streamSubscription = _tempRepository.getTempDataModel4().listen(
       (dataModels) {
-        if (dataModels.isEmpty) {
+        try {
+          emit(
+            TempDataState(
+              errorMessage: '',
+              status: Status.isPressed,
+              tempModels: dataModels,
+              averagetemp: null,
+              currentTemp: null,
+            ),
+          );
+        } catch (error) {
           emit(const TempDataState(
             errorMessage: 'Missing data',
             status: Status.error,
@@ -143,11 +175,19 @@ class TempDataCubit extends Cubit<TempDataState> {
             currentTemp: null,
           ));
         }
+        int? currentValue;
+        int sumValue = 0;
+        int? averageValue;
+        for (final datamodel in state.tempModels) {
+          sumValue += datamodel.temp;
+          currentValue = datamodel.temp;
 
+          averageValue = (sumValue ~/ state.tempModels.length).toInt();
+        }
         emit(
           TempDataState(
             errorMessage: '',
-            status: Status.isPressed,
+            status: Status.success,
             tempModels: dataModels,
             averagetemp: averageValue,
             currentTemp: currentValue,
@@ -158,17 +198,19 @@ class TempDataCubit extends Cubit<TempDataState> {
   }
 
   Future<void> tempData5() async {
-    int currentValue = 0;
-    int sumValue = 0;
-    int averageValue = 0;
-    for (final datamodel in state.tempModels) {
-      currentValue = datamodel.temp;
-      sumValue += datamodel.temp;
-      averageValue = (sumValue ~/ state.tempModels.length).toInt();
-    }
     _streamSubscription = _tempRepository.getTempDataModel5().listen(
       (dataModels) {
-        if (dataModels.isEmpty) {
+        try {
+          emit(
+            TempDataState(
+              errorMessage: '',
+              status: Status.isPressed,
+              tempModels: dataModels,
+              averagetemp: null,
+              currentTemp: null,
+            ),
+          );
+        } catch (error) {
           emit(const TempDataState(
             errorMessage: 'Missing data',
             status: Status.error,
@@ -177,11 +219,19 @@ class TempDataCubit extends Cubit<TempDataState> {
             currentTemp: null,
           ));
         }
+        int? currentValue;
+        int sumValue = 0;
+        int? averageValue;
+        for (final datamodel in state.tempModels) {
+          sumValue += datamodel.temp;
+          currentValue = datamodel.temp;
 
+          averageValue = (sumValue ~/ state.tempModels.length).toInt();
+        }
         emit(
           TempDataState(
             errorMessage: '',
-            status: Status.isPressed,
+            status: Status.success,
             tempModels: dataModels,
             averagetemp: averageValue,
             currentTemp: currentValue,

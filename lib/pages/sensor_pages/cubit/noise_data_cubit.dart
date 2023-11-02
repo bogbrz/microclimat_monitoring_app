@@ -21,17 +21,19 @@ class NoiseDataCubit extends Cubit<NoiseDataState> {
 
   final NoiseRepository _noiseRepository;
   Future<void> noiseData() async {
-    int currentValue = 0;
-    int sumValue = 0;
-    int averageValue = 0;
-    for (final datamodel in state.noiseModels) {
-      currentValue = datamodel.noise;
-      sumValue += datamodel.noise;
-      averageValue = (sumValue ~/ state.noiseModels.length).toInt();
-    }
     _streamSubscription = _noiseRepository.getNoiseDataModel().listen(
       (dataModels) {
-        if (dataModels.isEmpty) {
+        try {
+          emit(
+            NoiseDataState(
+              errorMessage: '',
+              status: Status.success,
+              noiseModels: dataModels,
+              averageNoise: null,
+              currentNoise: null,
+            ),
+          );
+        } catch (error) {
           emit(const NoiseDataState(
             errorMessage: 'Missing data',
             status: Status.error,
@@ -40,11 +42,19 @@ class NoiseDataCubit extends Cubit<NoiseDataState> {
             currentNoise: null,
           ));
         }
+        int? currentValue;
+        int sumValue = 0;
+        int? averageValue;
+        for (final datamodel in state.noiseModels) {
+          sumValue += datamodel.noise;
+          currentValue = datamodel.noise;
 
+          averageValue = (sumValue ~/ state.noiseModels.length).toInt();
+        }
         emit(
           NoiseDataState(
             errorMessage: '',
-            status: Status.isPressed,
+            status: Status.success,
             noiseModels: dataModels,
             averageNoise: averageValue,
             currentNoise: currentValue,
@@ -55,17 +65,19 @@ class NoiseDataCubit extends Cubit<NoiseDataState> {
   }
 
   Future<void> noiseData2() async {
-    int currentValue = 0;
-    int sumValue = 0;
-    int averageValue = 0;
-    for (final datamodel in state.noiseModels) {
-      currentValue = datamodel.noise;
-      sumValue += datamodel.noise;
-      averageValue = (sumValue ~/ state.noiseModels.length).toInt();
-    }
     _streamSubscription = _noiseRepository.getNoiseDataModel2().listen(
       (dataModels) {
-        if (dataModels.isEmpty) {
+        try {
+          emit(
+            NoiseDataState(
+              errorMessage: '',
+              status: Status.success,
+              noiseModels: dataModels,
+              averageNoise: null,
+              currentNoise: null,
+            ),
+          );
+        } catch (error) {
           emit(const NoiseDataState(
             errorMessage: 'Missing data',
             status: Status.error,
@@ -74,11 +86,19 @@ class NoiseDataCubit extends Cubit<NoiseDataState> {
             currentNoise: null,
           ));
         }
+        int? currentValue;
+        int sumValue = 0;
+        int? averageValue;
+        for (final datamodel in state.noiseModels) {
+          sumValue += datamodel.noise;
+          currentValue = datamodel.noise;
 
+          averageValue = (sumValue ~/ state.noiseModels.length).toInt();
+        }
         emit(
           NoiseDataState(
             errorMessage: '',
-            status: Status.isPressed,
+            status: Status.success,
             noiseModels: dataModels,
             averageNoise: averageValue,
             currentNoise: currentValue,
@@ -89,17 +109,19 @@ class NoiseDataCubit extends Cubit<NoiseDataState> {
   }
 
   Future<void> noiseData3() async {
-    int currentValue = 0;
-    int sumValue = 0;
-    int averageValue = 0;
-    for (final datamodel in state.noiseModels) {
-      currentValue = datamodel.noise;
-      sumValue += datamodel.noise;
-      averageValue = (sumValue ~/ state.noiseModels.length).toInt();
-    }
     _streamSubscription = _noiseRepository.getNoiseDataModel3().listen(
       (dataModels) {
-        if (dataModels.isEmpty) {
+        try {
+          emit(
+            NoiseDataState(
+              errorMessage: '',
+              status: Status.success,
+              noiseModels: dataModels,
+              averageNoise: null,
+              currentNoise: null,
+            ),
+          );
+        } catch (error) {
           emit(const NoiseDataState(
             errorMessage: 'Missing data',
             status: Status.error,
@@ -108,11 +130,19 @@ class NoiseDataCubit extends Cubit<NoiseDataState> {
             currentNoise: null,
           ));
         }
+        int? currentValue;
+        int sumValue = 0;
+        int? averageValue;
+        for (final datamodel in state.noiseModels) {
+          sumValue += datamodel.noise;
+          currentValue = datamodel.noise;
 
+          averageValue = (sumValue ~/ state.noiseModels.length).toInt();
+        }
         emit(
           NoiseDataState(
             errorMessage: '',
-            status: Status.isPressed,
+            status: Status.success,
             noiseModels: dataModels,
             averageNoise: averageValue,
             currentNoise: currentValue,
@@ -123,17 +153,19 @@ class NoiseDataCubit extends Cubit<NoiseDataState> {
   }
 
   Future<void> noiseData4() async {
-    int currentValue = 0;
-    int sumValue = 0;
-    int averageValue = 0;
-    for (final datamodel in state.noiseModels) {
-      currentValue = datamodel.noise;
-      sumValue += datamodel.noise;
-      averageValue = (sumValue ~/ state.noiseModels.length).toInt();
-    }
     _streamSubscription = _noiseRepository.getNoiseDataModel4().listen(
       (dataModels) {
-        if (dataModels.isEmpty) {
+        try {
+          emit(
+            NoiseDataState(
+              errorMessage: '',
+              status: Status.success,
+              noiseModels: dataModels,
+              averageNoise: null,
+              currentNoise: null,
+            ),
+          );
+        } catch (error) {
           emit(const NoiseDataState(
             errorMessage: 'Missing data',
             status: Status.error,
@@ -142,11 +174,19 @@ class NoiseDataCubit extends Cubit<NoiseDataState> {
             currentNoise: null,
           ));
         }
+        int? currentValue;
+        int sumValue = 0;
+        int? averageValue;
+        for (final datamodel in state.noiseModels) {
+          sumValue += datamodel.noise;
+          currentValue = datamodel.noise;
 
+          averageValue = (sumValue ~/ state.noiseModels.length).toInt();
+        }
         emit(
           NoiseDataState(
             errorMessage: '',
-            status: Status.isPressed,
+            status: Status.success,
             noiseModels: dataModels,
             averageNoise: averageValue,
             currentNoise: currentValue,
@@ -157,17 +197,19 @@ class NoiseDataCubit extends Cubit<NoiseDataState> {
   }
 
   Future<void> noiseData5() async {
-    int currentValue = 0;
-    int sumValue = 0;
-    int averageValue = 0;
-    for (final datamodel in state.noiseModels) {
-      currentValue = datamodel.noise;
-      sumValue += datamodel.noise;
-      averageValue = (sumValue ~/ state.noiseModels.length).toInt();
-    }
     _streamSubscription = _noiseRepository.getNoiseDataModel5().listen(
       (dataModels) {
-        if (dataModels.isEmpty) {
+        try {
+          emit(
+            NoiseDataState(
+              errorMessage: '',
+              status: Status.success,
+              noiseModels: dataModels,
+              averageNoise: null,
+              currentNoise: null,
+            ),
+          );
+        } catch (error) {
           emit(const NoiseDataState(
             errorMessage: 'Missing data',
             status: Status.error,
@@ -176,11 +218,19 @@ class NoiseDataCubit extends Cubit<NoiseDataState> {
             currentNoise: null,
           ));
         }
+        int? currentValue;
+        int sumValue = 0;
+        int? averageValue;
+        for (final datamodel in state.noiseModels) {
+          sumValue += datamodel.noise;
+          currentValue = datamodel.noise;
 
+          averageValue = (sumValue ~/ state.noiseModels.length).toInt();
+        }
         emit(
           NoiseDataState(
             errorMessage: '',
-            status: Status.isPressed,
+            status: Status.success,
             noiseModels: dataModels,
             averageNoise: averageValue,
             currentNoise: currentValue,
