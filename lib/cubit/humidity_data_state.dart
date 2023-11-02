@@ -6,6 +6,7 @@ class HumidityDataState {
   final List<HumidityModel> humidityModel;
   final int? averageHumidity;
   final int? currentHumidity;
+  final Color colorBox;
 
   const HumidityDataState({
     required this.errorMessage,
@@ -13,5 +14,6 @@ class HumidityDataState {
     required this.humidityModel,
     required this.averageHumidity,
     required this.currentHumidity,
+    this.colorBox = Colors.green,
   });
 }

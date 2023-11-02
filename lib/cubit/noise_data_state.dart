@@ -6,6 +6,7 @@ class NoiseDataState {
   final List<NoiseModel> noiseModels;
   final int? averageNoise;
   final int? currentNoise;
+  final Color colorBox;
 
   const NoiseDataState({
     required this.errorMessage,
@@ -13,5 +14,6 @@ class NoiseDataState {
     required this.noiseModels,
     required this.averageNoise,
     required this.currentNoise,
+    this.colorBox = Colors.green,
   });
 }

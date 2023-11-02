@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:bloc/bloc.dart';
+import 'package:flutter/material.dart';
 import 'package:microclimat_monitoring_app/core.dart';
 import 'package:microclimat_monitoring_app/models/temp_model.dart';
 import 'package:microclimat_monitoring_app/repositories/temp_repository.dart';
@@ -61,6 +62,19 @@ class TempDataCubit extends Cubit<TempDataState> {
             currentTemp: currentValue,
           ),
         );
+        if (currentValue != null) {
+          if (currentValue > 25 || currentValue < 10) {
+            emit(
+              TempDataState(
+                  errorMessage: '',
+                  status: Status.success,
+                  tempModels: dataModels,
+                  averagetemp: averageValue,
+                  currentTemp: currentValue,
+                  colorBox: Colors.red),
+            );
+          }
+        }
       },
     );
   }
@@ -105,6 +119,19 @@ class TempDataCubit extends Cubit<TempDataState> {
             currentTemp: currentValue,
           ),
         );
+        if (currentValue != null) {
+          if (currentValue > 25 || currentValue < 10) {
+            emit(
+              TempDataState(
+                  errorMessage: '',
+                  status: Status.success,
+                  tempModels: dataModels,
+                  averagetemp: averageValue,
+                  currentTemp: currentValue,
+                  colorBox: Colors.red),
+            );
+          }
+        }
       },
     );
   }
@@ -149,6 +176,19 @@ class TempDataCubit extends Cubit<TempDataState> {
             currentTemp: currentValue,
           ),
         );
+        if (currentValue != null) {
+          if (currentValue > 25 || currentValue < 10) {
+            emit(
+              TempDataState(
+                  errorMessage: '',
+                  status: Status.success,
+                  tempModels: dataModels,
+                  averagetemp: averageValue,
+                  currentTemp: currentValue,
+                  colorBox: Colors.red),
+            );
+          }
+        }
       },
     );
   }
@@ -193,6 +233,19 @@ class TempDataCubit extends Cubit<TempDataState> {
             currentTemp: currentValue,
           ),
         );
+        if (currentValue != null) {
+          if (currentValue > 25 || currentValue < 10) {
+            emit(
+              TempDataState(
+                  errorMessage: '',
+                  status: Status.success,
+                  tempModels: dataModels,
+                  averagetemp: averageValue,
+                  currentTemp: currentValue,
+                  colorBox: Colors.red),
+            );
+          }
+        }
       },
     );
   }
@@ -237,6 +290,19 @@ class TempDataCubit extends Cubit<TempDataState> {
             currentTemp: currentValue,
           ),
         );
+        if (currentValue != null) {
+          if (currentValue > 25 || currentValue < 10) {
+            emit(
+              TempDataState(
+                  errorMessage: '',
+                  status: Status.success,
+                  tempModels: dataModels,
+                  averagetemp: averageValue,
+                  currentTemp: currentValue,
+                  colorBox: Colors.red),
+            );
+          }
+        }
       },
     );
   }

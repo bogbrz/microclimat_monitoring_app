@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:microclimat_monitoring_app/core.dart';
+import 'package:microclimat_monitoring_app/cubit/humidity_data_cubit.dart';
+import 'package:microclimat_monitoring_app/cubit/noise_data_cubit.dart';
+import 'package:microclimat_monitoring_app/cubit/temp_data_cubit.dart';
 import 'package:microclimat_monitoring_app/data_source/humidity_data_source.dart';
 import 'package:microclimat_monitoring_app/data_source/nosie_data_source.dart';
 import 'package:microclimat_monitoring_app/data_source/temperature_data_source.dart';
 import 'package:microclimat_monitoring_app/models/humidity_model.dart';
 import 'package:microclimat_monitoring_app/models/noise_model.dart';
 import 'package:microclimat_monitoring_app/models/temp_model.dart';
-import 'package:microclimat_monitoring_app/pages/sensor_pages/cubit/humidity_data_cubit.dart';
-import 'package:microclimat_monitoring_app/pages/sensor_pages/cubit/noise_data_cubit.dart';
-import 'package:microclimat_monitoring_app/pages/sensor_pages/cubit/temp_data_cubit.dart';
 
 import 'package:microclimat_monitoring_app/repositories/humi_repository.dart';
 import 'package:microclimat_monitoring_app/repositories/nosie_repository.dart';
@@ -389,8 +389,7 @@ class _SensorOnePageState extends State<SensorPage> {
                                               3.75,
                                           padding: const EdgeInsets.all(5),
                                           decoration: BoxDecoration(
-                                              color: const Color.fromARGB(
-                                                  255, 37, 20, 20),
+                                              color: state.colorBox,
                                               border: Border.all(
                                                   width: 2,
                                                   color: Colors.white)),

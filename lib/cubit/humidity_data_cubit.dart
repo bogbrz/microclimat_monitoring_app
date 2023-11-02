@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:bloc/bloc.dart';
+import 'package:flutter/material.dart';
 import 'package:microclimat_monitoring_app/core.dart';
 import 'package:microclimat_monitoring_app/models/humidity_model.dart';
 import 'package:microclimat_monitoring_app/repositories/humi_repository.dart';
@@ -55,15 +56,19 @@ class HumidityDataCubit extends Cubit<HumidityDataState> {
 
           averageValue = (sumValue ~/ state.humidityModel.length).toInt();
         }
-        emit(
-          HumidityDataState(
-            errorMessage: '',
-            status: Status.success,
-            humidityModel: dataModels,
-            averageHumidity: averageValue,
-            currentHumidity: currentValue,
-          ),
-        );
+        if (currentValue != null) {
+          if (currentValue > 25 || currentValue < 10) {
+            emit(
+              HumidityDataState(
+                  errorMessage: '',
+                  status: Status.success,
+                  humidityModel: dataModels,
+                  averageHumidity: averageValue,
+                  currentHumidity: currentValue,
+                  colorBox: Colors.red),
+            );
+          }
+        }
       },
     );
   }
@@ -108,6 +113,19 @@ class HumidityDataCubit extends Cubit<HumidityDataState> {
             currentHumidity: currentValue,
           ),
         );
+        if (currentValue != null) {
+          if (currentValue > 25 || currentValue < 10) {
+            emit(
+              HumidityDataState(
+                  errorMessage: '',
+                  status: Status.success,
+                  humidityModel: dataModels,
+                  averageHumidity: averageValue,
+                  currentHumidity: currentValue,
+                  colorBox: Colors.red),
+            );
+          }
+        }
       },
     );
   }
@@ -152,6 +170,19 @@ class HumidityDataCubit extends Cubit<HumidityDataState> {
             currentHumidity: currentValue,
           ),
         );
+        if (currentValue != null) {
+          if (currentValue > 25 || currentValue < 10) {
+            emit(
+              HumidityDataState(
+                  errorMessage: '',
+                  status: Status.success,
+                  humidityModel: dataModels,
+                  averageHumidity: averageValue,
+                  currentHumidity: currentValue,
+                  colorBox: Colors.red),
+            );
+          }
+        }
       },
     );
   }
@@ -196,6 +227,19 @@ class HumidityDataCubit extends Cubit<HumidityDataState> {
             currentHumidity: currentValue,
           ),
         );
+        if (currentValue != null) {
+          if (currentValue > 25 || currentValue < 10) {
+            emit(
+              HumidityDataState(
+                  errorMessage: '',
+                  status: Status.success,
+                  humidityModel: dataModels,
+                  averageHumidity: averageValue,
+                  currentHumidity: currentValue,
+                  colorBox: Colors.red),
+            );
+          }
+        }
       },
     );
   }
@@ -240,6 +284,19 @@ class HumidityDataCubit extends Cubit<HumidityDataState> {
             currentHumidity: currentValue,
           ),
         );
+        if (currentValue != null) {
+          if (currentValue > 25 || currentValue < 10) {
+            emit(
+              HumidityDataState(
+                  errorMessage: '',
+                  status: Status.success,
+                  humidityModel: dataModels,
+                  averageHumidity: averageValue,
+                  currentHumidity: currentValue,
+                  colorBox: Colors.red),
+            );
+          }
+        }
       },
     );
   }

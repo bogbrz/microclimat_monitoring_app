@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:bloc/bloc.dart';
+import 'package:flutter/material.dart';
 import 'package:microclimat_monitoring_app/core.dart';
 import 'package:microclimat_monitoring_app/models/noise_model.dart';
 import 'package:microclimat_monitoring_app/repositories/nosie_repository.dart';
@@ -60,6 +61,19 @@ class NoiseDataCubit extends Cubit<NoiseDataState> {
             currentNoise: currentValue,
           ),
         );
+        if (currentValue != null) {
+          if (currentValue > 25 || currentValue < 10) {
+            emit(
+              NoiseDataState(
+                  errorMessage: '',
+                  status: Status.success,
+                  noiseModels: dataModels,
+                  averageNoise: averageValue,
+                  currentNoise: currentValue,
+                  colorBox: Colors.red),
+            );
+          }
+        }
       },
     );
   }
@@ -104,6 +118,19 @@ class NoiseDataCubit extends Cubit<NoiseDataState> {
             currentNoise: currentValue,
           ),
         );
+        if (currentValue != null) {
+          if (currentValue > 25 || currentValue < 10) {
+            emit(
+              NoiseDataState(
+                  errorMessage: '',
+                  status: Status.success,
+                  noiseModels: dataModels,
+                  averageNoise: averageValue,
+                  currentNoise: currentValue,
+                  colorBox: Colors.red),
+            );
+          }
+        }
       },
     );
   }
@@ -148,6 +175,19 @@ class NoiseDataCubit extends Cubit<NoiseDataState> {
             currentNoise: currentValue,
           ),
         );
+        if (currentValue != null) {
+          if (currentValue > 25 || currentValue < 10) {
+            emit(
+              NoiseDataState(
+                  errorMessage: '',
+                  status: Status.success,
+                  noiseModels: dataModels,
+                  averageNoise: averageValue,
+                  currentNoise: currentValue,
+                  colorBox: Colors.red),
+            );
+          }
+        }
       },
     );
   }
@@ -192,6 +232,19 @@ class NoiseDataCubit extends Cubit<NoiseDataState> {
             currentNoise: currentValue,
           ),
         );
+        if (currentValue != null) {
+          if (currentValue > 25 || currentValue < 10) {
+            emit(
+              NoiseDataState(
+                  errorMessage: '',
+                  status: Status.success,
+                  noiseModels: dataModels,
+                  averageNoise: averageValue,
+                  currentNoise: currentValue,
+                  colorBox: Colors.red),
+            );
+          }
+        }
       },
     );
   }
@@ -236,6 +289,19 @@ class NoiseDataCubit extends Cubit<NoiseDataState> {
             currentNoise: currentValue,
           ),
         );
+        if (currentValue != null) {
+          if (currentValue > 25 || currentValue < 10) {
+            emit(
+              NoiseDataState(
+                  errorMessage: '',
+                  status: Status.success,
+                  noiseModels: dataModels,
+                  averageNoise: averageValue,
+                  currentNoise: currentValue,
+                  colorBox: Colors.red),
+            );
+          }
+        }
       },
     );
   }
