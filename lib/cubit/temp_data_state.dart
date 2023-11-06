@@ -6,6 +6,7 @@ class TempDataState {
   final List<TempModel> tempModels;
   final int? averagetemp;
   final int? currentTemp;
+  final Color colorBox;
 
   const TempDataState({
     required this.errorMessage,
@@ -13,5 +14,6 @@ class TempDataState {
     required this.tempModels,
     required this.averagetemp,
     required this.currentTemp,
+    this.colorBox = Colors.green,
   });
 }
