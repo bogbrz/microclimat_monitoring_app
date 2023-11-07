@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:microclimat_monitoring_app/firebase_options.dart';
-import 'package:microclimat_monitoring_app/rootpage.dart';
+import 'package:microclimat_monitoring_app/home.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData.dark(),
-      home: const RootPage(),
+      home: const HomePage(),
     );
   }
 }
