@@ -1,33 +1,21 @@
 import 'package:microclimat_monitoring_app/data_source/sensor_three_data_source.dart';
-import 'package:microclimat_monitoring_app/models/humidity_model.dart';
-import 'package:microclimat_monitoring_app/models/noise_model.dart';
-import 'package:microclimat_monitoring_app/models/temp_model.dart';
+import 'package:microclimat_monitoring_app/models/sensor_model.dart';
 
 class SensorThreeRepository {
-  SensorThreeRepository(this._sensorThreeDataSource);
-  final SensorThreeDataSource _sensorThreeDataSource;
+  SensorThreeRepository({required this.sensorThreeDataSource});
+  final SensorThreeDataSource sensorThreeDataSource;
 
-  Stream<List<HumidityModel>> getsensorThreeHumidity() {
-    return _sensorThreeDataSource.sensorThreeHumidity().map((querySnapshot) {
+  Stream<List<SensorModel>> getSensorOneData() {
+    return sensorThreeDataSource.sensorThreeData().map((querySnapshot) {
       return querySnapshot.docs
-          .map((doc) =>
-              HumidityModel(humidity: doc["humidity"], hour: doc['hour']))
-          .toList();
-    });
-  }
-
-  Stream<List<TempModel>> getsensorThreeTemp() {
-    return _sensorThreeDataSource.sensorThreeTemp().map((querySnapshot) {
-      return querySnapshot.docs
-          .map((doc) => TempModel(temp: doc["temp"], hour: doc['hour']))
-          .toList();
-    });
-  }
-
-  Stream<List<NoiseModel>> getsensorThreeNoise() {
-    return _sensorThreeDataSource.sensorThreeNoise().map((querySnapshot) {
-      return querySnapshot.docs
-          .map((doc) => NoiseModel(noise: doc["noise"], hour: doc['hour']))
+          .map(
+            (doc) => SensorModel(
+              humidity: doc["humidity"],
+              hour: doc['hour'],
+              temp: doc['temp'],
+              noise: doc['noise'],
+            ),
+          )
           .toList();
     });
   }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:microclimat_monitoring_app/data_source/sensor_one_data_source.dart';
-import 'package:microclimat_monitoring_app/models/sensor_one_model.dart';
+import 'package:microclimat_monitoring_app/models/sensor_model.dart';
 import 'package:microclimat_monitoring_app/pages/sensor_pages/sensor_one/cubit/sensor_one_cubit.dart';
 import 'package:microclimat_monitoring_app/repositories/sensor_one_repository.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
@@ -28,7 +28,7 @@ class _SensorOnePageState extends State<SensorPage> {
     return BlocProvider(
       create: (context) => SensorOneCubit(
         sensorOneRepository: SensorOneRepository(
-          SensorOneDataSource(),
+          sensorOneDataSource: SensorOneDataSource(),
         ),
       )..start(),
       child: BlocBuilder<SensorOneCubit, SensorOneState>(
@@ -41,7 +41,9 @@ class _SensorOnePageState extends State<SensorPage> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 15),
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 10,
+                    ),
                     child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
@@ -53,8 +55,9 @@ class _SensorOnePageState extends State<SensorPage> {
                               isPressed3 = false;
                             },
                             child: Container(
-                              width: (MediaQuery.of(context).size.width) / 3.75,
-                              padding: const EdgeInsets.all(10),
+                              width: (MediaQuery.of(context).size.width) / 3.5,
+                              height: (MediaQuery.of(context).size.height) / 15,
+                              padding: const EdgeInsets.all(5),
                               decoration: BoxDecoration(
                                   color: isPressed1
                                       ? const Color.fromARGB(255, 37, 20, 20)
@@ -73,7 +76,8 @@ class _SensorOnePageState extends State<SensorPage> {
                               isPressed3 = false;
                             },
                             child: Container(
-                              width: (MediaQuery.of(context).size.width) / 3.75,
+                              width: (MediaQuery.of(context).size.width) / 3.5,
+                              height: (MediaQuery.of(context).size.height) / 15,
                               padding: const EdgeInsets.all(10),
                               decoration: BoxDecoration(
                                   color: isPressed2
@@ -93,7 +97,8 @@ class _SensorOnePageState extends State<SensorPage> {
                               isPressed3 = true;
                             },
                             child: Container(
-                              width: (MediaQuery.of(context).size.width) / 3.75,
+                              width: (MediaQuery.of(context).size.width) / 3.5,
+                              height: (MediaQuery.of(context).size.height) / 15,
                               padding: const EdgeInsets.all(10),
                               decoration: BoxDecoration(
                                   color: isPressed3
@@ -140,12 +145,12 @@ class _SensorOnePageState extends State<SensorPage> {
                             isVisible: true,
                             color: const Color.fromARGB(255, 0, 140, 255))
                       ]),
-                      series: <LineSeries<SensorOneModel, int>>[
+                      series: <LineSeries<SensorModel, int>>[
                         LineSeries(
                           color: Colors.black,
                           dataSource: state.sensorOneModels,
-                          xValueMapper: (SensorOneModel date, _) => date.hour,
-                          yValueMapper: (SensorOneModel data, _) => isPressed1
+                          xValueMapper: (SensorModel date, _) => date.hour,
+                          yValueMapper: (SensorModel data, _) => isPressed1
                               ? data.temp
                               : isPressed2
                                   ? data.humidity
@@ -172,8 +177,10 @@ class _SensorOnePageState extends State<SensorPage> {
                             Column(
                               children: [
                                 Container(
-                                  width: (MediaQuery.of(context).size.width) /
-                                      3.75,
+                                  width:
+                                      (MediaQuery.of(context).size.width) / 3.2,
+                                  height:
+                                      (MediaQuery.of(context).size.height) / 9,
                                   padding: const EdgeInsets.all(10),
                                   decoration: BoxDecoration(
                                       color:
@@ -198,8 +205,10 @@ class _SensorOnePageState extends State<SensorPage> {
                                   height: 10,
                                 ),
                                 Container(
-                                  width: (MediaQuery.of(context).size.width) /
-                                      3.75,
+                                  width:
+                                      (MediaQuery.of(context).size.width) / 3.2,
+                                  height:
+                                      (MediaQuery.of(context).size.height) / 9,
                                   padding: const EdgeInsets.all(10),
                                   decoration: BoxDecoration(
                                       color:
@@ -225,9 +234,11 @@ class _SensorOnePageState extends State<SensorPage> {
                             Column(
                               children: [
                                 Container(
-                                  width: (MediaQuery.of(context).size.width) /
-                                      3.75,
-                                  padding: const EdgeInsets.all(5),
+                                  width:
+                                      (MediaQuery.of(context).size.width) / 3.2,
+                                  height:
+                                      (MediaQuery.of(context).size.height) / 9,
+                                  padding: const EdgeInsets.all(10),
                                   decoration: BoxDecoration(
                                       color:
                                           const Color.fromARGB(255, 37, 20, 20),
@@ -253,9 +264,11 @@ class _SensorOnePageState extends State<SensorPage> {
                                   height: 10,
                                 ),
                                 Container(
-                                  width: (MediaQuery.of(context).size.width) /
-                                      3.75,
-                                  padding: const EdgeInsets.all(5),
+                                  width:
+                                      (MediaQuery.of(context).size.width) / 3.2,
+                                  height:
+                                      (MediaQuery.of(context).size.height) / 9,
+                                  padding: const EdgeInsets.all(10),
                                   decoration: BoxDecoration(
                                       color:
                                           const Color.fromARGB(255, 37, 20, 20),
@@ -282,9 +295,12 @@ class _SensorOnePageState extends State<SensorPage> {
                             Column(
                               children: [
                                 Container(
-                                  width: (MediaQuery.of(context).size.width) /
-                                      3.75,
-                                  padding: const EdgeInsets.all(5),
+                                  width:
+                                      (MediaQuery.of(context).size.width) / 3.2,
+                                  height:
+                                      (MediaQuery.of(context).size.height) / 9,
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: 10, horizontal: 15),
                                   decoration: BoxDecoration(
                                       color:
                                           const Color.fromARGB(255, 37, 20, 20),
@@ -310,8 +326,10 @@ class _SensorOnePageState extends State<SensorPage> {
                                   height: 10,
                                 ),
                                 Container(
-                                  width: (MediaQuery.of(context).size.width) /
-                                      3.75,
+                                  width:
+                                      (MediaQuery.of(context).size.width) / 3.2,
+                                  height:
+                                      (MediaQuery.of(context).size.height) / 9,
                                   padding: const EdgeInsets.all(10),
                                   decoration: BoxDecoration(
                                       color:

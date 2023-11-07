@@ -1,42 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class SensorFourDataSource {
-  Stream<QuerySnapshot> sensorFourTemp() {
+  Stream<QuerySnapshot> sensorFourData() {
     return FirebaseFirestore.instance
         .collection('sensors')
         .doc('sensor4')
-        .collection('month')
-        .doc('november')
-        .collection('days')
+        .collection('day')
         .doc('1')
-        .collection('temperature')
-        .orderBy('hour', descending: false)
-        .snapshots();
-  }
-
-  Stream<QuerySnapshot> sensorFourHumidity() {
-    return FirebaseFirestore.instance
-        .collection('sensors')
-        .doc('sensor4')
-        .collection('month')
-        .doc('november')
-        .collection('days')
-        .doc('1')
-        .collection('temperature')
-        .orderBy('hour', descending: false)
-        .snapshots();
-  }
-
-  Stream<QuerySnapshot> sensorFourNoise() {
-    return FirebaseFirestore.instance
-        .collection('sensors')
-        .doc('sensor4')
-        .collection('month')
-        .doc('november')
-        .collection('days')
-        .doc('1')
-        .collection('temperature')
-        .orderBy('hour', descending: false)
+        .collection('records')
+        .orderBy('hour')
         .snapshots();
   }
 }

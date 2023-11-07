@@ -1,6 +1,6 @@
-part of 'sensor_one_cubit.dart';
+part of 'sensor_two_cubit.dart';
 
-class SensorOneState {
+class SensorTwoState {
   final String errorMessage;
   final int? averageTemp;
   final int? averageHumidity;
@@ -12,9 +12,9 @@ class SensorOneState {
   Color buttonColor2;
   Color buttonColor3;
 
-  final List<SensorModel> sensorOneModels;
+  final List<SensorModel> sensorTwoModels;
 
-  SensorOneState({
+  SensorTwoState({
     required this.errorMessage,
     required this.averageTemp,
     required this.averageHumidity,
@@ -22,7 +22,7 @@ class SensorOneState {
     required this.currentTemp,
     required this.currentHumidity,
     required this.currentNoise,
-    required this.sensorOneModels,
+    required this.sensorTwoModels,
     this.buttonColor1 = Colors.green,
     this.buttonColor2 = Colors.green,
     this.buttonColor3 = Colors.green,

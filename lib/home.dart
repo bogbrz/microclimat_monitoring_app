@@ -28,7 +28,8 @@ class _HomePageState extends State<HomePage> {
 
     return BlocProvider(
         create: (context) => SensorOneCubit(
-            sensorOneRepository: SensorOneRepository(SensorOneDataSource())),
+            sensorOneRepository: SensorOneRepository(
+                sensorOneDataSource: SensorOneDataSource())),
         child: Scaffold(
             appBar: AppBar(
               actions: [

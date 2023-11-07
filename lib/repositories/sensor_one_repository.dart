@@ -1,15 +1,15 @@
 import 'package:microclimat_monitoring_app/data_source/sensor_one_data_source.dart';
-import 'package:microclimat_monitoring_app/models/sensor_one_model.dart';
+import 'package:microclimat_monitoring_app/models/sensor_model.dart';
 
 class SensorOneRepository {
-  SensorOneRepository(this._sensorOneDataSource);
-  final SensorOneDataSource _sensorOneDataSource;
+  SensorOneRepository({required this.sensorOneDataSource});
+  final SensorOneDataSource sensorOneDataSource;
 
-  Stream<List<SensorOneModel>> getSensorOneData() {
-    return _sensorOneDataSource.sensorOneData().map((querySnapshot) {
+  Stream<List<SensorModel>> getSensorOneData() {
+    return sensorOneDataSource.sensorOneData().map((querySnapshot) {
       return querySnapshot.docs
           .map(
-            (doc) => SensorOneModel(
+            (doc) => SensorModel(
               humidity: doc["humidity"],
               hour: doc['hour'],
               temp: doc['temp'],
