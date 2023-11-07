@@ -37,16 +37,19 @@ class SensorOneCubit extends Cubit<SensorOneState> {
             currentHumidity: null,
             currentNoise: null,
             currentTemp: null,
+            buttonColor1: state.buttonColor1,
+            buttonColor2: state.buttonColor2,
+            buttonColor3: state.buttonColor3,
           ),
         );
-        print("First emit:  $dataModels");
+        print(" First emit:  $dataModels   ");
       } catch (error) {
         emit(SensorOneState(
           errorMessage: error.toString(),
           currentHumidity: null,
           currentNoise: null,
           currentTemp: null,
-          sensorOneModels: dataModels,
+          sensorOneModels: [],
           averageHumidity: null,
           averageNoise: null,
           averageTemp: null,
@@ -61,7 +64,7 @@ class SensorOneCubit extends Cubit<SensorOneState> {
       int? currentHumidity;
       int sumHumidity = 0;
       int? averageHumidity;
-      for (final datamodel in state.sensorOneModels) {
+      for (final datamodel in dataModels) {
         sumTemp += datamodel.temp;
         sumNoise += datamodel.noise;
         sumHumidity += datamodel.humidity;
@@ -75,21 +78,21 @@ class SensorOneCubit extends Cubit<SensorOneState> {
 
         averageHumidity =
             (sumHumidity ~/ ((state.sensorOneModels.length) ~/ 3));
-        print("hour:  $averageHumidity, $averageNoise, $averageTemp");
       }
       if (currentHumidity != null &&
-          currentTemp != null &&
-          currentNoise != null) {
-        if (state.currentTemp! < 25 || state.currentTemp! > 10) {
-          state.buttonColor1 = Colors.red;
-        }
-        if (state.currentHumidity! < 25 || state.currentHumidity! > 10) {
+          currentNoise != null &&
+          currentTemp != null) {
+        if (currentHumidity > 25 || currentHumidity < 10) {
           state.buttonColor2 = Colors.red;
         }
-        if (state.currentNoise! < 25 || state.currentNoise! > 10) {
+        if (currentTemp > 25 || currentTemp < 10) {
+          state.buttonColor1 = Colors.red;
+        }
+        if (currentNoise > 25 || currentNoise < 10) {
           state.buttonColor3 = Colors.red;
         }
-        emit(SensorOneState(
+      }
+      emit(SensorOneState(
           errorMessage: '',
           averageTemp: averageTemp,
           averageHumidity: averageHumidity,
@@ -100,9 +103,13 @@ class SensorOneCubit extends Cubit<SensorOneState> {
           sensorOneModels: dataModels,
           buttonColor1: state.buttonColor1,
           buttonColor2: state.buttonColor2,
-          buttonColor3: state.buttonColor3,
-        ));
-      }
+          buttonColor3: state.buttonColor3));
     });
+  }
+
+  @override
+  Future<void> close() {
+    _streamSubscription?.cancel();
+    return super.close();
   }
 }
