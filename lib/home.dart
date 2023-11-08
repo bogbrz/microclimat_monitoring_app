@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:microclimat_monitoring_app/data_source/sensor_one_data_source.dart';
+import 'package:microclimat_monitoring_app/data_source/sensor_two_data_source.dart';
 import 'package:microclimat_monitoring_app/pages/sensor_pages/sensor_five/sensor_five_page.dart';
 import 'package:microclimat_monitoring_app/pages/sensor_pages/sensor_four/sensor_four_page.dart';
 import 'package:microclimat_monitoring_app/pages/sensor_pages/sensor_one/cubit/sensor_one_cubit.dart';
 import 'package:microclimat_monitoring_app/pages/sensor_pages/sensor_one/sesnor_one_page.dart';
 import 'package:microclimat_monitoring_app/pages/sensor_pages/sensor_three/sesnor_three_page.dart';
+import 'package:microclimat_monitoring_app/pages/sensor_pages/sensor_two/cubit/sensor_two_cubit.dart';
 import 'package:microclimat_monitoring_app/pages/sensor_pages/sensor_two/sensor_two_page.dart';
 
 import 'package:microclimat_monitoring_app/repositories/sensor_one_repository.dart';
+import 'package:microclimat_monitoring_app/repositories/sensor_two_repository.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({
@@ -26,19 +29,21 @@ class _HomePageState extends State<HomePage> {
     const sensorWidth = 20.0;
     var sensorNumber = 1;
 
-    return BlocProvider(
-        create: (context) => SensorOneCubit(
-            sensorOneRepository: SensorOneRepository(
-                sensorOneDataSource: SensorOneDataSource())),
+    return MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) => SensorOneCubit(
+                sensorOneRepository: SensorOneRepository(
+                    sensorOneDataSource: SensorOneDataSource())),
+          ),
+          BlocProvider(
+            create: (context) => SensorTwoCubit(
+                sensorTwoRepository: SensorTwoRepository(
+                    sensorTwoDataSource: SensorTwoDataSource())),
+          ),
+        ],
         child: Scaffold(
             appBar: AppBar(
-              actions: [
-                InkWell(
-                    onTap: () {
-                      setState(() {});
-                    },
-                    child: Icon(Icons.refresh))
-              ],
               title: const Text('Home Page '),
               centerTitle: true,
             ),
@@ -92,7 +97,7 @@ class _HomePageState extends State<HomePage> {
                             sensorNumber = 2;
                             Navigator.of(context).push(
                               MaterialPageRoute(
-                                builder: (context) => SensorPage2(
+                                builder: (context) => SensorTwoPage(
                                   sensorNumber: sensorNumber,
                                 ),
                               ),
@@ -470,69 +475,72 @@ class SensorTwoStatus extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Column(
-        children: [
-          const SizedBox(
-            height: 5,
-          ),
-          const Text(
-            "Sensor 2",
-            style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(
-            height: 8,
-          ),
-          const Text("Temperature", style: TextStyle(fontSize: 10)),
-          const SizedBox(
-            height: 5,
-          ),
-          Container(
-            height: 40,
-            width: 40,
-            decoration: BoxDecoration(
-                color: Colors.green,
-                border: Border.all(width: 2, color: Colors.white)),
-            alignment: Alignment.center,
-            child: const Text("°C"),
-          ),
-          const SizedBox(
-            height: 5,
-          ),
-          const Text("humidity", style: TextStyle(fontSize: 12.5)),
-          const SizedBox(
-            height: 5,
-          ),
-          Container(
-            height: 40,
-            width: 40,
-            decoration: BoxDecoration(
-                color: Colors.green,
-                border: Border.all(width: 2, color: Colors.white)),
-            alignment: Alignment.center,
-            child: const Icon(Icons.water_drop),
-          ),
-          const SizedBox(
-            height: 5,
-          ),
-          const Text("noise", style: TextStyle(fontSize: 12.5)),
-          const SizedBox(
-            height: 5,
-          ),
-          Container(
-            height: 40,
-            width: 40,
-            decoration: BoxDecoration(
-                color: Colors.green,
-                border: Border.all(width: 2, color: Colors.white)),
-            alignment: Alignment.center,
-            child: const Icon(Icons.noise_aware_rounded),
-          ),
-          const SizedBox(
-            height: 5,
-          ),
-        ],
-      ),
+    return BlocBuilder<SensorTwoCubit, SensorTwoState>(
+      builder: (context, state) {
+        context.read<SensorTwoCubit>().start();
+        return Column(
+          children: [
+            const SizedBox(
+              height: 5,
+            ),
+            const Text(
+              "Sensor 2",
+              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(
+              height: 8,
+            ),
+            const Text("Temperature", style: TextStyle(fontSize: 10)),
+            const SizedBox(
+              height: 5,
+            ),
+            Container(
+              height: 40,
+              width: 40,
+              decoration: BoxDecoration(
+                  color: state.buttonColor1,
+                  border: Border.all(width: 2, color: Colors.white)),
+              alignment: Alignment.center,
+              child: const Text("°C"),
+            ),
+            const SizedBox(
+              height: 5,
+            ),
+            const Text("humidity", style: TextStyle(fontSize: 12.5)),
+            const SizedBox(
+              height: 5,
+            ),
+            Container(
+              height: 40,
+              width: 40,
+              decoration: BoxDecoration(
+                  color: state.buttonColor2,
+                  border: Border.all(width: 2, color: Colors.white)),
+              alignment: Alignment.center,
+              child: const Icon(Icons.water_drop),
+            ),
+            const SizedBox(
+              height: 5,
+            ),
+            const Text("noise", style: TextStyle(fontSize: 12.5)),
+            const SizedBox(
+              height: 5,
+            ),
+            Container(
+              height: 40,
+              width: 40,
+              decoration: BoxDecoration(
+                  color: state.buttonColor3,
+                  border: Border.all(width: 2, color: Colors.white)),
+              alignment: Alignment.center,
+              child: const Icon(Icons.noise_aware_rounded),
+            ),
+            const SizedBox(
+              height: 5,
+            ),
+          ],
+        );
+      },
     );
   }
 }

@@ -19,7 +19,7 @@ class SensorPage extends StatefulWidget {
 
 class _SensorOnePageState extends State<SensorPage> {
   Color color = Colors.grey;
-  bool isPressed1 = false;
+  bool isPressed1 = true;
   bool isPressed2 = false;
   bool isPressed3 = false;
 

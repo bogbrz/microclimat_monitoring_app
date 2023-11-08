@@ -5,7 +5,7 @@ class SensorThreeRepository {
   SensorThreeRepository({required this.sensorThreeDataSource});
   final SensorThreeDataSource sensorThreeDataSource;
 
-  Stream<List<SensorModel>> getSensorOneData() {
+  Stream<List<SensorModel>> getSensorThreeData() {
     return sensorThreeDataSource.sensorThreeData().map((querySnapshot) {
       return querySnapshot.docs
           .map(

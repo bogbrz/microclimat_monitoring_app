@@ -5,7 +5,7 @@ class SensorFiveRepository {
   SensorFiveRepository({required this.sensorFiveDataSource});
   final SensorFiveDataSource sensorFiveDataSource;
 
-  Stream<List<SensorModel>> getSensorOneData() {
+  Stream<List<SensorModel>> getSensorFiveData() {
     return sensorFiveDataSource.sensorFiveData().map((querySnapshot) {
       return querySnapshot.docs
           .map(
