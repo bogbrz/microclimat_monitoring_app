@@ -124,7 +124,7 @@ class _HomePageState extends State<HomePage> {
                             Navigator.of(context).push(
                               MaterialPageRoute(
                                 builder: (context) {
-                                  return SensorPage3(
+                                  return SensorThreePage(
                                     sensorNumber: sensorNumber,
                                   );
                                 },
@@ -152,7 +152,7 @@ class _HomePageState extends State<HomePage> {
                             Navigator.of(context).push(
                               MaterialPageRoute(
                                 builder: (context) {
-                                  return SensorPage4(
+                                  return SensorFourPage(
                                     sensorNumber: sensorNumber,
                                   );
                                 },
@@ -182,7 +182,7 @@ class _HomePageState extends State<HomePage> {
                             Navigator.of(context).push(
                               MaterialPageRoute(
                                 builder: (context) {
-                                  return SensorPage5(
+                                  return SensorFivePage(
                                     sensorNumber: sensorNumber,
                                   );
                                 },
