@@ -42,7 +42,7 @@ class SensorOneCubit extends Cubit<SensorOneState> {
             buttonColor3: state.buttonColor3,
           ),
         );
-        print(" First emit:  $dataModels   ");
+     
       } catch (error) {
         emit(SensorOneState(
           errorMessage: error.toString(),

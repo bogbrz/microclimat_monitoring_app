@@ -8,7 +8,6 @@ class SensorTwoDataSource {
         .collection('day')
         .doc('1')
         .collection('records')
-        .orderBy('hour')
         .snapshots();
   }
 }

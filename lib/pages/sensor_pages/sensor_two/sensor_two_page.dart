@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:microclimat_monitoring_app/data_source/sensor_two_data_source.dart';
 import 'package:microclimat_monitoring_app/models/sensor_model.dart';
+
 import 'package:microclimat_monitoring_app/pages/sensor_pages/sensor_two/cubit/sensor_two_cubit.dart';
 import 'package:microclimat_monitoring_app/repositories/sensor_two_repository.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';

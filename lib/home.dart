@@ -1,16 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:microclimat_monitoring_app/data_source/sensor_five_data_source.dart';
+import 'package:microclimat_monitoring_app/data_source/sensor_four_data_source.dart';
 import 'package:microclimat_monitoring_app/data_source/sensor_one_data_source.dart';
+import 'package:microclimat_monitoring_app/data_source/sensor_three_data_source.dart';
 import 'package:microclimat_monitoring_app/data_source/sensor_two_data_source.dart';
+import 'package:microclimat_monitoring_app/pages/sensor_pages/sensor_five/cubit/sensor_five_cubit.dart';
 import 'package:microclimat_monitoring_app/pages/sensor_pages/sensor_five/sensor_five_page.dart';
+import 'package:microclimat_monitoring_app/pages/sensor_pages/sensor_four/cubit/sensor_four_cubit.dart';
 import 'package:microclimat_monitoring_app/pages/sensor_pages/sensor_four/sensor_four_page.dart';
 import 'package:microclimat_monitoring_app/pages/sensor_pages/sensor_one/cubit/sensor_one_cubit.dart';
 import 'package:microclimat_monitoring_app/pages/sensor_pages/sensor_one/sesnor_one_page.dart';
+import 'package:microclimat_monitoring_app/pages/sensor_pages/sensor_three/cubit/sensor_three_cubit.dart';
 import 'package:microclimat_monitoring_app/pages/sensor_pages/sensor_three/sesnor_three_page.dart';
 import 'package:microclimat_monitoring_app/pages/sensor_pages/sensor_two/cubit/sensor_two_cubit.dart';
 import 'package:microclimat_monitoring_app/pages/sensor_pages/sensor_two/sensor_two_page.dart';
+import 'package:microclimat_monitoring_app/repositories/sensor_five_repository.dart';
+import 'package:microclimat_monitoring_app/repositories/sensor_four_repository.dart';
 
 import 'package:microclimat_monitoring_app/repositories/sensor_one_repository.dart';
+import 'package:microclimat_monitoring_app/repositories/sensor_three_repository.dart';
 import 'package:microclimat_monitoring_app/repositories/sensor_two_repository.dart';
 
 class HomePage extends StatefulWidget {
@@ -34,12 +43,32 @@ class _HomePageState extends State<HomePage> {
           BlocProvider(
             create: (context) => SensorOneCubit(
                 sensorOneRepository: SensorOneRepository(
-                    sensorOneDataSource: SensorOneDataSource())),
+                    sensorOneDataSource: SensorOneDataSource()))
+              ..start(),
           ),
           BlocProvider(
             create: (context) => SensorTwoCubit(
                 sensorTwoRepository: SensorTwoRepository(
-                    sensorTwoDataSource: SensorTwoDataSource())),
+                    sensorTwoDataSource: SensorTwoDataSource()))
+              ..start(),
+          ),
+          BlocProvider(
+            create: (context) => SensorThreeCubit(
+                sensorThreeRepository: SensorThreeRepository(
+                    sensorThreeDataSource: SensorThreeDataSource()))
+              ..start(),
+          ),
+          BlocProvider(
+            create: (context) => SensorFourCubit(
+                sensorFourRepository: SensorFourRepository(
+                    sensorFourDataSource: SensorFourDataSource()))
+              ..start(),
+          ),
+          BlocProvider(
+            create: (context) => SensorFiveCubit(
+                sensorFiveRepository: SensorFiveRepository(
+                    sensorFiveDataSource: SensorFiveDataSource()))
+              ..start(),
           ),
         ],
         child: Scaffold(
@@ -124,7 +153,7 @@ class _HomePageState extends State<HomePage> {
                             Navigator.of(context).push(
                               MaterialPageRoute(
                                 builder: (context) {
-                                  return SensorPage3(
+                                  return SensorThreePage(
                                     sensorNumber: sensorNumber,
                                   );
                                 },
@@ -152,7 +181,7 @@ class _HomePageState extends State<HomePage> {
                             Navigator.of(context).push(
                               MaterialPageRoute(
                                 builder: (context) {
-                                  return SensorPage4(
+                                  return SensorFourPage(
                                     sensorNumber: sensorNumber,
                                   );
                                 },
@@ -182,7 +211,7 @@ class _HomePageState extends State<HomePage> {
                             Navigator.of(context).push(
                               MaterialPageRoute(
                                 builder: (context) {
-                                  return SensorPage5(
+                                  return SensorFivePage(
                                     sensorNumber: sensorNumber,
                                   );
                                 },
@@ -230,15 +259,18 @@ class StatusLists extends StatelessWidget {
     return Expanded(
       child: ListView(
         children: const [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              SensorOneStatus(),
-              SensorTwoStatus(),
-              SensorThreeStatus(),
-              SensorFourStatus(),
-              SensorFiveStatus()
-            ],
+          Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                SensorOneStatus(),
+                SensorTwoStatus(),
+                SensorThreeStatus(),
+                SensorFourStatus(),
+                SensorFiveStatus()
+              ],
+            ),
           )
         ],
       ),
@@ -253,69 +285,71 @@ class SensorFiveStatus extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Column(
-        children: [
-          const SizedBox(
-            height: 5,
-          ),
-          const Text(
-            "Sensor 5",
-            style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(
-            height: 5,
-          ),
-          const Text("Temperature", style: TextStyle(fontSize: 10)),
-          const SizedBox(
-            height: 5,
-          ),
-          Container(
-            height: 40,
-            width: 40,
-            decoration: BoxDecoration(
-                color: Colors.green,
-                border: Border.all(width: 2, color: Colors.white)),
-            alignment: Alignment.center,
-            child: const Text("°C"),
-          ),
-          const SizedBox(
-            height: 5,
-          ),
-          const Text("humidity", style: TextStyle(fontSize: 12.5)),
-          const SizedBox(
-            height: 5,
-          ),
-          Container(
-            height: 40,
-            width: 40,
-            decoration: BoxDecoration(
-                color: Colors.green,
-                border: Border.all(width: 2, color: Colors.white)),
-            alignment: Alignment.center,
-            child: const Icon(Icons.water_drop),
-          ),
-          const SizedBox(
-            height: 5,
-          ),
-          const Text("noise", style: TextStyle(fontSize: 12.5)),
-          const SizedBox(
-            height: 5,
-          ),
-          Container(
-            height: 40,
-            width: 40,
-            decoration: BoxDecoration(
-                color: Colors.green,
-                border: Border.all(width: 2, color: Colors.white)),
-            alignment: Alignment.center,
-            child: const Icon(Icons.noise_aware_rounded),
-          ),
-          const SizedBox(
-            height: 5,
-          ),
-        ],
-      ),
+    return BlocBuilder<SensorFiveCubit, SensorFiveState>(
+      builder: (context, state) {
+        return Column(
+          children: [
+            const SizedBox(
+              height: 5,
+            ),
+            const Text(
+              "Sensor 5",
+              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(
+              height: 8,
+            ),
+            const Text("Temperature", style: TextStyle(fontSize: 10)),
+            const SizedBox(
+              height: 5,
+            ),
+            Container(
+              height: 40,
+              width: 40,
+              decoration: BoxDecoration(
+                  color: state.buttonColor1,
+                  border: Border.all(width: 2, color: Colors.white)),
+              alignment: Alignment.center,
+              child: const Text("°C"),
+            ),
+            const SizedBox(
+              height: 5,
+            ),
+            const Text("Humidity", style: TextStyle(fontSize: 12.5)),
+            const SizedBox(
+              height: 5,
+            ),
+            Container(
+              height: 40,
+              width: 40,
+              decoration: BoxDecoration(
+                  color: state.buttonColor2,
+                  border: Border.all(width: 2, color: Colors.white)),
+              alignment: Alignment.center,
+              child: const Icon(Icons.water_drop),
+            ),
+            const SizedBox(
+              height: 5,
+            ),
+            const Text("Noise", style: TextStyle(fontSize: 12.5)),
+            const SizedBox(
+              height: 5,
+            ),
+            Container(
+              height: 40,
+              width: 40,
+              decoration: BoxDecoration(
+                  color: state.buttonColor3,
+                  border: Border.all(width: 2, color: Colors.white)),
+              alignment: Alignment.center,
+              child: const Icon(Icons.noise_aware_rounded),
+            ),
+            const SizedBox(
+              height: 5,
+            ),
+          ],
+        );
+      },
     );
   }
 }
@@ -327,69 +361,71 @@ class SensorFourStatus extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Column(
-        children: [
-          const SizedBox(
-            height: 5,
-          ),
-          const Text(
-            "Sensor 4",
-            style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(
-            height: 8,
-          ),
-          const Text("Temperature", style: TextStyle(fontSize: 10)),
-          const SizedBox(
-            height: 5,
-          ),
-          Container(
-            alignment: Alignment.center,
-            height: 40,
-            width: 40,
-            decoration: BoxDecoration(
-                color: Colors.green,
-                border: Border.all(width: 2, color: Colors.white)),
-            child: const Text("°C"),
-          ),
-          const SizedBox(
-            height: 5,
-          ),
-          const Text("humidity", style: TextStyle(fontSize: 12.5)),
-          const SizedBox(
-            height: 5,
-          ),
-          Container(
-            height: 40,
-            width: 40,
-            decoration: BoxDecoration(
-                color: Colors.green,
-                border: Border.all(width: 2, color: Colors.white)),
-            alignment: Alignment.center,
-            child: const Icon(Icons.water_drop),
-          ),
-          const SizedBox(
-            height: 5,
-          ),
-          const Text("noise", style: TextStyle(fontSize: 12.5)),
-          const SizedBox(
-            height: 5,
-          ),
-          Container(
-            height: 40,
-            width: 40,
-            decoration: BoxDecoration(
-                color: Colors.green,
-                border: Border.all(width: 2, color: Colors.white)),
-            alignment: Alignment.center,
-            child: const Icon(Icons.noise_aware_rounded),
-          ),
-          const SizedBox(
-            height: 5,
-          ),
-        ],
-      ),
+    return BlocBuilder<SensorFourCubit, SensorFourState>(
+      builder: (context, state) {
+        return Column(
+          children: [
+            const SizedBox(
+              height: 5,
+            ),
+            const Text(
+              "Sensor 4",
+              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(
+              height: 8,
+            ),
+            const Text("Temperature", style: TextStyle(fontSize: 10)),
+            const SizedBox(
+              height: 5,
+            ),
+            Container(
+              height: 40,
+              width: 40,
+              decoration: BoxDecoration(
+                  color: state.buttonColor1,
+                  border: Border.all(width: 2, color: Colors.white)),
+              alignment: Alignment.center,
+              child: const Text("°C"),
+            ),
+            const SizedBox(
+              height: 5,
+            ),
+            const Text("Humidity", style: TextStyle(fontSize: 12.5)),
+            const SizedBox(
+              height: 5,
+            ),
+            Container(
+              height: 40,
+              width: 40,
+              decoration: BoxDecoration(
+                  color: state.buttonColor2,
+                  border: Border.all(width: 2, color: Colors.white)),
+              alignment: Alignment.center,
+              child: const Icon(Icons.water_drop),
+            ),
+            const SizedBox(
+              height: 5,
+            ),
+            const Text("Noise", style: TextStyle(fontSize: 12.5)),
+            const SizedBox(
+              height: 5,
+            ),
+            Container(
+              height: 40,
+              width: 40,
+              decoration: BoxDecoration(
+                  color: state.buttonColor3,
+                  border: Border.all(width: 2, color: Colors.white)),
+              alignment: Alignment.center,
+              child: const Icon(Icons.noise_aware_rounded),
+            ),
+            const SizedBox(
+              height: 5,
+            ),
+          ],
+        );
+      },
     );
   }
 }
@@ -401,69 +437,71 @@ class SensorThreeStatus extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Column(
-        children: [
-          const SizedBox(
-            height: 5,
-          ),
-          const Text(
-            "Sensor 3",
-            style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(
-            height: 8,
-          ),
-          const Text("Temperature", style: TextStyle(fontSize: 10)),
-          const SizedBox(
-            height: 5,
-          ),
-          Container(
-            height: 40,
-            width: 40,
-            decoration: BoxDecoration(
-                color: Colors.green,
-                border: Border.all(width: 2, color: Colors.white)),
-            alignment: Alignment.center,
-            child: const Text("°C"),
-          ),
-          const SizedBox(
-            height: 5,
-          ),
-          const Text("humidity", style: TextStyle(fontSize: 12.5)),
-          const SizedBox(
-            height: 5,
-          ),
-          Container(
-            height: 40,
-            width: 40,
-            decoration: BoxDecoration(
-                color: Colors.green,
-                border: Border.all(width: 2, color: Colors.white)),
-            alignment: Alignment.center,
-            child: const Icon(Icons.water_drop),
-          ),
-          const SizedBox(
-            height: 5,
-          ),
-          const Text("noise", style: TextStyle(fontSize: 12.5)),
-          const SizedBox(
-            height: 5,
-          ),
-          Container(
-            height: 40,
-            width: 40,
-            decoration: BoxDecoration(
-                color: Colors.green,
-                border: Border.all(width: 2, color: Colors.white)),
-            alignment: Alignment.center,
-            child: const Icon(Icons.noise_aware_rounded),
-          ),
-          const SizedBox(
-            height: 5,
-          ),
-        ],
-      ),
+    return BlocBuilder<SensorThreeCubit, SensorThreeState>(
+      builder: (context, state) {
+        return Column(
+          children: [
+            const SizedBox(
+              height: 5,
+            ),
+            const Text(
+              "Sensor 3",
+              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(
+              height: 8,
+            ),
+            const Text("Temperature", style: TextStyle(fontSize: 10)),
+            const SizedBox(
+              height: 5,
+            ),
+            Container(
+              height: 40,
+              width: 40,
+              decoration: BoxDecoration(
+                  color: state.buttonColor1,
+                  border: Border.all(width: 2, color: Colors.white)),
+              alignment: Alignment.center,
+              child: const Text("°C"),
+            ),
+            const SizedBox(
+              height: 5,
+            ),
+            const Text("Humidity", style: TextStyle(fontSize: 12.5)),
+            const SizedBox(
+              height: 5,
+            ),
+            Container(
+              height: 40,
+              width: 40,
+              decoration: BoxDecoration(
+                  color: state.buttonColor2,
+                  border: Border.all(width: 2, color: Colors.white)),
+              alignment: Alignment.center,
+              child: const Icon(Icons.water_drop),
+            ),
+            const SizedBox(
+              height: 5,
+            ),
+            const Text("Noise", style: TextStyle(fontSize: 12.5)),
+            const SizedBox(
+              height: 5,
+            ),
+            Container(
+              height: 40,
+              width: 40,
+              decoration: BoxDecoration(
+                  color: state.buttonColor3,
+                  border: Border.all(width: 2, color: Colors.white)),
+              alignment: Alignment.center,
+              child: const Icon(Icons.noise_aware_rounded),
+            ),
+            const SizedBox(
+              height: 5,
+            ),
+          ],
+        );
+      },
     );
   }
 }
@@ -477,7 +515,6 @@ class SensorTwoStatus extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<SensorTwoCubit, SensorTwoState>(
       builder: (context, state) {
-        context.read<SensorTwoCubit>().start();
         return Column(
           children: [
             const SizedBox(
@@ -506,7 +543,7 @@ class SensorTwoStatus extends StatelessWidget {
             const SizedBox(
               height: 5,
             ),
-            const Text("humidity", style: TextStyle(fontSize: 12.5)),
+            const Text("Humidity", style: TextStyle(fontSize: 12.5)),
             const SizedBox(
               height: 5,
             ),
@@ -522,7 +559,7 @@ class SensorTwoStatus extends StatelessWidget {
             const SizedBox(
               height: 5,
             ),
-            const Text("noise", style: TextStyle(fontSize: 12.5)),
+            const Text("Noise", style: TextStyle(fontSize: 12.5)),
             const SizedBox(
               height: 5,
             ),
@@ -554,7 +591,6 @@ class SensorOneStatus extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<SensorOneCubit, SensorOneState>(
       builder: (context, state) {
-        context.read<SensorOneCubit>().start();
         return Column(
           children: [
             const SizedBox(

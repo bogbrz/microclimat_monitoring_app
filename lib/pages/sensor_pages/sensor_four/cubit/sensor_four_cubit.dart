@@ -3,34 +3,33 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:microclimat_monitoring_app/models/sensor_model.dart';
+import 'package:microclimat_monitoring_app/repositories/sensor_four_repository.dart';
 
-import 'package:microclimat_monitoring_app/repositories/sensor_two_repository.dart';
+part 'sensor_four_state.dart';
 
-part 'sensor_two_state.dart';
-
-class SensorTwoCubit extends Cubit<SensorTwoState> {
-  SensorTwoCubit({required this.sensorTwoRepository})
-      : super(SensorTwoState(
-          errorMessage: '',
+class SensorFourCubit extends Cubit<SensorFourState> {
+  SensorFourCubit({required this.sensorFourRepository})
+      : super(SensorFourState(
+          sensorFourModels: [],
           averageHumidity: null,
           averageNoise: null,
           averageTemp: null,
-          sensorTwoModels: [],
+          errorMessage: '',
           currentHumidity: null,
           currentNoise: null,
           currentTemp: null,
         ));
 
   StreamSubscription? _streamSubscription;
-  final SensorTwoRepository sensorTwoRepository;
+  final SensorFourRepository sensorFourRepository;
 
   Future<void> start() async {
     _streamSubscription =
-        sensorTwoRepository.getSensorTwoData().listen((dataModels) {
+        sensorFourRepository.getSensorFourData().listen((dataModels) {
       try {
         emit(
-          SensorTwoState(
-            sensorTwoModels: dataModels,
+          SensorFourState(
+            sensorFourModels: dataModels,
             averageHumidity: null,
             averageNoise: null,
             averageTemp: null,
@@ -43,14 +42,13 @@ class SensorTwoCubit extends Cubit<SensorTwoState> {
             buttonColor3: state.buttonColor3,
           ),
         );
-        print("$dataModels");
       } catch (error) {
-        emit(SensorTwoState(
+        emit(SensorFourState(
           errorMessage: error.toString(),
           currentHumidity: null,
           currentNoise: null,
           currentTemp: null,
-          sensorTwoModels: [],
+          sensorFourModels: [],
           averageHumidity: null,
           averageNoise: null,
           averageTemp: null,
@@ -73,12 +71,12 @@ class SensorTwoCubit extends Cubit<SensorTwoState> {
         currentNoise = datamodel.noise;
         currentHumidity = datamodel.humidity;
         averageTemp =
-            (sumTemp ~/ ((state.sensorTwoModels.length) ~/ 3).toDouble());
+            (sumTemp ~/ ((state.sensorFourModels.length) ~/ 3).toDouble());
         averageNoise =
-            (sumNoise ~/ ((state.sensorTwoModels.length) ~/ 3).toDouble());
+            (sumNoise ~/ ((state.sensorFourModels.length) ~/ 3).toDouble());
 
         averageHumidity =
-            (sumHumidity ~/ ((state.sensorTwoModels.length) ~/ 3));
+            (sumHumidity ~/ ((state.sensorFourModels.length) ~/ 3));
       }
       if (currentHumidity != null &&
           currentNoise != null &&
@@ -93,7 +91,7 @@ class SensorTwoCubit extends Cubit<SensorTwoState> {
           state.buttonColor3 = Colors.red;
         }
       }
-      emit(SensorTwoState(
+      emit(SensorFourState(
           errorMessage: '',
           averageTemp: averageTemp,
           averageHumidity: averageHumidity,
@@ -101,7 +99,7 @@ class SensorTwoCubit extends Cubit<SensorTwoState> {
           currentTemp: currentTemp,
           currentHumidity: currentHumidity,
           currentNoise: currentNoise,
-          sensorTwoModels: dataModels,
+          sensorFourModels: dataModels,
           buttonColor1: state.buttonColor1,
           buttonColor2: state.buttonColor2,
           buttonColor3: state.buttonColor3));

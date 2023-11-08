@@ -1,6 +1,7 @@
 import 'package:microclimat_monitoring_app/data_source/sensor_two_data_source.dart';
 import 'package:microclimat_monitoring_app/models/sensor_model.dart';
 
+
 class SensorTwoRepository {
   SensorTwoRepository({required this.sensorTwoDataSource});
   final SensorTwoDataSource sensorTwoDataSource;
