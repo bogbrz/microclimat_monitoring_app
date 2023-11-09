@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:flutter/material.dart';
 import 'package:microclimat_monitoring_app/models/sensor_model.dart';
 import 'package:microclimat_monitoring_app/repositories/sensor_five_repository.dart';
 
@@ -11,13 +10,16 @@ class SensorFiveCubit extends Cubit<SensorFiveState> {
   SensorFiveCubit({required this.sensorFiveRepository})
       : super(SensorFiveState(
           sensorFiveModels: [],
-          averageHumidity: null,
-          averageNoise: null,
-          averageTemp: null,
+          averageHumidity: 0,
+          averageNoise: 0,
+          averageTemp: 0,
           errorMessage: '',
-          currentHumidity: null,
-          currentNoise: null,
-          currentTemp: null,
+          currentHumidity: 0,
+          currentNoise: 0,
+          currentTemp: 0,
+          isCorrect2: true,
+          isCorrect3: true,
+          isCorrect: true,
         ));
 
   StreamSubscription? _streamSubscription;
@@ -30,40 +32,42 @@ class SensorFiveCubit extends Cubit<SensorFiveState> {
         emit(
           SensorFiveState(
             sensorFiveModels: dataModels,
-            averageHumidity: null,
-            averageNoise: null,
-            averageTemp: null,
+            averageHumidity: 0,
+            averageNoise: 0,
+            averageTemp: 0,
             errorMessage: '',
-            currentHumidity: null,
-            currentNoise: null,
-            currentTemp: null,
-            buttonColor1: state.buttonColor1,
-            buttonColor2: state.buttonColor2,
-            buttonColor3: state.buttonColor3,
+            currentHumidity: 0,
+            currentNoise: 0,
+            currentTemp: 0,
+            isCorrect2: true,
+            isCorrect3: true,
+            isCorrect: true,
           ),
         );
-     
       } catch (error) {
         emit(SensorFiveState(
           errorMessage: error.toString(),
-          currentHumidity: null,
-          currentNoise: null,
-          currentTemp: null,
+          currentHumidity: 0,
+          currentNoise: 0,
+          currentTemp: 0,
           sensorFiveModels: [],
-          averageHumidity: null,
-          averageNoise: null,
-          averageTemp: null,
+          averageHumidity: 0,
+          averageNoise: 0,
+          averageTemp: 0,
+          isCorrect2: true,
+          isCorrect3: true,
+          isCorrect: true,
         ));
       }
-      int? currentTemp;
+      int currentTemp = 0;
       int sumTemp = 0;
-      int? averageTemp;
-      int? currentNoise;
+      int averageTemp = 0;
+      int currentNoise = 0;
       int sumNoise = 0;
-      int? averageNoise;
-      int? currentHumidity;
+      int averageNoise = 0;
+      int currentHumidity = 0;
       int sumHumidity = 0;
-      int? averageHumidity;
+      int averageHumidity = 0;
       for (final datamodel in dataModels) {
         sumTemp += datamodel.temp;
         sumNoise += datamodel.noise;
@@ -79,20 +83,29 @@ class SensorFiveCubit extends Cubit<SensorFiveState> {
         averageHumidity =
             (sumHumidity ~/ ((state.sensorFiveModels.length) ~/ 3));
       }
-      if (currentHumidity != null &&
-          currentNoise != null &&
-          currentTemp != null) {
+      if (currentHumidity != 0) {
         if (currentHumidity > 25 || currentHumidity < 10) {
-          state.buttonColor2 = Colors.red;
-        }
-        if (currentTemp > 25 || currentTemp < 10) {
-          state.buttonColor1 = Colors.red;
-        }
-        if (currentNoise > 25 || currentNoise < 10) {
-          state.buttonColor3 = Colors.red;
+          state.isCorrect2 = false;
+        } else {
+          state.isCorrect2 = true;
         }
       }
-      emit(SensorFiveState(
+      if (currentTemp != 0) {
+        if (currentTemp > 25 || currentTemp < 10) {
+          state.isCorrect = false;
+        } else {
+          state.isCorrect = true;
+        }
+      }
+      if (currentNoise != 0) {
+        if (currentNoise > 25 || currentNoise < 10) {
+          state.isCorrect3 = false;
+        } else {
+          state.isCorrect3 = true;
+        }
+      }
+      emit(
+        SensorFiveState(
           errorMessage: '',
           averageTemp: averageTemp,
           averageHumidity: averageHumidity,
@@ -101,9 +114,11 @@ class SensorFiveCubit extends Cubit<SensorFiveState> {
           currentHumidity: currentHumidity,
           currentNoise: currentNoise,
           sensorFiveModels: dataModels,
-          buttonColor1: state.buttonColor1,
-          buttonColor2: state.buttonColor2,
-          buttonColor3: state.buttonColor3));
+          isCorrect2: state.isCorrect2,
+          isCorrect3: state.isCorrect3,
+          isCorrect: state.isCorrect,
+        ),
+      );
     });
   }
 

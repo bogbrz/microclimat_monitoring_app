@@ -1,9 +1,8 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:flutter/material.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:microclimat_monitoring_app/models/sensor_model.dart';
-
 import 'package:microclimat_monitoring_app/repositories/sensor_two_repository.dart';
 
 part 'sensor_two_state.dart';
@@ -19,6 +18,9 @@ class SensorTwoCubit extends Cubit<SensorTwoState> {
           currentHumidity: null,
           currentNoise: null,
           currentTemp: null,
+          isCorrect2: true,
+          isCorrect3: true,
+          isCorrect: true,
         ));
 
   StreamSubscription? _streamSubscription;
@@ -38,12 +40,11 @@ class SensorTwoCubit extends Cubit<SensorTwoState> {
             currentHumidity: null,
             currentNoise: null,
             currentTemp: null,
-            buttonColor1: state.buttonColor1,
-            buttonColor2: state.buttonColor2,
-            buttonColor3: state.buttonColor3,
+            isCorrect2: true,
+            isCorrect3: true,
+            isCorrect: true,
           ),
         );
-        print(" First emit:  $dataModels   ");
       } catch (error) {
         emit(SensorTwoState(
           errorMessage: error.toString(),
@@ -54,6 +55,9 @@ class SensorTwoCubit extends Cubit<SensorTwoState> {
           averageHumidity: null,
           averageNoise: null,
           averageTemp: null,
+          isCorrect2: true,
+          isCorrect3: true,
+          isCorrect: true,
         ));
       }
       int? currentTemp;
@@ -80,20 +84,29 @@ class SensorTwoCubit extends Cubit<SensorTwoState> {
         averageHumidity =
             (sumHumidity ~/ ((state.sensorTwoModels.length) ~/ 3));
       }
-      if (currentHumidity != null &&
-          currentNoise != null &&
-          currentTemp != null) {
+      if (currentHumidity != null) {
         if (currentHumidity > 25 || currentHumidity < 10) {
-          state.buttonColor2 = Colors.red;
-        }
-        if (currentTemp > 25 || currentTemp < 10) {
-          state.buttonColor1 = Colors.red;
-        }
-        if (currentNoise > 25 || currentNoise < 10) {
-          state.buttonColor3 = Colors.red;
+          state.isCorrect2 = false;
+        } else {
+          state.isCorrect2 = true;
         }
       }
-      emit(SensorTwoState(
+      if (currentTemp != null) {
+        if (currentTemp > 25 || currentTemp < 10) {
+          state.isCorrect = false;
+        } else {
+          state.isCorrect = true;
+        }
+      }
+      if (currentNoise != null) {
+        if (currentNoise > 25 || currentNoise < 10) {
+          state.isCorrect3 = false;
+        } else {
+          state.isCorrect3 = true;
+        }
+      }
+      emit(
+        SensorTwoState(
           errorMessage: '',
           averageTemp: averageTemp,
           averageHumidity: averageHumidity,
@@ -102,9 +115,11 @@ class SensorTwoCubit extends Cubit<SensorTwoState> {
           currentHumidity: currentHumidity,
           currentNoise: currentNoise,
           sensorTwoModels: dataModels,
-          buttonColor1: state.buttonColor1,
-          buttonColor2: state.buttonColor2,
-          buttonColor3: state.buttonColor3));
+          isCorrect2: state.isCorrect2,
+          isCorrect3: state.isCorrect3,
+          isCorrect: state.isCorrect,
+        ),
+      );
     });
   }
 

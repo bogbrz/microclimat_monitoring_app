@@ -6,8 +6,10 @@ class SensorFiveRepository {
   final SensorFiveDataSource sensorFiveDataSource;
 
   Stream<List<SensorModel>> getSensorFiveData() {
-    return sensorFiveDataSource.sensorFiveData().map((querySnapshot) {
-      return querySnapshot.docs
+    return sensorFiveDataSource.sensorFiveData().map(
+      (querySnapshot) {
+
+        return querySnapshot.docs
           .map(
             (doc) => SensorModel(
               humidity: doc["humidity"],
@@ -18,5 +20,8 @@ class SensorFiveRepository {
           )
           .toList();
     });
+
+
+
   }
 }

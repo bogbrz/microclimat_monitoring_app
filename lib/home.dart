@@ -41,35 +41,35 @@ class _HomePageState extends State<HomePage> {
     return MultiBlocProvider(
         providers: [
           BlocProvider(
-            create: (context) => SensorOneCubit(
-                sensorOneRepository: SensorOneRepository(
-                    sensorOneDataSource: SensorOneDataSource()))
-              ..start(),
-          ),
+              create: (context) => SensorOneCubit(
+                    sensorOneRepository: SensorOneRepository(
+                      sensorOneDataSource: SensorOneDataSource(),
+                    ),
+                  )),
           BlocProvider(
-            create: (context) => SensorTwoCubit(
-                sensorTwoRepository: SensorTwoRepository(
-                    sensorTwoDataSource: SensorTwoDataSource()))
-              ..start(),
-          ),
+              create: (context) => SensorTwoCubit(
+                    sensorTwoRepository: SensorTwoRepository(
+                      sensorTwoDataSource: SensorTwoDataSource(),
+                    ),
+                  )),
           BlocProvider(
-            create: (context) => SensorThreeCubit(
-                sensorThreeRepository: SensorThreeRepository(
-                    sensorThreeDataSource: SensorThreeDataSource()))
-              ..start(),
-          ),
+              create: (context) => SensorThreeCubit(
+                    sensorThreeRepository: SensorThreeRepository(
+                      sensorThreeDataSource: SensorThreeDataSource(),
+                    ),
+                  )),
           BlocProvider(
-            create: (context) => SensorFourCubit(
-                sensorFourRepository: SensorFourRepository(
-                    sensorFourDataSource: SensorFourDataSource()))
-              ..start(),
-          ),
+              create: (context) => SensorFourCubit(
+                    sensorFourRepository: SensorFourRepository(
+                      sensorFourDataSource: SensorFourDataSource(),
+                    ),
+                  )),
           BlocProvider(
-            create: (context) => SensorFiveCubit(
-                sensorFiveRepository: SensorFiveRepository(
-                    sensorFiveDataSource: SensorFiveDataSource()))
-              ..start(),
-          ),
+              create: (context) => SensorFiveCubit(
+                    sensorFiveRepository: SensorFiveRepository(
+                      sensorFiveDataSource: SensorFiveDataSource(),
+                    ),
+                  )),
         ],
         child: Scaffold(
             appBar: AppBar(
@@ -287,6 +287,7 @@ class SensorFiveStatus extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<SensorFiveCubit, SensorFiveState>(
       builder: (context, state) {
+        context.read<SensorFiveCubit>().start();
         return Column(
           children: [
             const SizedBox(
@@ -307,7 +308,7 @@ class SensorFiveStatus extends StatelessWidget {
               height: 40,
               width: 40,
               decoration: BoxDecoration(
-                  color: state.buttonColor1,
+                  color: state.isCorrect == false ? Colors.red : Colors.green,
                   border: Border.all(width: 2, color: Colors.white)),
               alignment: Alignment.center,
               child: const Text("°C"),
@@ -323,7 +324,7 @@ class SensorFiveStatus extends StatelessWidget {
               height: 40,
               width: 40,
               decoration: BoxDecoration(
-                  color: state.buttonColor2,
+                  color: state.isCorrect2 == false ? Colors.red : Colors.green,
                   border: Border.all(width: 2, color: Colors.white)),
               alignment: Alignment.center,
               child: const Icon(Icons.water_drop),
@@ -339,7 +340,7 @@ class SensorFiveStatus extends StatelessWidget {
               height: 40,
               width: 40,
               decoration: BoxDecoration(
-                  color: state.buttonColor3,
+                  color: state.isCorrect3 == false ? Colors.red : Colors.green,
                   border: Border.all(width: 2, color: Colors.white)),
               alignment: Alignment.center,
               child: const Icon(Icons.noise_aware_rounded),
@@ -363,6 +364,7 @@ class SensorFourStatus extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<SensorFourCubit, SensorFourState>(
       builder: (context, state) {
+        context.read<SensorFourCubit>().start();
         return Column(
           children: [
             const SizedBox(
@@ -383,7 +385,7 @@ class SensorFourStatus extends StatelessWidget {
               height: 40,
               width: 40,
               decoration: BoxDecoration(
-                  color: state.buttonColor1,
+                  color: state.isCorrect == false ? Colors.red : Colors.green,
                   border: Border.all(width: 2, color: Colors.white)),
               alignment: Alignment.center,
               child: const Text("°C"),
@@ -399,7 +401,7 @@ class SensorFourStatus extends StatelessWidget {
               height: 40,
               width: 40,
               decoration: BoxDecoration(
-                  color: state.buttonColor2,
+                  color: state.isCorrect2 == false ? Colors.red : Colors.green,
                   border: Border.all(width: 2, color: Colors.white)),
               alignment: Alignment.center,
               child: const Icon(Icons.water_drop),
@@ -415,7 +417,7 @@ class SensorFourStatus extends StatelessWidget {
               height: 40,
               width: 40,
               decoration: BoxDecoration(
-                  color: state.buttonColor3,
+                  color: state.isCorrect3 == false ? Colors.red : Colors.green,
                   border: Border.all(width: 2, color: Colors.white)),
               alignment: Alignment.center,
               child: const Icon(Icons.noise_aware_rounded),
@@ -439,6 +441,7 @@ class SensorThreeStatus extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<SensorThreeCubit, SensorThreeState>(
       builder: (context, state) {
+        context.read<SensorThreeCubit>().start();
         return Column(
           children: [
             const SizedBox(
@@ -459,7 +462,7 @@ class SensorThreeStatus extends StatelessWidget {
               height: 40,
               width: 40,
               decoration: BoxDecoration(
-                  color: state.buttonColor1,
+                  color: state.isCorrect == false ? Colors.red : Colors.green,
                   border: Border.all(width: 2, color: Colors.white)),
               alignment: Alignment.center,
               child: const Text("°C"),
@@ -475,7 +478,7 @@ class SensorThreeStatus extends StatelessWidget {
               height: 40,
               width: 40,
               decoration: BoxDecoration(
-                  color: state.buttonColor2,
+                  color: state.isCorrect2 == false ? Colors.red : Colors.green,
                   border: Border.all(width: 2, color: Colors.white)),
               alignment: Alignment.center,
               child: const Icon(Icons.water_drop),
@@ -491,7 +494,7 @@ class SensorThreeStatus extends StatelessWidget {
               height: 40,
               width: 40,
               decoration: BoxDecoration(
-                  color: state.buttonColor3,
+                  color: state.isCorrect3 == false ? Colors.red : Colors.green,
                   border: Border.all(width: 2, color: Colors.white)),
               alignment: Alignment.center,
               child: const Icon(Icons.noise_aware_rounded),
@@ -515,6 +518,7 @@ class SensorTwoStatus extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<SensorTwoCubit, SensorTwoState>(
       builder: (context, state) {
+        context.read<SensorTwoCubit>().start();
         return Column(
           children: [
             const SizedBox(
@@ -535,7 +539,7 @@ class SensorTwoStatus extends StatelessWidget {
               height: 40,
               width: 40,
               decoration: BoxDecoration(
-                  color: state.buttonColor1,
+                  color: state.isCorrect == false ? Colors.red : Colors.green,
                   border: Border.all(width: 2, color: Colors.white)),
               alignment: Alignment.center,
               child: const Text("°C"),
@@ -551,7 +555,7 @@ class SensorTwoStatus extends StatelessWidget {
               height: 40,
               width: 40,
               decoration: BoxDecoration(
-                  color: state.buttonColor2,
+                  color: state.isCorrect2 == false ? Colors.red : Colors.green,
                   border: Border.all(width: 2, color: Colors.white)),
               alignment: Alignment.center,
               child: const Icon(Icons.water_drop),
@@ -567,7 +571,7 @@ class SensorTwoStatus extends StatelessWidget {
               height: 40,
               width: 40,
               decoration: BoxDecoration(
-                  color: state.buttonColor3,
+                  color: state.isCorrect3 == false ? Colors.red : Colors.green,
                   border: Border.all(width: 2, color: Colors.white)),
               alignment: Alignment.center,
               child: const Icon(Icons.noise_aware_rounded),
@@ -591,6 +595,7 @@ class SensorOneStatus extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<SensorOneCubit, SensorOneState>(
       builder: (context, state) {
+        context.read<SensorOneCubit>().start();
         return Column(
           children: [
             const SizedBox(
@@ -611,7 +616,7 @@ class SensorOneStatus extends StatelessWidget {
               height: 40,
               width: 40,
               decoration: BoxDecoration(
-                  color: state.buttonColor1,
+                  color: state.isCorrect == false ? Colors.red : Colors.green,
                   border: Border.all(width: 2, color: Colors.white)),
               alignment: Alignment.center,
               child: const Text("°C"),
@@ -627,7 +632,7 @@ class SensorOneStatus extends StatelessWidget {
               height: 40,
               width: 40,
               decoration: BoxDecoration(
-                  color: state.buttonColor2,
+                  color: state.isCorrect2 == false ? Colors.red : Colors.green,
                   border: Border.all(width: 2, color: Colors.white)),
               alignment: Alignment.center,
               child: const Icon(Icons.water_drop),
@@ -643,7 +648,7 @@ class SensorOneStatus extends StatelessWidget {
               height: 40,
               width: 40,
               decoration: BoxDecoration(
-                  color: state.buttonColor3,
+                  color: state.isCorrect3 == false ? Colors.red : Colors.green,
                   border: Border.all(width: 2, color: Colors.white)),
               alignment: Alignment.center,
               child: const Icon(Icons.noise_aware_rounded),

@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:flutter/material.dart';
 import 'package:microclimat_monitoring_app/models/sensor_model.dart';
 import 'package:microclimat_monitoring_app/repositories/sensor_one_repository.dart';
 
@@ -18,6 +17,9 @@ class SensorOneCubit extends Cubit<SensorOneState> {
           currentHumidity: null,
           currentNoise: null,
           currentTemp: null,
+          isCorrect2: true,
+          isCorrect3: true,
+          isCorrect: true,
         ));
 
   StreamSubscription? _streamSubscription;
@@ -37,12 +39,11 @@ class SensorOneCubit extends Cubit<SensorOneState> {
             currentHumidity: null,
             currentNoise: null,
             currentTemp: null,
-            buttonColor1: state.buttonColor1,
-            buttonColor2: state.buttonColor2,
-            buttonColor3: state.buttonColor3,
+            isCorrect2: true,
+            isCorrect3: true,
+            isCorrect: true,
           ),
         );
-     
       } catch (error) {
         emit(SensorOneState(
           errorMessage: error.toString(),
@@ -53,6 +54,9 @@ class SensorOneCubit extends Cubit<SensorOneState> {
           averageHumidity: null,
           averageNoise: null,
           averageTemp: null,
+          isCorrect2: true,
+          isCorrect3: true,
+          isCorrect: true,
         ));
       }
       int? currentTemp;
@@ -79,20 +83,31 @@ class SensorOneCubit extends Cubit<SensorOneState> {
         averageHumidity =
             (sumHumidity ~/ ((state.sensorOneModels.length) ~/ 3));
       }
-      if (currentHumidity != null &&
-          currentNoise != null &&
-          currentTemp != null) {
+
+      if (currentHumidity != null) {
         if (currentHumidity > 25 || currentHumidity < 10) {
-          state.buttonColor2 = Colors.red;
-        }
-        if (currentTemp > 25 || currentTemp < 10) {
-          state.buttonColor1 = Colors.red;
-        }
-        if (currentNoise > 25 || currentNoise < 10) {
-          state.buttonColor3 = Colors.red;
+          state.isCorrect2 = false;
+        } else {
+          state.isCorrect2 = true;
         }
       }
-      emit(SensorOneState(
+      if (currentTemp != null) {
+        if (currentTemp > 25 || currentTemp < 10) {
+          state.isCorrect = false;
+        } else {
+          state.isCorrect = true;
+        }
+      }
+      if (currentNoise != null) {
+        if (currentNoise > 25 || currentNoise < 10) {
+          state.isCorrect3 = false;
+        } else {
+          state.isCorrect3 = true;
+        }
+      }
+
+      emit(
+        SensorOneState(
           errorMessage: '',
           averageTemp: averageTemp,
           averageHumidity: averageHumidity,
@@ -101,9 +116,11 @@ class SensorOneCubit extends Cubit<SensorOneState> {
           currentHumidity: currentHumidity,
           currentNoise: currentNoise,
           sensorOneModels: dataModels,
-          buttonColor1: state.buttonColor1,
-          buttonColor2: state.buttonColor2,
-          buttonColor3: state.buttonColor3));
+          isCorrect2: state.isCorrect2,
+          isCorrect3: state.isCorrect3,
+          isCorrect: state.isCorrect,
+        ),
+      );
     });
   }
 

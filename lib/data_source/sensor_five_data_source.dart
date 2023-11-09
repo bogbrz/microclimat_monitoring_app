@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class SensorFiveDataSource {
-  Stream<QuerySnapshot> sensorFiveData() {
+  Stream<QuerySnapshot<Map<String,dynamic>>> sensorFiveData() {
     return FirebaseFirestore.instance
         .collection('sensors')
         .doc('sensor5')
