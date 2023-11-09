@@ -16,8 +16,6 @@ class SensorOneState {
   bool isCorrect3;
 
 
-
-
   final List<SensorModel> sensorOneModels;
 
   SensorOneState({

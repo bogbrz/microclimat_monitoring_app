@@ -14,9 +14,15 @@ class SensorFiveCubit extends Cubit<SensorFiveState> {
           averageNoise: 0,
           averageTemp: 0,
           errorMessage: '',
+
           currentHumidity: 0,
           currentNoise: 0,
           currentTemp: 0,
+
+          currentHumidity: null,
+          currentNoise: null,
+          currentTemp: null,
+
           isCorrect2: true,
           isCorrect3: true,
           isCorrect: true,
@@ -36,9 +42,13 @@ class SensorFiveCubit extends Cubit<SensorFiveState> {
             averageNoise: 0,
             averageTemp: 0,
             errorMessage: '',
+
             currentHumidity: 0,
             currentNoise: 0,
             currentTemp: 0,
+
+
+
             isCorrect2: true,
             isCorrect3: true,
             isCorrect: true,
@@ -51,9 +61,13 @@ class SensorFiveCubit extends Cubit<SensorFiveState> {
           currentNoise: 0,
           currentTemp: 0,
           sensorFiveModels: [],
+
           averageHumidity: 0,
           averageNoise: 0,
           averageTemp: 0,
+
+    
+
           isCorrect2: true,
           isCorrect3: true,
           isCorrect: true,
@@ -83,21 +97,32 @@ class SensorFiveCubit extends Cubit<SensorFiveState> {
         averageHumidity =
             (sumHumidity ~/ ((state.sensorFiveModels.length) ~/ 3));
       }
+
       if (currentHumidity != 0) {
+
+
+
         if (currentHumidity > 25 || currentHumidity < 10) {
           state.isCorrect2 = false;
         } else {
           state.isCorrect2 = true;
         }
       }
+
       if (currentTemp != 0) {
+
+
+
         if (currentTemp > 25 || currentTemp < 10) {
           state.isCorrect = false;
         } else {
           state.isCorrect = true;
         }
       }
+
       if (currentNoise != 0) {
+
+ 
         if (currentNoise > 25 || currentNoise < 10) {
           state.isCorrect3 = false;
         } else {
