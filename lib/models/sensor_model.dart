@@ -1,12 +1,12 @@
-class SensorModel {
-  final int hour;
-  final int temp;
-  final int noise;
-  final int humidity;
+import 'package:freezed_annotation/freezed_annotation.dart';
+part 'sensor_model.freezed.dart';
 
-  SensorModel(
-      {required this.hour,
-      required this.temp,
-      required this.noise,
-      required this.humidity});
+@freezed
+class SensorModel with _$SensorModel {
+  factory SensorModel({
+    required int hour,
+    required int temp,
+    required int noise,
+    required int humidity,
+  }) = _SensorModel;
 }

@@ -1,5 +1,6 @@
 part of 'sensor_four_cubit.dart';
 
+@freezed
 class SensorFourState {
   final String errorMessage;
   final int? averageTemp;

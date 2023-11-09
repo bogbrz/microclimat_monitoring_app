@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:flutter/material.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:microclimat_monitoring_app/models/sensor_model.dart';
 import 'package:microclimat_monitoring_app/repositories/sensor_four_repository.dart';
 

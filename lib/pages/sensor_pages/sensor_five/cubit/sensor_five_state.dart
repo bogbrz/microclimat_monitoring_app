@@ -1,5 +1,6 @@
 part of 'sensor_five_cubit.dart';
 
+
 class SensorFiveState {
   final String errorMessage;
   final int? averageTemp;

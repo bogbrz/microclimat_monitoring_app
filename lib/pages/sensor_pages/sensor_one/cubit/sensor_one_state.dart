@@ -1,5 +1,8 @@
 part of 'sensor_one_cubit.dart';
 
+
+
+
 class SensorOneState {
   final String errorMessage;
   final int? averageTemp;
@@ -11,6 +14,7 @@ class SensorOneState {
   bool isCorrect;
   bool isCorrect2;
   bool isCorrect3;
+
 
   final List<SensorModel> sensorOneModels;
 
