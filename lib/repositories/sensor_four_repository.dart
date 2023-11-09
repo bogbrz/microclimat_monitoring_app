@@ -6,17 +6,15 @@ class SensorFourRepository {
   final SensorFourDataSource sensorFourDataSource;
 
   Stream<List<SensorModel>> getSensorFourData() {
-    return sensorFourDataSource.sensorFourData().map((querySnapshot) {
-      return querySnapshot.docs
-          .map(
-            (doc) => SensorModel(
-              humidity: doc["humidity"],
-              hour: doc['hour'],
-              temp: doc['temp'],
-              noise: doc['noise'],
-            ),
-          )
-          .toList();
-    });
+    return sensorFourDataSource.sensorFourData().map(
+      (querySnapshot) {
+        return querySnapshot.docs.map(
+          (doc) {
+            final data = doc.data();
+            return SensorModel.fromJson(data);
+          },
+        ).toList();
+      },
+    );
   }
 }

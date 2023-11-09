@@ -6,17 +6,16 @@ class SensorThreeRepository {
   final SensorThreeDataSource sensorThreeDataSource;
 
   Stream<List<SensorModel>> getSensorThreeData() {
-    return sensorThreeDataSource.sensorThreeData().map((querySnapshot) {
-      return querySnapshot.docs
-          .map(
-            (doc) => SensorModel(
-              humidity: doc["humidity"],
-              hour: doc['hour'],
-              temp: doc['temp'],
-              noise: doc['noise'],
-            ),
-          )
-          .toList();
-    });
+    return sensorThreeDataSource.sensorThreeData().map(
+      (querySnapshot) {
+        return querySnapshot.docs.map(
+          (doc) {
+            final data = doc.data();
+
+            return SensorModel.fromJson(data);
+          },
+        ).toList();
+      },
+    );
   }
 }

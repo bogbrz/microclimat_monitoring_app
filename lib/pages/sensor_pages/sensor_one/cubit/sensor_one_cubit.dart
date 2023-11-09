@@ -2,10 +2,12 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:microclimat_monitoring_app/models/sensor_model.dart';
 import 'package:microclimat_monitoring_app/repositories/sensor_one_repository.dart';
 
 part 'sensor_one_state.dart';
+part 'sensor_one_cubit.freezed.dart';
 
 class SensorOneCubit extends Cubit<SensorOneState> {
   SensorOneCubit({required this.sensorOneRepository})
@@ -87,23 +89,23 @@ class SensorOneCubit extends Cubit<SensorOneState> {
 
       if (currentHumidity != null) {
         if (currentHumidity > 25 || currentHumidity < 10) {
-          state.isCorrect2 = false;
+          state.isCorrect2 == false;
         } else {
-          state.isCorrect2 = true;
+          state.isCorrect2 == true;
         }
       }
       if (currentTemp != null) {
         if (currentTemp > 25 || currentTemp < 10) {
-          state.isCorrect = false;
+          state.isCorrect == false;
         } else {
-          state.isCorrect = true;
+          state.isCorrect == true;
         }
       }
       if (currentNoise != null) {
         if (currentNoise > 25 || currentNoise < 10) {
-          state.isCorrect3 = false;
+          state.isCorrect3 == false;
         } else {
-          state.isCorrect3 = true;
+          state.isCorrect3 == true;
         }
       }
 
