@@ -8,9 +8,9 @@ class SensorTwoState {
   final int? currentTemp;
   final int? currentHumidity;
   final int? currentNoise;
-  Color buttonColor1;
-  Color buttonColor2;
-  Color buttonColor3;
+  bool isCorrect;
+  bool isCorrect2;
+  bool isCorrect3;
 
   final List<SensorModel> sensorTwoModels;
 
@@ -23,8 +23,8 @@ class SensorTwoState {
     required this.currentHumidity,
     required this.currentNoise,
     required this.sensorTwoModels,
-    this.buttonColor1 = Colors.green,
-    this.buttonColor2 = Colors.green,
-    this.buttonColor3 = Colors.green,
+    required this.isCorrect,
+    required this.isCorrect2,
+    required this.isCorrect3,
   });
 }
