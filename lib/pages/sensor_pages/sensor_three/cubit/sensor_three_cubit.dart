@@ -18,6 +18,9 @@ class SensorThreeCubit extends Cubit<SensorThreeState> {
           currentHumidity: null,
           currentNoise: null,
           currentTemp: null,
+          isCorrect: true,
+          isCorrect2: true,
+          isCorrect3: true,
         ));
 
   StreamSubscription? _streamSubscription;
@@ -37,12 +40,11 @@ class SensorThreeCubit extends Cubit<SensorThreeState> {
             currentHumidity: null,
             currentNoise: null,
             currentTemp: null,
-            buttonColor1: state.buttonColor1,
-            buttonColor2: state.buttonColor2,
-            buttonColor3: state.buttonColor3,
+            isCorrect: true,
+            isCorrect2: true,
+            isCorrect3: true,
           ),
         );
-
       } catch (error) {
         emit(SensorThreeState(
           errorMessage: error.toString(),
@@ -53,6 +55,9 @@ class SensorThreeCubit extends Cubit<SensorThreeState> {
           averageHumidity: null,
           averageNoise: null,
           averageTemp: null,
+          isCorrect: true,
+          isCorrect2: true,
+          isCorrect3: true,
         ));
       }
       int? currentTemp;
@@ -79,20 +84,29 @@ class SensorThreeCubit extends Cubit<SensorThreeState> {
         averageHumidity =
             (sumHumidity ~/ ((state.sensorThreeModels.length) ~/ 3));
       }
-      if (currentHumidity != null &&
-          currentNoise != null &&
-          currentTemp != null) {
+      if (currentHumidity != null) {
         if (currentHumidity > 25 || currentHumidity < 10) {
-          state.buttonColor2 = Colors.red;
-        }
-        if (currentTemp > 25 || currentTemp < 10) {
-          state.buttonColor1 = Colors.red;
-        }
-        if (currentNoise > 25 || currentNoise < 10) {
-          state.buttonColor3 = Colors.red;
+          state.isCorrect2 = false;
+        } else {
+          state.isCorrect2 = true;
         }
       }
-      emit(SensorThreeState(
+      if (currentTemp != null) {
+        if (currentTemp > 25 || currentTemp < 10) {
+          state.isCorrect = false;
+        } else {
+          state.isCorrect = true;
+        }
+      }
+      if (currentNoise != null) {
+        if (currentNoise > 25 || currentNoise < 10) {
+          state.isCorrect3 = false;
+        } else {
+          state.isCorrect3 = true;
+        }
+      }
+      emit(
+        SensorThreeState(
           errorMessage: '',
           averageTemp: averageTemp,
           averageHumidity: averageHumidity,
@@ -101,9 +115,11 @@ class SensorThreeCubit extends Cubit<SensorThreeState> {
           currentHumidity: currentHumidity,
           currentNoise: currentNoise,
           sensorThreeModels: dataModels,
-          buttonColor1: state.buttonColor1,
-          buttonColor2: state.buttonColor2,
-          buttonColor3: state.buttonColor3));
+          isCorrect2: state.isCorrect2,
+          isCorrect3: state.isCorrect3,
+          isCorrect: state.isCorrect,
+        ),
+      );
     });
   }
 
