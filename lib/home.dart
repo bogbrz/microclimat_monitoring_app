@@ -236,12 +236,19 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             const SizedBox(
-              height: 10,
+              height: 15,
             ),
             Expanded(
               child: ListView(
-                children: const [
-                  Padding(
+                children: [
+                  const Center(
+                    child: Text(
+                      "Sensors",
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  const Padding(
                     padding: EdgeInsets.all(8.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -254,9 +261,252 @@ class _HomePageState extends State<HomePage> {
                       ],
                     ),
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [Text("Test generators")],
+                  Column(
+                    children: [
+                      const Center(
+                        child: Text(
+                          "Test generators",
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 7,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Column(
+                              children: [
+                                const Text(
+                                  "Generate",
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Container(
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                      width: 2,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  height: 40,
+                                  width: 40,
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                const Text(
+                                  "Remove",
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Container(
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                      width: 2,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  height: 40,
+                                  width: 40,
+                                ),
+                              ],
+                            ),
+                            Column(
+                              children: [
+                                const Text(
+                                  "Generate",
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Container(
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                      width: 2,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  height: 40,
+                                  width: 40,
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                const Text(
+                                  "Remove",
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Container(
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                      width: 2,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  height: 40,
+                                  width: 40,
+                                ),
+                              ],
+                            ),
+                            Column(
+                              children: [
+                                const Text(
+                                  "Generate",
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Container(
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                      width: 2,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  height: 40,
+                                  width: 40,
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                const Text(
+                                  "Remove",
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Container(
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                      width: 2,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  height: 40,
+                                  width: 40,
+                                ),
+                              ],
+                            ),
+                            Column(
+                              children: [
+                                const Text(
+                                  "Generate",
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Container(
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                      width: 2,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  height: 40,
+                                  width: 40,
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                const Text(
+                                  "Remove",
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Container(
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                      width: 2,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  height: 40,
+                                  width: 40,
+                                ),
+                              ],
+                            ),
+                            Column(
+                              children: [
+                                const Text(
+                                  "Generate",
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Container(
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                      width: 2,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  height: 40,
+                                  width: 40,
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                const Text(
+                                  "Remove",
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Container(
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                      width: 2,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  height: 40,
+                                  width: 40,
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      )
+                    ],
                   )
                 ],
               ),
@@ -290,7 +540,7 @@ class SensorFiveStatus extends StatelessWidget {
             const SizedBox(
               height: 8,
             ),
-            const Text("Temperature", style: TextStyle(fontSize: 10)),
+            const Text("Temperature", style: TextStyle(fontSize: 13)),
             const SizedBox(
               height: 5,
             ),
@@ -367,7 +617,7 @@ class SensorFourStatus extends StatelessWidget {
             const SizedBox(
               height: 8,
             ),
-            const Text("Temperature", style: TextStyle(fontSize: 10)),
+            const Text("Temperature", style: TextStyle(fontSize: 13)),
             const SizedBox(
               height: 5,
             ),
@@ -444,7 +694,7 @@ class SensorThreeStatus extends StatelessWidget {
             const SizedBox(
               height: 8,
             ),
-            const Text("Temperature", style: TextStyle(fontSize: 10)),
+            const Text("Temperature", style: TextStyle(fontSize: 13)),
             const SizedBox(
               height: 5,
             ),
@@ -521,7 +771,7 @@ class SensorTwoStatus extends StatelessWidget {
             const SizedBox(
               height: 8,
             ),
-            const Text("Temperature", style: TextStyle(fontSize: 10)),
+            const Text("Temperature", style: TextStyle(fontSize: 13)),
             const SizedBox(
               height: 5,
             ),
@@ -598,7 +848,7 @@ class SensorOneStatus extends StatelessWidget {
             const SizedBox(
               height: 8,
             ),
-            const Text("Temperature", style: TextStyle(fontSize: 10)),
+            const Text("Temperature", style: TextStyle(fontSize: 13)),
             const SizedBox(
               height: 5,
             ),
