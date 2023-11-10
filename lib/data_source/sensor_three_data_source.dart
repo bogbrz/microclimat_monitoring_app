@@ -11,4 +11,27 @@ class SensorThreeDataSource {
         .orderBy('hour')
         .snapshots();
   }
+  Future<void> addData({
+    required int hour,
+    required int temp,
+    required int humidity,
+    required int noise,
+    required int sensorId,
+  }) async {
+    await FirebaseFirestore.instance
+        .collection('senors')
+        .doc("sensor3")
+        .collection("day")
+        .doc('1')
+        .collection("records")
+        .add(
+      {
+        "hour": hour,
+        "temp": temp,
+        "humidity": humidity,
+        "noise": noise,
+        "sensorId": sensorId,
+      },
+    );
+  }
 }

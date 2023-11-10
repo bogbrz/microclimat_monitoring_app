@@ -19,4 +19,18 @@ class SensorOneRepository {
           .toList();
     });
   }
+
+  Future<void> addData(
+      {required int hour,
+      required int temp,
+      required int humidity,
+      required int noise,
+      required int sensorId}) async {
+    await sensorOneDataSource.addData(
+        hour: hour,
+        temp: temp,
+        humidity: humidity,
+        noise: noise,
+        sensorId: sensorId);
+  }
 }

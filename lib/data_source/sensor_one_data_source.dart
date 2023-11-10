@@ -12,12 +12,13 @@ class SensorOneDataSource {
         .snapshots();
   }
 
-  Future<void> addData(
-      {required int hour,
-      required int temp,
-      required int humidity,
-      required int noise,
-      required int sensorId}) async {
+  Future<void> addData({
+    required int hour,
+    required int temp,
+    required int humidity,
+    required int noise,
+    required int sensorId,
+  }) async {
     await FirebaseFirestore.instance
         .collection('senors')
         .doc("sensor1")

@@ -124,6 +124,26 @@ class SensorOneCubit extends Cubit<SensorOneState> {
     });
   }
 
+  Future<void> addDataOne({
+    required int temp,
+    required int hour,
+    required int humidity,
+    required int noise,
+    required int sensorId,
+  }) async {
+    await Future.delayed(
+      const Duration(
+        seconds: 3,
+      ),
+    );
+    sensorOneRepository.addData(
+        hour: hour,
+        temp: temp,
+        humidity: humidity,
+        noise: noise,
+        sensorId: sensorId);
+  }
+
   @override
   Future<void> close() {
     _streamSubscription?.cancel();
