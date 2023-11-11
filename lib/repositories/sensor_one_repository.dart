@@ -1,6 +1,7 @@
+import 'package:injectable/injectable.dart';
 import 'package:microclimat_monitoring_app/data_source/sensor_one_data_source.dart';
 import 'package:microclimat_monitoring_app/models/sensor_model.dart';
-
+@injectable
 class SensorOneRepository {
   SensorOneRepository({required this.sensorOneDataSource});
   final SensorOneDataSource sensorOneDataSource;

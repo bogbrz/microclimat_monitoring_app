@@ -1,11 +1,12 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:injectable/injectable.dart';
 import 'package:microclimat_monitoring_app/models/sensor_model.dart';
 import 'package:microclimat_monitoring_app/repositories/sensor_five_repository.dart';
 
 part 'sensor_five_state.dart';
-
+@injectable
 class SensorFiveCubit extends Cubit<SensorFiveState> {
   SensorFiveCubit({required this.sensorFiveRepository})
       : super(SensorFiveState(

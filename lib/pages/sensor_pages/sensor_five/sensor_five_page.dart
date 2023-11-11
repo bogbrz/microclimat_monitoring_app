@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:microclimat_monitoring_app/data_source/sensor_five_data_source.dart';
+import 'package:microclimat_monitoring_app/app/injection_container.dart';
 import 'package:microclimat_monitoring_app/models/sensor_model.dart';
 import 'package:microclimat_monitoring_app/pages/sensor_pages/sensor_five/cubit/sensor_five_cubit.dart';
-import 'package:microclimat_monitoring_app/repositories/sensor_five_repository.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 class SensorFivePage extends StatefulWidget {
@@ -26,10 +25,7 @@ class _SensorOnePageState extends State<SensorFivePage> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => SensorFiveCubit(
-          sensorFiveRepository: SensorFiveRepository(
-              sensorFiveDataSource: SensorFiveDataSource()))
-        ..start(),
+      create: (context) => getIt<SensorFiveCubit>()..start(),
       child: BlocBuilder<SensorFiveCubit, SensorFiveState>(
         builder: (context, state) {
           return Scaffold(

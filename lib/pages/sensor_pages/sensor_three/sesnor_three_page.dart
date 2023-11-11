@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:microclimat_monitoring_app/data_source/sensor_three_data_source.dart';
+import 'package:microclimat_monitoring_app/app/injection_container.dart';
 import 'package:microclimat_monitoring_app/models/sensor_model.dart';
 import 'package:microclimat_monitoring_app/pages/sensor_pages/sensor_three/cubit/sensor_three_cubit.dart';
-import 'package:microclimat_monitoring_app/repositories/sensor_three_repository.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 class SensorThreePage extends StatefulWidget {
@@ -19,17 +18,14 @@ class SensorThreePage extends StatefulWidget {
 
 class _SensorOnePageState extends State<SensorThreePage> {
   Color color = Colors.grey;
-  bool isPressed1 = true;
-  bool isPressed2 = false;
-  bool isPressed3 = false;
+  var isPressed1 = true;
+  var isPressed2 = false;
+  var isPressed3 = false;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => SensorThreeCubit(
-          sensorThreeRepository: SensorThreeRepository(
-              sensorThreeDataSource: SensorThreeDataSource()))
-        ..start(),
+      create: (context) => getIt<SensorThreeCubit>()..start(),
       child: BlocBuilder<SensorThreeCubit, SensorThreeState>(
         builder: (context, state) {
           return Scaffold(
@@ -48,10 +44,11 @@ class _SensorOnePageState extends State<SensorThreePage> {
                         children: [
                           InkWell(
                             onTap: () {
-                              setState(() {});
-                              isPressed1 = true;
-                              isPressed2 = false;
-                              isPressed3 = false;
+                              setState(() {
+                                isPressed1 = true;
+                                isPressed2 = false;
+                                isPressed3 = false;
+                              });
                             },
                             child: Container(
                               width: (MediaQuery.of(context).size.width) / 3.5,
@@ -69,10 +66,11 @@ class _SensorOnePageState extends State<SensorThreePage> {
                           ),
                           InkWell(
                             onTap: () {
-                              setState(() {});
-                              isPressed1 = false;
-                              isPressed2 = true;
-                              isPressed3 = false;
+                              setState(() {
+                                isPressed1 = false;
+                                isPressed2 = true;
+                                isPressed3 = false;
+                              });
                             },
                             child: Container(
                               width: (MediaQuery.of(context).size.width) / 3.5,
@@ -90,10 +88,11 @@ class _SensorOnePageState extends State<SensorThreePage> {
                           ),
                           InkWell(
                             onTap: () {
-                              setState(() {});
-                              isPressed1 = false;
-                              isPressed2 = false;
-                              isPressed3 = true;
+                              setState(() {
+                                isPressed1 = false;
+                                isPressed2 = false;
+                                isPressed3 = true;
+                              });
                             },
                             child: Container(
                               width: (MediaQuery.of(context).size.width) / 3.5,

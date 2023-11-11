@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:microclimat_monitoring_app/data_source/sensor_five_data_source.dart';
-import 'package:microclimat_monitoring_app/data_source/sensor_four_data_source.dart';
-import 'package:microclimat_monitoring_app/data_source/sensor_one_data_source.dart';
-import 'package:microclimat_monitoring_app/data_source/sensor_three_data_source.dart';
-import 'package:microclimat_monitoring_app/data_source/sensor_two_data_source.dart';
+import 'package:microclimat_monitoring_app/app/injection_container.dart';
 import 'package:microclimat_monitoring_app/pages/sensor_pages/sensor_five/cubit/sensor_five_cubit.dart';
 import 'package:microclimat_monitoring_app/pages/sensor_pages/sensor_five/sensor_five_page.dart';
 import 'package:microclimat_monitoring_app/pages/sensor_pages/sensor_four/cubit/sensor_four_cubit.dart';
@@ -15,12 +11,6 @@ import 'package:microclimat_monitoring_app/pages/sensor_pages/sensor_three/cubit
 import 'package:microclimat_monitoring_app/pages/sensor_pages/sensor_three/sesnor_three_page.dart';
 import 'package:microclimat_monitoring_app/pages/sensor_pages/sensor_two/cubit/sensor_two_cubit.dart';
 import 'package:microclimat_monitoring_app/pages/sensor_pages/sensor_two/sensor_two_page.dart';
-import 'package:microclimat_monitoring_app/repositories/sensor_five_repository.dart';
-import 'package:microclimat_monitoring_app/repositories/sensor_four_repository.dart';
-
-import 'package:microclimat_monitoring_app/repositories/sensor_one_repository.dart';
-import 'package:microclimat_monitoring_app/repositories/sensor_three_repository.dart';
-import 'package:microclimat_monitoring_app/repositories/sensor_two_repository.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({
@@ -41,35 +31,20 @@ class _HomePageState extends State<HomePage> {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-            create: (context) => SensorOneCubit(
-                  sensorOneRepository: SensorOneRepository(
-                    sensorOneDataSource: SensorOneDataSource(),
-                  ),
-                )),
+          create: (context) => getIt<SensorOneCubit>()..start(),
+        ),
         BlocProvider(
-            create: (context) => SensorTwoCubit(
-                  sensorTwoRepository: SensorTwoRepository(
-                    sensorTwoDataSource: SensorTwoDataSource(),
-                  ),
-                )),
+          create: (context) => getIt<SensorTwoCubit>()..start(),
+        ),
         BlocProvider(
-            create: (context) => SensorThreeCubit(
-                  sensorThreeRepository: SensorThreeRepository(
-                    sensorThreeDataSource: SensorThreeDataSource(),
-                  ),
-                )),
+          create: (context) => getIt<SensorThreeCubit>()..start(),
+        ),
         BlocProvider(
-            create: (context) => SensorFourCubit(
-                  sensorFourRepository: SensorFourRepository(
-                    sensorFourDataSource: SensorFourDataSource(),
-                  ),
-                )),
+          create: (context) => getIt<SensorFourCubit>()..start(),
+        ),
         BlocProvider(
-            create: (context) => SensorFiveCubit(
-                  sensorFiveRepository: SensorFiveRepository(
-                    sensorFiveDataSource: SensorFiveDataSource(),
-                  ),
-                )),
+          create: (context) => getIt<SensorFiveCubit>()..start(),
+        ),
       ],
       child: Scaffold(
         appBar: AppBar(
@@ -289,15 +264,20 @@ class _HomePageState extends State<HomePage> {
                                 const SizedBox(
                                   height: 10,
                                 ),
-                                Container(
-                                  decoration: BoxDecoration(
-                                    border: Border.all(
-                                      width: 2,
-                                      color: Colors.white,
+                                InkWell(
+                                  onTap: () {},
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      color: Colors.blueAccent,
+                                      border: Border.all(
+                                        width: 2,
+                                        color: Colors.white,
+                                      ),
                                     ),
+                                    height: 40,
+                                    width: 40,
+                                    child: const Icon(Icons.add),
                                   ),
-                                  height: 40,
-                                  width: 40,
                                 ),
                                 const SizedBox(
                                   height: 10,
@@ -313,6 +293,7 @@ class _HomePageState extends State<HomePage> {
                                 ),
                                 Container(
                                   decoration: BoxDecoration(
+                                    color: Colors.orange,
                                     border: Border.all(
                                       width: 2,
                                       color: Colors.white,
@@ -320,6 +301,7 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                   height: 40,
                                   width: 40,
+                                  child: const Icon(Icons.delete),
                                 ),
                               ],
                             ),
@@ -334,15 +316,20 @@ class _HomePageState extends State<HomePage> {
                                 const SizedBox(
                                   height: 10,
                                 ),
-                                Container(
-                                  decoration: BoxDecoration(
-                                    border: Border.all(
-                                      width: 2,
-                                      color: Colors.white,
+                                InkWell(
+                                  onTap: () {},
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      color: Colors.blueAccent,
+                                      border: Border.all(
+                                        width: 2,
+                                        color: Colors.white,
+                                      ),
                                     ),
+                                    height: 40,
+                                    width: 40,
+                                    child: const Icon(Icons.add),
                                   ),
-                                  height: 40,
-                                  width: 40,
                                 ),
                                 const SizedBox(
                                   height: 10,
@@ -358,6 +345,7 @@ class _HomePageState extends State<HomePage> {
                                 ),
                                 Container(
                                   decoration: BoxDecoration(
+                                    color: Colors.orange,
                                     border: Border.all(
                                       width: 2,
                                       color: Colors.white,
@@ -365,6 +353,7 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                   height: 40,
                                   width: 40,
+                                  child: const Icon(Icons.delete),
                                 ),
                               ],
                             ),
@@ -379,15 +368,20 @@ class _HomePageState extends State<HomePage> {
                                 const SizedBox(
                                   height: 10,
                                 ),
-                                Container(
-                                  decoration: BoxDecoration(
-                                    border: Border.all(
-                                      width: 2,
-                                      color: Colors.white,
+                                InkWell(
+                                  onTap: () {},
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      color: Colors.blueAccent,
+                                      border: Border.all(
+                                        width: 2,
+                                        color: Colors.white,
+                                      ),
                                     ),
+                                    height: 40,
+                                    width: 40,
+                                    child: const Icon(Icons.add),
                                   ),
-                                  height: 40,
-                                  width: 40,
                                 ),
                                 const SizedBox(
                                   height: 10,
@@ -403,6 +397,7 @@ class _HomePageState extends State<HomePage> {
                                 ),
                                 Container(
                                   decoration: BoxDecoration(
+                                    color: Colors.orange,
                                     border: Border.all(
                                       width: 2,
                                       color: Colors.white,
@@ -410,6 +405,7 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                   height: 40,
                                   width: 40,
+                                  child: const Icon(Icons.delete),
                                 ),
                               ],
                             ),
@@ -424,15 +420,20 @@ class _HomePageState extends State<HomePage> {
                                 const SizedBox(
                                   height: 10,
                                 ),
-                                Container(
-                                  decoration: BoxDecoration(
-                                    border: Border.all(
-                                      width: 2,
-                                      color: Colors.white,
+                                InkWell(
+                                  onTap: () {},
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      color: Colors.blueAccent,
+                                      border: Border.all(
+                                        width: 2,
+                                        color: Colors.white,
+                                      ),
                                     ),
+                                    height: 40,
+                                    width: 40,
+                                    child: const Icon(Icons.add),
                                   ),
-                                  height: 40,
-                                  width: 40,
                                 ),
                                 const SizedBox(
                                   height: 10,
@@ -448,6 +449,7 @@ class _HomePageState extends State<HomePage> {
                                 ),
                                 Container(
                                   decoration: BoxDecoration(
+                                    color: Colors.orange,
                                     border: Border.all(
                                       width: 2,
                                       color: Colors.white,
@@ -455,6 +457,7 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                   height: 40,
                                   width: 40,
+                                  child: const Icon(Icons.delete),
                                 ),
                               ],
                             ),
@@ -469,15 +472,20 @@ class _HomePageState extends State<HomePage> {
                                 const SizedBox(
                                   height: 10,
                                 ),
-                                Container(
-                                  decoration: BoxDecoration(
-                                    border: Border.all(
-                                      width: 2,
-                                      color: Colors.white,
+                                InkWell(
+                                  onTap: () {},
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      color: Colors.blueAccent,
+                                      border: Border.all(
+                                        width: 2,
+                                        color: Colors.white,
+                                      ),
                                     ),
+                                    height: 40,
+                                    width: 40,
+                                    child: const Icon(Icons.add),
                                   ),
-                                  height: 40,
-                                  width: 40,
                                 ),
                                 const SizedBox(
                                   height: 10,
@@ -493,6 +501,7 @@ class _HomePageState extends State<HomePage> {
                                 ),
                                 Container(
                                   decoration: BoxDecoration(
+                                    color: Colors.orange,
                                     border: Border.all(
                                       width: 2,
                                       color: Colors.white,
@@ -500,6 +509,7 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                   height: 40,
                                   width: 40,
+                                  child: const Icon(Icons.delete),
                                 ),
                               ],
                             ),
@@ -527,7 +537,6 @@ class SensorFiveStatus extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<SensorFiveCubit, SensorFiveState>(
       builder: (context, state) {
-        context.read<SensorFiveCubit>().start();
         return Column(
           children: [
             const SizedBox(
@@ -604,7 +613,6 @@ class SensorFourStatus extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<SensorFourCubit, SensorFourState>(
       builder: (context, state) {
-        context.read<SensorFourCubit>().start();
         return Column(
           children: [
             const SizedBox(
@@ -681,7 +689,6 @@ class SensorThreeStatus extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<SensorThreeCubit, SensorThreeState>(
       builder: (context, state) {
-        context.read<SensorThreeCubit>().start();
         return Column(
           children: [
             const SizedBox(
@@ -758,7 +765,6 @@ class SensorTwoStatus extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<SensorTwoCubit, SensorTwoState>(
       builder: (context, state) {
-        context.read<SensorTwoCubit>().start();
         return Column(
           children: [
             const SizedBox(
@@ -835,7 +841,6 @@ class SensorOneStatus extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<SensorOneCubit, SensorOneState>(
       builder: (context, state) {
-        context.read<SensorOneCubit>().start();
         return Column(
           children: [
             const SizedBox(

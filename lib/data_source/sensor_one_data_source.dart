@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-
+import 'package:injectable/injectable.dart';
+@injectable
 class SensorOneDataSource {
   Stream<QuerySnapshot<Map<String, dynamic>>> sensorOneData() {
     return FirebaseFirestore.instance

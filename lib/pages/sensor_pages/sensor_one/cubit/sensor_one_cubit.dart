@@ -1,11 +1,14 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:bloc/bloc.dart';
+import 'package:injectable/injectable.dart';
 import 'package:microclimat_monitoring_app/models/sensor_model.dart';
 import 'package:microclimat_monitoring_app/repositories/sensor_one_repository.dart';
 
 part 'sensor_one_state.dart';
 
+@injectable
 class SensorOneCubit extends Cubit<SensorOneState> {
   SensorOneCubit({required this.sensorOneRepository})
       : super(SensorOneState(
@@ -124,24 +127,25 @@ class SensorOneCubit extends Cubit<SensorOneState> {
     });
   }
 
-  Future<void> addDataOne({
-    required int temp,
-    required int hour,
-    required int humidity,
-    required int noise,
-    required int sensorId,
-  }) async {
-    await Future.delayed(
-      const Duration(
-        seconds: 3,
-      ),
-    );
-    sensorOneRepository.addData(
-        hour: hour,
-        temp: temp,
-        humidity: humidity,
-        noise: noise,
-        sensorId: sensorId);
+  Future<void> addDataOne() async {
+    for (int i = 4; i <= 24; i++) {
+      int randomTemp = Random().nextInt(30);
+      int randomHumidity = Random().nextInt(30);
+      int randomNoise = Random().nextInt(30);
+      int sensorId = 1;
+      await Future.delayed(
+        const Duration(
+          seconds: 3,
+        ),
+      );
+
+      sensorOneRepository.addData(
+          hour: i,
+          temp: randomTemp,
+          humidity: randomHumidity,
+          noise: randomNoise,
+          sensorId: sensorId);
+    }
   }
 
   @override

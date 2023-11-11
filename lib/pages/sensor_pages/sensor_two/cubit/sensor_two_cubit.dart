@@ -1,12 +1,13 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
+
+import 'package:injectable/injectable.dart';
 import 'package:microclimat_monitoring_app/models/sensor_model.dart';
 import 'package:microclimat_monitoring_app/repositories/sensor_two_repository.dart';
 
 part 'sensor_two_state.dart';
-
+@injectable
 class SensorTwoCubit extends Cubit<SensorTwoState> {
   SensorTwoCubit({required this.sensorTwoRepository})
       : super(SensorTwoState(
