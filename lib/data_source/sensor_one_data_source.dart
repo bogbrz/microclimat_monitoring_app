@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable
@@ -45,8 +44,6 @@ class SensorOneDataSource {
         .doc('sensor1')
         .collection('day')
         .doc('1')
-        .collection('records')
-        .doc()
         .delete();
   }
 }

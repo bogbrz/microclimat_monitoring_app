@@ -37,4 +37,13 @@ class SensorTwoDataSource {
       },
     );
   }
+
+  Future<void> removeGeneratedData() async {
+    await FirebaseFirestore.instance
+        .collection('sensors')
+        .doc('sensor2')
+        .collection('day')
+        .doc('1')
+        .delete();
+  }
 }

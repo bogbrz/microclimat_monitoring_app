@@ -1,8 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:injectable/injectable.dart';
+
 @injectable
 class SensorThreeDataSource {
-  Stream<QuerySnapshot<Map<String,dynamic>>> sensorThreeData() {
+  Stream<QuerySnapshot<Map<String, dynamic>>> sensorThreeData() {
     return FirebaseFirestore.instance
         .collection('sensors')
         .doc('sensor3')
@@ -12,6 +13,7 @@ class SensorThreeDataSource {
         .orderBy('hour')
         .snapshots();
   }
+
   Future<void> addData({
     required int hour,
     required int temp,
@@ -34,5 +36,14 @@ class SensorThreeDataSource {
         "sensorId": sensorId,
       },
     );
+  }
+
+  Future<void> removeGeneratedData() async {
+    await FirebaseFirestore.instance
+        .collection('sensors')
+        .doc('sensor3')
+        .collection('day')
+        .doc('1')
+        .delete();
   }
 }
