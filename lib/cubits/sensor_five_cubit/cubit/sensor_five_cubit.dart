@@ -127,7 +127,7 @@ class SensorFiveCubit extends Cubit<SensorFiveState> {
   }
 
   Future<void> addDataFive() async {
-    for (int i = 5; i <= 24; i++) {
+    for (int i = 0; i <= 24; i++) {
       int randomTemp = Random().nextInt(30);
       int randomHumidity = Random().nextInt(30);
       int randomNoise = Random().nextInt(30);
@@ -148,9 +148,7 @@ class SensorFiveCubit extends Cubit<SensorFiveState> {
     }
   }
 
-  Future<void> removeGeneratedData() async {
-    return sensorFiveRepository.removeGeneratedData();
-  }
+  Future<void> removeGeneratedData() async {}
 
   @override
   Future<void> close() {

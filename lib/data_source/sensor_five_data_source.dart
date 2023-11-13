@@ -39,11 +39,13 @@ class SensorFiveDataSource {
   }
 
   Future<void> removeGeneratedData() async {
-    await FirebaseFirestore.instance
+    return FirebaseFirestore.instance
         .collection('sensors')
         .doc('sensor5')
         .collection('day')
         .doc('1')
+        .collection('records')
+        .doc()
         .delete();
   }
 }

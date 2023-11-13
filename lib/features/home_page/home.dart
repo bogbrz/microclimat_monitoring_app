@@ -191,30 +191,52 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
-          const SizedBox(
-            height: 15,
-          ),
           Expanded(
             child: ListView(
               children: const [
+                SizedBox(
+                  height: 20,
+                ),
                 Center(
                   child: Text(
                     "Sensors",
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      SensorOneStatus(),
-                      SensorTwoStatus(),
-                      SensorThreeStatus(),
-                      SensorFourStatus(),
-                      SensorFiveStatus()
-                    ],
-                  ),
+                Column(
+                  children: [
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          SizedBox(
+                            width: 8,
+                          ),
+                          SensorOneStatus(),
+                          SizedBox(
+                            width: 8,
+                          ),
+                          SensorTwoStatus(),
+                          SizedBox(
+                            width: 8,
+                          ),
+                          SensorThreeStatus(),
+                          SizedBox(
+                            width: 8,
+                          ),
+                          SensorFourStatus(),
+                          SizedBox(
+                            width: 8,
+                          ),
+                          SensorFiveStatus(),
+                          SizedBox(
+                            width: 8,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
                 Center(
                   child: Text(
@@ -227,20 +249,44 @@ class _HomePageState extends State<HomePage> {
                 ),
                 Padding(
                   padding: EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      GeneratorOneWidget(),
-                      GeneratorTwoWidget(),
-                      GeneratorThreeWidget(),
-                      GeneratorFourWidget(),
-                      GeneratorFiveWidget(),
-                    ],
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        SizedBox(
+                          width: 8,
+                        ),
+                        GeneratorOneWidget(),
+                        SizedBox(
+                          width: 8,
+                        ),
+                        GeneratorTwoWidget(),
+                        SizedBox(
+                          width: 8,
+                        ),
+                        GeneratorThreeWidget(),
+                        SizedBox(
+                          width: 8,
+                        ),
+                        GeneratorFourWidget(),
+                        SizedBox(
+                          width: 8,
+                        ),
+                        GeneratorFiveWidget(),
+                        SizedBox(
+                          width: 8,
+                        ),
+                      ],
+                    ),
                   ),
-                )
+                ),
+                SizedBox(
+                  height: 20,
+                ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );
@@ -292,17 +338,22 @@ class GeneratorFiveWidget extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.orange,
-                border: Border.all(
-                  width: 2,
-                  color: Colors.white,
+            InkWell(
+              onTap: () {
+                context.read<SensorFiveCubit>().removeGeneratedData();
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.orange,
+                  border: Border.all(
+                    width: 2,
+                    color: Colors.white,
+                  ),
                 ),
+                height: 40,
+                width: 40,
+                child: const Icon(Icons.delete),
               ),
-              height: 40,
-              width: 40,
-              child: const Icon(Icons.delete),
             ),
           ],
         );
@@ -356,17 +407,22 @@ class GeneratorFourWidget extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.orange,
-                border: Border.all(
-                  width: 2,
-                  color: Colors.white,
+            InkWell(
+              onTap: () {
+                context.read<SensorFourCubit>().removeGeneratedData();
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.orange,
+                  border: Border.all(
+                    width: 2,
+                    color: Colors.white,
+                  ),
                 ),
+                height: 40,
+                width: 40,
+                child: const Icon(Icons.delete),
               ),
-              height: 40,
-              width: 40,
-              child: const Icon(Icons.delete),
             ),
           ],
         );
@@ -420,17 +476,22 @@ class GeneratorThreeWidget extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.orange,
-                border: Border.all(
-                  width: 2,
-                  color: Colors.white,
+            InkWell(
+              onTap: () {
+                context.read<SensorThreeCubit>().removeGeneratedData();
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.orange,
+                  border: Border.all(
+                    width: 2,
+                    color: Colors.white,
+                  ),
                 ),
+                height: 40,
+                width: 40,
+                child: const Icon(Icons.delete),
               ),
-              height: 40,
-              width: 40,
-              child: const Icon(Icons.delete),
             ),
           ],
         );
@@ -484,17 +545,22 @@ class GeneratorTwoWidget extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.orange,
-                border: Border.all(
-                  width: 2,
-                  color: Colors.white,
+            InkWell(
+              onTap: () {
+                context.read<SensorTwoCubit>().removeGeneratedData();
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.orange,
+                  border: Border.all(
+                    width: 2,
+                    color: Colors.white,
+                  ),
                 ),
+                height: 40,
+                width: 40,
+                child: const Icon(Icons.delete),
               ),
-              height: 40,
-              width: 40,
-              child: const Icon(Icons.delete),
             ),
           ],
         );
@@ -548,17 +614,22 @@ class GeneratorOneWidget extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.orange,
-                border: Border.all(
-                  width: 2,
-                  color: Colors.white,
+            InkWell(
+              onTap: () {
+                context.read<SensorOneCubit>().removeGeneratedData();
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.orange,
+                  border: Border.all(
+                    width: 2,
+                    color: Colors.white,
+                  ),
                 ),
+                height: 40,
+                width: 40,
+                child: const Icon(Icons.delete),
               ),
-              height: 40,
-              width: 40,
-              child: const Icon(Icons.delete),
             ),
           ],
         );
