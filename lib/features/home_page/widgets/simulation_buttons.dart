@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:microclimat_monitoring_app/app/injection/injection_container.dart';
 import 'package:microclimat_monitoring_app/cubits/sensor_five_cubit/cubit/sensor_five_cubit.dart';
 import 'package:microclimat_monitoring_app/cubits/sensor_four_cubit/cubit/sensor_four_cubit.dart';
 import 'package:microclimat_monitoring_app/cubits/sensor_one_cubit/cubit/sensor_one_cubit.dart';
 import 'package:microclimat_monitoring_app/cubits/sensor_three_cubit/cubit/sensor_three_cubit.dart';
 import 'package:microclimat_monitoring_app/cubits/sensor_two_cubit/cubit/sensor_two_cubit.dart';
-
-
 
 class GeneratorFiveWidget extends StatelessWidget {
   const GeneratorFiveWidget({
@@ -28,7 +27,7 @@ class GeneratorFiveWidget extends StatelessWidget {
             ),
             InkWell(
               onTap: () {
-                context.read<SensorFiveCubit>().addDataFive();
+                getIt<SensorFiveCubit>().addDataFive();
               },
               child: Container(
                 decoration: BoxDecoration(
@@ -54,9 +53,7 @@ class GeneratorFiveWidget extends StatelessWidget {
               height: 10,
             ),
             InkWell(
-              onTap: () {
-                context.read<SensorFiveCubit>().removeGeneratedData();
-              },
+              onTap: () {},
               child: Container(
                 decoration: BoxDecoration(
                   color: Colors.orange,
@@ -97,7 +94,7 @@ class GeneratorFourWidget extends StatelessWidget {
             ),
             InkWell(
               onTap: () {
-                context.read<SensorFourCubit>().addDataFour();
+                getIt<SensorFourCubit>().addDataFour();
               },
               child: Container(
                 decoration: BoxDecoration(
@@ -166,7 +163,7 @@ class GeneratorThreeWidget extends StatelessWidget {
             ),
             InkWell(
               onTap: () {
-                context.read<SensorThreeCubit>().addDataThree();
+                getIt<SensorThreeCubit>().addDataThree();
               },
               child: Container(
                 decoration: BoxDecoration(
@@ -235,7 +232,7 @@ class GeneratorTwoWidget extends StatelessWidget {
             ),
             InkWell(
               onTap: () {
-                context.read<SensorTwoCubit>().addDataTwo();
+                getIt<SensorTwoCubit>().addDataTwo();
               },
               child: Container(
                 decoration: BoxDecoration(
@@ -291,64 +288,60 @@ class GeneratorOneWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SensorOneCubit, SensorOneState>(
-      builder: (context, state) {
-        return Column(
-          children: [
-            const Text(
-              "Generate 1",
-              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            InkWell(
-              onTap: () {
-                context.read<SensorOneCubit>().addDataOne();
-              },
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.blueAccent,
-                  border: Border.all(
-                    width: 2,
-                    color: Colors.white,
-                  ),
-                ),
-                height: 40,
-                width: 40,
-                child: const Icon(Icons.add),
+    return Column(
+      children: [
+        const Text(
+          "Generate 1",
+          style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        InkWell(
+          onTap: () {
+            getIt<SensorOneCubit>().addDataOne();
+          },
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.blueAccent,
+              border: Border.all(
+                width: 2,
+                color: Colors.white,
               ),
             ),
-            const SizedBox(
-              height: 10,
-            ),
-            const Text(
-              "Remove",
-              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            InkWell(
-              onTap: () {
-                context.read<SensorOneCubit>().removeGeneratedData();
-              },
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.orange,
-                  border: Border.all(
-                    width: 2,
-                    color: Colors.white,
-                  ),
-                ),
-                height: 40,
-                width: 40,
-                child: const Icon(Icons.delete),
+            height: 40,
+            width: 40,
+            child: const Icon(Icons.add),
+          ),
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        const Text(
+          "Remove",
+          style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        InkWell(
+          onTap: () {
+            context.read<SensorOneCubit>().removeGeneratedData();
+          },
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.orange,
+              border: Border.all(
+                width: 2,
+                color: Colors.white,
               ),
             ),
-          ],
-        );
-      },
+            height: 40,
+            width: 40,
+            child: const Icon(Icons.delete),
+          ),
+        ),
+      ],
     );
   }
 }

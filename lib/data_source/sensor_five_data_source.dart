@@ -44,8 +44,6 @@ class SensorFiveDataSource {
         .doc('sensor5')
         .collection('day')
         .doc('1')
-        .collection('records')
-        .doc()
         .delete();
   }
 }

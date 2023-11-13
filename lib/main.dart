@@ -8,7 +8,7 @@ import 'package:microclimat_monitoring_app/cubits/sensor_one_cubit/cubit/sensor_
 import 'package:microclimat_monitoring_app/cubits/sensor_three_cubit/cubit/sensor_three_cubit.dart';
 import 'package:microclimat_monitoring_app/cubits/sensor_two_cubit/cubit/sensor_two_cubit.dart';
 import 'package:microclimat_monitoring_app/firebase_options.dart';
-import 'package:microclimat_monitoring_app/features/home_page/home.dart';
+import 'package:microclimat_monitoring_app/root_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData.dark(),
-        home: const HomePage(),
+        home: const RootPage(),
       ),
     );
   }

@@ -148,7 +148,9 @@ class SensorFiveCubit extends Cubit<SensorFiveState> {
     }
   }
 
-  Future<void> removeGeneratedData() async {}
+  Future<void> removeGeneratedData() async {
+    return sensorFiveRepository.removeGeneratedData();
+  }
 
   @override
   Future<void> close() {
