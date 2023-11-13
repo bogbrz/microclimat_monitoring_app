@@ -128,23 +128,30 @@ class SensorOneCubit extends Cubit<SensorOneState> {
   }
 
   Future<void> addDataOne() async {
-    for (int i = 4; i <= 24; i++) {
+    for (int i = 5; i <= 24; i++) {
       int randomTemp = Random().nextInt(30);
       int randomHumidity = Random().nextInt(30);
       int randomNoise = Random().nextInt(30);
       int sensorId = 1;
       await Future.delayed(
         const Duration(
-          seconds: 3,
+          seconds: 5,
         ),
       );
 
       sensorOneRepository.addData(
-          hour: i,
-          temp: randomTemp,
-          humidity: randomHumidity,
-          noise: randomNoise,
-          sensorId: sensorId);
+        hour: i,
+        temp: randomTemp,
+        humidity: randomHumidity,
+        noise: randomNoise,
+        sensorId: sensorId,
+      );
+    }
+  }
+
+  Future<void> removeGeneratedData() async {
+    for (final dataModel in state.sensorOneModels) {
+      return sensorOneRepository.removeGeneratedData();
     }
   }
 

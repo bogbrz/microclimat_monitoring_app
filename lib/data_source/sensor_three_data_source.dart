@@ -20,7 +20,7 @@ class SensorThreeDataSource {
     required int sensorId,
   }) async {
     await FirebaseFirestore.instance
-        .collection('senors')
+        .collection('sensors')
         .doc("sensor3")
         .collection("day")
         .doc('1')

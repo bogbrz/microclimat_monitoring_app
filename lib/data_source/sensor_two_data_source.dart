@@ -1,8 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:injectable/injectable.dart';
+
 @injectable
 class SensorTwoDataSource {
-  Stream<QuerySnapshot<Map<String,dynamic>>> sensorTwoData() {
+  Stream<QuerySnapshot<Map<String, dynamic>>> sensorTwoData() {
     return FirebaseFirestore.instance
         .collection('sensors')
         .doc('sensor2')
@@ -21,7 +22,7 @@ class SensorTwoDataSource {
     required int sensorId,
   }) async {
     await FirebaseFirestore.instance
-        .collection('senors')
+        .collection('sensors')
         .doc("sensor2")
         .collection("day")
         .doc('1')

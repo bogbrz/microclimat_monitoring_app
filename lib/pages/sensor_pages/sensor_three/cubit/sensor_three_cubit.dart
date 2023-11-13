@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:bloc/bloc.dart';
 import 'package:injectable/injectable.dart';
@@ -6,6 +7,7 @@ import 'package:microclimat_monitoring_app/models/sensor_model.dart';
 import 'package:microclimat_monitoring_app/repositories/sensor_three_repository.dart';
 
 part 'sensor_three_state.dart';
+
 @injectable
 class SensorThreeCubit extends Cubit<SensorThreeState> {
   SensorThreeCubit({required this.sensorThreeRepository})
@@ -121,6 +123,26 @@ class SensorThreeCubit extends Cubit<SensorThreeState> {
         ),
       );
     });
+  }
+
+  Future<void> addDataThree() async {
+    for (int i = 5; i <= 24; i++) {
+      int randomTemp = Random().nextInt(30);
+      int randomHumidity = Random().nextInt(30);
+      int randomNoise = Random().nextInt(30);
+      int sensorId = 3;
+      await Future.delayed(
+        const Duration(
+          seconds: 5,
+        ),
+      );
+      sensorThreeRepository.addData(
+          hour: i,
+          temp: randomTemp,
+          humidity: randomHumidity,
+          noise: randomNoise,
+          sensorId: sensorId);
+    }
   }
 
   @override

@@ -215,15 +215,15 @@ class _HomePageState extends State<HomePage> {
             ),
             Expanded(
               child: ListView(
-                children: [
-                  const Center(
+                children: const [
+                  Center(
                     child: Text(
                       "Sensors",
                       style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
                   ),
-                  const Padding(
+                  Padding(
                     padding: EdgeInsets.all(8.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -236,287 +236,28 @@ class _HomePageState extends State<HomePage> {
                       ],
                     ),
                   ),
-                  Column(
-                    children: [
-                      const Center(
-                        child: Text(
-                          "Test generators",
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 7,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Column(
-                              children: [
-                                const Text(
-                                  "Generate",
-                                  style: TextStyle(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                InkWell(
-                                  onTap: () {},
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      color: Colors.blueAccent,
-                                      border: Border.all(
-                                        width: 2,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                    height: 40,
-                                    width: 40,
-                                    child: const Icon(Icons.add),
-                                  ),
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                const Text(
-                                  "Remove",
-                                  style: TextStyle(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                Container(
-                                  decoration: BoxDecoration(
-                                    color: Colors.orange,
-                                    border: Border.all(
-                                      width: 2,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                  height: 40,
-                                  width: 40,
-                                  child: const Icon(Icons.delete),
-                                ),
-                              ],
-                            ),
-                            Column(
-                              children: [
-                                const Text(
-                                  "Generate",
-                                  style: TextStyle(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                InkWell(
-                                  onTap: () {},
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      color: Colors.blueAccent,
-                                      border: Border.all(
-                                        width: 2,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                    height: 40,
-                                    width: 40,
-                                    child: const Icon(Icons.add),
-                                  ),
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                const Text(
-                                  "Remove",
-                                  style: TextStyle(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                Container(
-                                  decoration: BoxDecoration(
-                                    color: Colors.orange,
-                                    border: Border.all(
-                                      width: 2,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                  height: 40,
-                                  width: 40,
-                                  child: const Icon(Icons.delete),
-                                ),
-                              ],
-                            ),
-                            Column(
-                              children: [
-                                const Text(
-                                  "Generate",
-                                  style: TextStyle(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                InkWell(
-                                  onTap: () {},
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      color: Colors.blueAccent,
-                                      border: Border.all(
-                                        width: 2,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                    height: 40,
-                                    width: 40,
-                                    child: const Icon(Icons.add),
-                                  ),
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                const Text(
-                                  "Remove",
-                                  style: TextStyle(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                Container(
-                                  decoration: BoxDecoration(
-                                    color: Colors.orange,
-                                    border: Border.all(
-                                      width: 2,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                  height: 40,
-                                  width: 40,
-                                  child: const Icon(Icons.delete),
-                                ),
-                              ],
-                            ),
-                            Column(
-                              children: [
-                                const Text(
-                                  "Generate",
-                                  style: TextStyle(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                InkWell(
-                                  onTap: () {},
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      color: Colors.blueAccent,
-                                      border: Border.all(
-                                        width: 2,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                    height: 40,
-                                    width: 40,
-                                    child: const Icon(Icons.add),
-                                  ),
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                const Text(
-                                  "Remove",
-                                  style: TextStyle(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                Container(
-                                  decoration: BoxDecoration(
-                                    color: Colors.orange,
-                                    border: Border.all(
-                                      width: 2,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                  height: 40,
-                                  width: 40,
-                                  child: const Icon(Icons.delete),
-                                ),
-                              ],
-                            ),
-                            Column(
-                              children: [
-                                const Text(
-                                  "Generate",
-                                  style: TextStyle(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                InkWell(
-                                  onTap: () {},
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      color: Colors.blueAccent,
-                                      border: Border.all(
-                                        width: 2,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                    height: 40,
-                                    width: 40,
-                                    child: const Icon(Icons.add),
-                                  ),
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                const Text(
-                                  "Remove",
-                                  style: TextStyle(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                Container(
-                                  decoration: BoxDecoration(
-                                    color: Colors.orange,
-                                    border: Border.all(
-                                      width: 2,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                  height: 40,
-                                  width: 40,
-                                  child: const Icon(Icons.delete),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      )
-                    ],
+                  Center(
+                    child: Text(
+                      "Test generators",
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 7,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        GeneratorOneWidget(),
+                        GeneratorTwoWidget(),
+                        GeneratorThreeWidget(),
+                        GeneratorFourWidget(),
+                        GeneratorFiveWidget(),
+                      ],
+                    ),
                   )
                 ],
               ),
@@ -524,6 +265,326 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
+    );
+  }
+}
+
+class GeneratorFiveWidget extends StatelessWidget {
+  const GeneratorFiveWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<SensorFiveCubit, SensorFiveState>(
+      builder: (context, state) {
+        return Column(
+          children: [
+            const Text(
+              "Generate 5",
+              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            InkWell(
+              onTap: () {
+                context.read<SensorFiveCubit>().addDataFive();
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.blueAccent,
+                  border: Border.all(
+                    width: 2,
+                    color: Colors.white,
+                  ),
+                ),
+                height: 40,
+                width: 40,
+                child: const Icon(Icons.add),
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            const Text(
+              "Remove",
+              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Container(
+              decoration: BoxDecoration(
+                color: Colors.orange,
+                border: Border.all(
+                  width: 2,
+                  color: Colors.white,
+                ),
+              ),
+              height: 40,
+              width: 40,
+              child: const Icon(Icons.delete),
+            ),
+          ],
+        );
+      },
+    );
+  }
+}
+
+class GeneratorFourWidget extends StatelessWidget {
+  const GeneratorFourWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<SensorFourCubit, SensorFourState>(
+      builder: (context, state) {
+        return Column(
+          children: [
+            const Text(
+              "Generate 4",
+              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            InkWell(
+              onTap: () {
+                context.read<SensorFourCubit>().addDataFour();
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.blueAccent,
+                  border: Border.all(
+                    width: 2,
+                    color: Colors.white,
+                  ),
+                ),
+                height: 40,
+                width: 40,
+                child: const Icon(Icons.add),
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            const Text(
+              "Remove",
+              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Container(
+              decoration: BoxDecoration(
+                color: Colors.orange,
+                border: Border.all(
+                  width: 2,
+                  color: Colors.white,
+                ),
+              ),
+              height: 40,
+              width: 40,
+              child: const Icon(Icons.delete),
+            ),
+          ],
+        );
+      },
+    );
+  }
+}
+
+class GeneratorThreeWidget extends StatelessWidget {
+  const GeneratorThreeWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<SensorThreeCubit, SensorThreeState>(
+      builder: (context, state) {
+        return Column(
+          children: [
+            const Text(
+              "Generate 3",
+              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            InkWell(
+              onTap: () {
+                context.read<SensorThreeCubit>().addDataThree();
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.blueAccent,
+                  border: Border.all(
+                    width: 2,
+                    color: Colors.white,
+                  ),
+                ),
+                height: 40,
+                width: 40,
+                child: const Icon(Icons.add),
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            const Text(
+              "Remove",
+              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Container(
+              decoration: BoxDecoration(
+                color: Colors.orange,
+                border: Border.all(
+                  width: 2,
+                  color: Colors.white,
+                ),
+              ),
+              height: 40,
+              width: 40,
+              child: const Icon(Icons.delete),
+            ),
+          ],
+        );
+      },
+    );
+  }
+}
+
+class GeneratorTwoWidget extends StatelessWidget {
+  const GeneratorTwoWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<SensorTwoCubit, SensorTwoState>(
+      builder: (context, state) {
+        return Column(
+          children: [
+            const Text(
+              "Generate 2",
+              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            InkWell(
+              onTap: () {
+                context.read<SensorTwoCubit>().addDataTwo();
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.blueAccent,
+                  border: Border.all(
+                    width: 2,
+                    color: Colors.white,
+                  ),
+                ),
+                height: 40,
+                width: 40,
+                child: const Icon(Icons.add),
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            const Text(
+              "Remove",
+              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Container(
+              decoration: BoxDecoration(
+                color: Colors.orange,
+                border: Border.all(
+                  width: 2,
+                  color: Colors.white,
+                ),
+              ),
+              height: 40,
+              width: 40,
+              child: const Icon(Icons.delete),
+            ),
+          ],
+        );
+      },
+    );
+  }
+}
+
+class GeneratorOneWidget extends StatelessWidget {
+  const GeneratorOneWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<SensorOneCubit, SensorOneState>(
+      builder: (context, state) {
+        return Column(
+          children: [
+            const Text(
+              "Generate 1",
+              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            InkWell(
+              onTap: () {
+                context.read<SensorOneCubit>().addDataOne();
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.blueAccent,
+                  border: Border.all(
+                    width: 2,
+                    color: Colors.white,
+                  ),
+                ),
+                height: 40,
+                width: 40,
+                child: const Icon(Icons.add),
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            const Text(
+              "Remove",
+              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Container(
+              decoration: BoxDecoration(
+                color: Colors.orange,
+                border: Border.all(
+                  width: 2,
+                  color: Colors.white,
+                ),
+              ),
+              height: 40,
+              width: 40,
+              child: const Icon(Icons.delete),
+            ),
+          ],
+        );
+      },
     );
   }
 }
