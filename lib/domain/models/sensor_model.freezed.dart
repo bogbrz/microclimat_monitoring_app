@@ -20,6 +20,7 @@ mixin _$SensorModel {
   int get temp => throw _privateConstructorUsedError;
   int get noise => throw _privateConstructorUsedError;
   int get humidity => throw _privateConstructorUsedError;
+  int get sensorId => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SensorModelCopyWith<SensorModel> get copyWith =>
@@ -32,7 +33,7 @@ abstract class $SensorModelCopyWith<$Res> {
           SensorModel value, $Res Function(SensorModel) then) =
       _$SensorModelCopyWithImpl<$Res, SensorModel>;
   @useResult
-  $Res call({int hour, int temp, int noise, int humidity});
+  $Res call({int hour, int temp, int noise, int humidity, int sensorId});
 }
 
 /// @nodoc
@@ -52,6 +53,7 @@ class _$SensorModelCopyWithImpl<$Res, $Val extends SensorModel>
     Object? temp = null,
     Object? noise = null,
     Object? humidity = null,
+    Object? sensorId = null,
   }) {
     return _then(_value.copyWith(
       hour: null == hour
@@ -70,6 +72,10 @@ class _$SensorModelCopyWithImpl<$Res, $Val extends SensorModel>
           ? _value.humidity
           : humidity // ignore: cast_nullable_to_non_nullable
               as int,
+      sensorId: null == sensorId
+          ? _value.sensorId
+          : sensorId // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -82,7 +88,7 @@ abstract class _$$SensorModelImplCopyWith<$Res>
       __$$SensorModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int hour, int temp, int noise, int humidity});
+  $Res call({int hour, int temp, int noise, int humidity, int sensorId});
 }
 
 /// @nodoc
@@ -100,6 +106,7 @@ class __$$SensorModelImplCopyWithImpl<$Res>
     Object? temp = null,
     Object? noise = null,
     Object? humidity = null,
+    Object? sensorId = null,
   }) {
     return _then(_$SensorModelImpl(
       hour: null == hour
@@ -118,6 +125,10 @@ class __$$SensorModelImplCopyWithImpl<$Res>
           ? _value.humidity
           : humidity // ignore: cast_nullable_to_non_nullable
               as int,
+      sensorId: null == sensorId
+          ? _value.sensorId
+          : sensorId // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -129,7 +140,8 @@ class _$SensorModelImpl implements _SensorModel {
       {required this.hour,
       required this.temp,
       required this.noise,
-      required this.humidity});
+      required this.humidity,
+      required this.sensorId});
 
   @override
   final int hour;
@@ -139,10 +151,12 @@ class _$SensorModelImpl implements _SensorModel {
   final int noise;
   @override
   final int humidity;
+  @override
+  final int sensorId;
 
   @override
   String toString() {
-    return 'SensorModel(hour: $hour, temp: $temp, noise: $noise, humidity: $humidity)';
+    return 'SensorModel(hour: $hour, temp: $temp, noise: $noise, humidity: $humidity, sensorId: $sensorId)';
   }
 
   @override
@@ -154,11 +168,14 @@ class _$SensorModelImpl implements _SensorModel {
             (identical(other.temp, temp) || other.temp == temp) &&
             (identical(other.noise, noise) || other.noise == noise) &&
             (identical(other.humidity, humidity) ||
-                other.humidity == humidity));
+                other.humidity == humidity) &&
+            (identical(other.sensorId, sensorId) ||
+                other.sensorId == sensorId));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, hour, temp, noise, humidity);
+  int get hashCode =>
+      Object.hash(runtimeType, hour, temp, noise, humidity, sensorId);
 
   @JsonKey(ignore: true)
   @override
@@ -172,7 +189,8 @@ abstract class _SensorModel implements SensorModel {
       {required final int hour,
       required final int temp,
       required final int noise,
-      required final int humidity}) = _$SensorModelImpl;
+      required final int humidity,
+      required final int sensorId}) = _$SensorModelImpl;
 
   @override
   int get hour;
@@ -182,6 +200,8 @@ abstract class _SensorModel implements SensorModel {
   int get noise;
   @override
   int get humidity;
+  @override
+  int get sensorId;
   @override
   @JsonKey(ignore: true)
   _$$SensorModelImplCopyWith<_$SensorModelImpl> get copyWith =>

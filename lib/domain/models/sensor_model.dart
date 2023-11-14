@@ -8,5 +8,6 @@ class SensorModel with _$SensorModel {
     required int temp,
     required int noise,
     required int humidity,
+    required int sensorId,
   }) = _SensorModel;
 }

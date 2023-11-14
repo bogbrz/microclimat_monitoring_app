@@ -153,7 +153,12 @@ class SensorOneCubit extends Cubit<SensorOneState> {
   }
 
   Future<void> removeGeneratedData() async {
-    return sensorOneRepository.removeGeneratedData();
+    for (final sensorModels in state.sensorOneModels) {
+      if (sensorModels.sensorId == 1) {
+        return sensorOneRepository.removeGeneratedData(
+            id: sensorModels.sensorId.toString());
+      }
+    }
   }
 
   @override

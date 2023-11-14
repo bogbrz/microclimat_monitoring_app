@@ -235,52 +235,25 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ],
                 ),
-                Center(
-                  child: Text(
+                Column(children: [
+                  Text(
                     "Test generators",
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
-                ),
-                SizedBox(
-                  height: 7,
-                ),
-                Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        SizedBox(
-                          width: 8,
-                        ),
-                        GeneratorOneWidget(),
-                        SizedBox(
-                          width: 8,
-                        ),
-                        GeneratorTwoWidget(),
-                        SizedBox(
-                          width: 8,
-                        ),
-                        GeneratorThreeWidget(),
-                        SizedBox(
-                          width: 8,
-                        ),
-                        GeneratorFourWidget(),
-                        SizedBox(
-                          width: 8,
-                        ),
-                        GeneratorFiveWidget(),
-                        SizedBox(
-                          width: 8,
-                        ),
-                      ],
+                  SizedBox(
+                    height: 7,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Center(child: GeneratorOneWidget()),
                     ),
                   ),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                ]),
               ],
             ),
           ),
