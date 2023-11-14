@@ -17,6 +17,7 @@ class SensorThreeRepository {
               hour: doc['hour'],
               temp: doc['temp'],
               noise: doc['noise'],
+              sensorId: doc['sensorId'],
             ),
           )
           .toList();

@@ -2,7 +2,6 @@ import 'package:injectable/injectable.dart';
 import 'package:microclimat_monitoring_app/data_source/sensor_one_data_source.dart';
 import 'package:microclimat_monitoring_app/domain/models/sensor_model.dart';
 
-
 @injectable
 class SensorOneRepository {
   SensorOneRepository({required this.sensorOneDataSource});
@@ -17,6 +16,7 @@ class SensorOneRepository {
               hour: doc['hour'],
               temp: doc['temp'],
               noise: doc['noise'],
+              sensorId: doc['sensorId'],
             ),
           )
           .toList();
@@ -37,7 +37,7 @@ class SensorOneRepository {
         sensorId: sensorId);
   }
 
-  Future<void> removeGeneratedData() async {
-    await sensorOneDataSource.removeGeneratedData();
+  Future<void> removeGeneratedData({required String id}) async {
+    return sensorOneDataSource.removeGeneratedData(id: id);
   }
 }
