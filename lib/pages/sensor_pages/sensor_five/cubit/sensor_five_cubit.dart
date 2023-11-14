@@ -1,11 +1,17 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:bloc/bloc.dart';
-import 'package:microclimat_monitoring_app/models/sensor_model.dart';
-import 'package:microclimat_monitoring_app/repositories/sensor_five_repository.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
+import 'package:microclimat_monitoring_app/domain/models/sensor_model.dart';
+
+import 'package:microclimat_monitoring_app/domain/repositories/sensor_five_repository.dart';
 
 part 'sensor_five_state.dart';
+part 'sensor_five_cubit.freezed.dart';
 
+@injectable
 class SensorFiveCubit extends Cubit<SensorFiveState> {
   SensorFiveCubit({required this.sensorFiveRepository})
       : super(SensorFiveState(
@@ -14,15 +20,9 @@ class SensorFiveCubit extends Cubit<SensorFiveState> {
           averageNoise: 0,
           averageTemp: 0,
           errorMessage: '',
-
           currentHumidity: 0,
           currentNoise: 0,
           currentTemp: 0,
-
-          currentHumidity: null,
-          currentNoise: null,
-          currentTemp: null,
-
           isCorrect2: true,
           isCorrect3: true,
           isCorrect: true,
@@ -42,13 +42,9 @@ class SensorFiveCubit extends Cubit<SensorFiveState> {
             averageNoise: 0,
             averageTemp: 0,
             errorMessage: '',
-
             currentHumidity: 0,
             currentNoise: 0,
             currentTemp: 0,
-
-
-
             isCorrect2: true,
             isCorrect3: true,
             isCorrect: true,
@@ -61,13 +57,9 @@ class SensorFiveCubit extends Cubit<SensorFiveState> {
           currentNoise: 0,
           currentTemp: 0,
           sensorFiveModels: [],
-
           averageHumidity: 0,
           averageNoise: 0,
           averageTemp: 0,
-
-    
-
           isCorrect2: true,
           isCorrect3: true,
           isCorrect: true,
@@ -82,6 +74,9 @@ class SensorFiveCubit extends Cubit<SensorFiveState> {
       int currentHumidity = 0;
       int sumHumidity = 0;
       int averageHumidity = 0;
+      bool isCorrect = true;
+      bool isCorrect2 = true;
+      bool isCorrect3 = true;
       for (final datamodel in dataModels) {
         sumTemp += datamodel.temp;
         sumNoise += datamodel.noise;
@@ -89,44 +84,30 @@ class SensorFiveCubit extends Cubit<SensorFiveState> {
         currentTemp = datamodel.temp;
         currentNoise = datamodel.noise;
         currentHumidity = datamodel.humidity;
-        averageTemp =
-            (sumTemp ~/ ((state.sensorFiveModels.length) ~/ 3).toDouble());
-        averageNoise =
-            (sumNoise ~/ ((state.sensorFiveModels.length) ~/ 3).toDouble());
+        averageTemp = (sumTemp ~/ ((dataModels.length)).toDouble());
+        averageNoise = (sumNoise ~/ ((dataModels.length)).toDouble());
 
-        averageHumidity =
-            (sumHumidity ~/ ((state.sensorFiveModels.length) ~/ 3));
+        averageHumidity = (sumHumidity ~/ ((dataModels.length)));
       }
-
       if (currentHumidity != 0) {
-
-
-
         if (currentHumidity > 25 || currentHumidity < 10) {
-          state.isCorrect2 = false;
+          isCorrect2 = false;
         } else {
-          state.isCorrect2 = true;
+          isCorrect2 = true;
         }
       }
-
       if (currentTemp != 0) {
-
-
-
         if (currentTemp > 25 || currentTemp < 10) {
-          state.isCorrect = false;
+          isCorrect = false;
         } else {
-          state.isCorrect = true;
+          isCorrect = true;
         }
       }
-
       if (currentNoise != 0) {
-
- 
         if (currentNoise > 25 || currentNoise < 10) {
-          state.isCorrect3 = false;
+          isCorrect3 = false;
         } else {
-          state.isCorrect3 = true;
+          isCorrect3 = true;
         }
       }
       emit(
@@ -139,12 +120,38 @@ class SensorFiveCubit extends Cubit<SensorFiveState> {
           currentHumidity: currentHumidity,
           currentNoise: currentNoise,
           sensorFiveModels: dataModels,
-          isCorrect2: state.isCorrect2,
-          isCorrect3: state.isCorrect3,
-          isCorrect: state.isCorrect,
+          isCorrect2: isCorrect2,
+          isCorrect3: isCorrect3,
+          isCorrect: isCorrect,
         ),
       );
     });
+  }
+
+  Future<void> addDataFive() async {
+    for (int i = 1; i <= 24; i++) {
+      int randomTemp = Random().nextInt(30);
+      int randomHumidity = Random().nextInt(30);
+      int randomNoise = Random().nextInt(30);
+      int sensorId = 5;
+      await Future.delayed(
+        const Duration(
+          seconds: 5,
+        ),
+      );
+
+      sensorFiveRepository.addData(
+        hour: i,
+        temp: randomTemp,
+        humidity: randomHumidity,
+        noise: randomNoise,
+        sensorId: sensorId,
+      );
+    }
+  }
+
+  Future<void> removeGeneratedData() async {
+    return sensorFiveRepository.removeGeneratedData();
   }
 
   @override
