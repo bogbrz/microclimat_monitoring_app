@@ -68,8 +68,9 @@ class GeneratorOneWidget extends StatelessWidget {
               builder: (context, state) {
                 return InkWell(
                   onTap: () {
-                    
+                    for (int i = 0; i == 24; i++) {
                       getIt<SensorOneCubit>().removeGeneratedData();
+                    }
                   },
                   child: Container(
                     decoration: BoxDecoration(

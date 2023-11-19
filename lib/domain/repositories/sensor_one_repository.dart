@@ -37,7 +37,7 @@ class SensorOneRepository {
         sensorId: sensorId);
   }
 
-  Future<void> removeGeneratedData({required String id}) async {
-    return sensorOneDataSource.removeGeneratedData(id: id);
+  Future<void> removeGeneratedData() async {
+    return sensorOneDataSource.removeGeneratedData();
   }
 }

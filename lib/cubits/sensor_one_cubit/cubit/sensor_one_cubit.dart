@@ -84,8 +84,8 @@ class SensorOneCubit extends Cubit<SensorOneState> {
         currentTemp = datamodel.temp;
         currentNoise = datamodel.noise;
         currentHumidity = datamodel.humidity;
-        averageTemp = (sumTemp ~/ ((dataModels.length)).toDouble());
-        averageNoise = (sumNoise ~/ ((dataModels.length)).toDouble());
+        averageTemp = (sumTemp ~/ ((dataModels.length)));
+        averageNoise = (sumNoise ~/ ((dataModels.length)));
 
         averageHumidity = (sumHumidity ~/ ((dataModels.length)));
       }
@@ -131,7 +131,7 @@ class SensorOneCubit extends Cubit<SensorOneState> {
   }
 
   Future<void> addDataOne() async {
-    for (int i = 1; i <= 24; i++) {
+    for (int i = 0; i <= 24; i++) {
       int randomTemp = Random().nextInt(30);
       int randomHumidity = Random().nextInt(30);
       int randomNoise = Random().nextInt(30);
@@ -153,11 +153,21 @@ class SensorOneCubit extends Cubit<SensorOneState> {
   }
 
   Future<void> removeGeneratedData() async {
-    for (final sensorModels in state.sensorOneModels) {
-      if (sensorModels.sensorId == 1) {
-        return sensorOneRepository.removeGeneratedData(
-            id: sensorModels.sensorId.toString());
-      }
+    try {
+      return sensorOneRepository.removeGeneratedData();
+    } catch (error) {
+      emit(SensorOneState(
+          isCorrect2: true,
+          isCorrect3: true,
+          isCorrect: true,
+          averageHumidity: null,
+          averageNoise: null,
+          averageTemp: null,
+          errorMessage: error.toString(),
+          currentHumidity: null,
+          currentNoise: null,
+          currentTemp: null,
+          sensorOneModels: []));
     }
   }
 

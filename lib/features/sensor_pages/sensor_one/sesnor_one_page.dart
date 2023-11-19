@@ -111,8 +111,6 @@ class _SensorOnePageState extends State<SensorPage> {
                     primaryXAxis: CategoryAxis(
                       labelAlignment: LabelAlignment.center,
                       interval: 1,
-                      visibleMinimum: 1,
-                      visibleMaximum: 8,
                       isInversed: false,
                     ),
                     primaryYAxis: NumericAxis(plotBands: <PlotBand>[
