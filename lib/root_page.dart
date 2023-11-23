@@ -20,7 +20,7 @@ class _RootPageState extends State<RootPage> {
           if (selectedIndex == 0) {
             return const HomePage();
           } else {
-            return  SettingsPage();
+            return  const SettingsPage();
           }
         },
       ),

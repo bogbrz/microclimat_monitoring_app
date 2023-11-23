@@ -14,133 +14,119 @@ class SensorOneSettings extends StatelessWidget {
         appBar: AppBar(),
         body: Column(
           children: [
-            SizedBox(
-              height: 10,
-            ),
-            Text(
+            const Text(
               "Sensor 1",
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Column(
-                  children: [
-                    Text(
-                      "Temp.",
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
+                const SizedBox(
+                  width: 104,
+                  child: Text(
+                    "Temperature",
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
                     ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    SizedBox(
-                        height: 60,
-                        width: 60,
-                        child: TextField(
-                          controller: temp1Controller,
-                          keyboardType: TextInputType.number,
-                          decoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(8),
-                              border: OutlineInputBorder(),
-                              hintText: 'Min'),
-                        )),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    SizedBox(
-                        height: 60,
-                        width: 60,
-                        child: TextField(
-                          keyboardType: TextInputType.number,
-                          decoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(8),
-                              border: OutlineInputBorder(),
-                              hintText: 'Max'),
-                        )),
-                  ],
+                  ),
                 ),
-                Column(
-                  children: [
-                    Text(
-                      "Humidity",
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    SizedBox(
-                        height: 60,
-                        width: 60,
-                        child: TextField(
-                          keyboardType: TextInputType.number,
-                          decoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(8),
-                              border: OutlineInputBorder(),
-                              hintText: 'Min'),
-                        )),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    SizedBox(
-                        height: 60,
-                        width: 60,
-                        child: TextField(
-                          keyboardType: TextInputType.number,
-                          decoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(8),
-                              border: OutlineInputBorder(),
-                              hintText: 'Max'),
-                        )),
-                  ],
-                ),
-                Column(
-                  children: [
-                    Text(
-                      "Noise",
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    SizedBox(
-                        height: 60,
-                        width: 60,
-                        child: TextField(
-                          keyboardType: TextInputType.number,
-                          decoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(8),
-                              border: OutlineInputBorder(),
-                              hintText: 'Min'),
-                        )),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    SizedBox(
-                        height: 60,
-                        width: 60,
-                        child: TextField(
-                          keyboardType: TextInputType.number,
-                          decoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(8),
-                              border: OutlineInputBorder(),
-                              hintText: 'Max'),
-                        )),
-                  ],
-                ),
+                SizedBox(
+                    height: 60,
+                    width: 60,
+                    child: TextField(
+                      controller: temp1Controller,
+                      keyboardType: TextInputType.number,
+                      decoration: const InputDecoration(
+                          contentPadding: EdgeInsets.all(8),
+                          border: OutlineInputBorder(),
+                          hintText: 'Min'),
+                    )),
+                const SizedBox(
+                    height: 60,
+                    width: 60,
+                    child: TextField(
+                      keyboardType: TextInputType.number,
+                      decoration: InputDecoration(
+                          contentPadding: EdgeInsets.all(8),
+                          border: OutlineInputBorder(),
+                          hintText: 'Max'),
+                    )),
               ],
             ),
+            const Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                SizedBox(
+                  width: 104,
+                  child: Text(
+                    "Humidity",
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                    height: 60,
+                    width: 60,
+                    child: TextField(
+                      keyboardType: TextInputType.number,
+                      decoration: InputDecoration(
+                          contentPadding: EdgeInsets.all(8),
+                          border: OutlineInputBorder(),
+                          hintText: 'Min'),
+                    )),
+                SizedBox(
+                    height: 60,
+                    width: 60,
+                    child: TextField(
+                      keyboardType: TextInputType.number,
+                      decoration: InputDecoration(
+                          contentPadding: EdgeInsets.all(8),
+                          border: OutlineInputBorder(),
+                          hintText: 'Max'),
+                    )),
+              ],
+            ),
+            const Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                SizedBox(
+                  width: 104,
+                  child: Text(
+                    "Noise",
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                    height: 60,
+                    width: 60,
+                    child: TextField(
+                      keyboardType: TextInputType.number,
+                      decoration: InputDecoration(
+                          contentPadding: EdgeInsets.all(8),
+                          border: OutlineInputBorder(),
+                          hintText: 'Min'),
+                    )),
+                SizedBox(
+                    height: 60,
+                    width: 60,
+                    child: TextField(
+                      keyboardType: TextInputType.number,
+                      decoration: InputDecoration(
+                          contentPadding: EdgeInsets.all(8),
+                          border: OutlineInputBorder(),
+                          hintText: 'Max'),
+                    )),
+              ],
+            )
           ],
         ));
   }

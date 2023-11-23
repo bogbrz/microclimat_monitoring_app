@@ -3,15 +3,12 @@ import 'dart:math';
 
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:injectable/injectable.dart';
 import 'package:microclimat_monitoring_app/domain/models/sensor_model.dart';
-
 import 'package:microclimat_monitoring_app/domain/repositories/sensor_three_repository.dart';
 
-part 'sensor_three_state.dart';
 part 'sensor_three_cubit.freezed.dart';
+part 'sensor_three_state.dart';
 
-@injectable
 class SensorThreeCubit extends Cubit<SensorThreeState> {
   SensorThreeCubit({required this.sensorThreeRepository})
       : super(SensorThreeState(

@@ -25,61 +25,165 @@ class _SettingsPageState extends State<SettingsPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          "Set minimum and maxium value",
+        title: const Text(
+          "Settings",
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
       ),
-      body: ListView(
-        children: [
-          Column(
-            children: [
-              SizedBox(
-                height: 10,
-              ),
-              InkWell(
-                onTap: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => SensorOneSettings(
-                        temp1Controller: temp1Controller,
-                      ),
+      body: ListView(children: [
+        const SizedBox(
+          height: 20,
+        ),
+        Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            InkWell(
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => SensorOneSettings(
+                      temp1Controller: temp1Controller,
                     ),
-                  );
-                },
-                child: Container(
-                  width: MediaQuery.of(context).size.width / 2,
-                  alignment: Alignment.center,
-                  padding: EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                      border: Border.all(width: 2, color: Colors.white),
-                      borderRadius: BorderRadius.circular(10)),
-                  child: Text(
-                    "Sensor 1",
-                    style: TextStyle(fontSize: 20),
                   ),
+                );
+              },
+              child: Container(
+                width: MediaQuery.of(context).size.width / 1.5,
+                height: MediaQuery.of(context).size.height / 10,
+                alignment: Alignment.center,
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                    border: Border.all(width: 2, color: Colors.white),
+                    borderRadius: BorderRadius.circular(10)),
+                child: const Text(
+                  "Sensor 1",
+                  style: TextStyle(fontSize: 40),
                 ),
               ),
-            ],
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          SensorTwoSettings(temp2Controller: temp2Controller),
-          SizedBox(
-            height: 10,
-          ),
-          SensorThreeSettings(temp3Controller: temp3Controller),
-          SizedBox(
-            height: 10,
-          ),
-          SensorFourSettings(temp4Controller: temp4Controller),
-          SizedBox(
-            height: 10,
-          ),
-          SensorFivedSettings(temp5Controller: temp5Controller),
-        ],
-      ),
+            ),
+            const SizedBox(
+              height: 25,
+            ),
+            InkWell(
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => SensorTwoSettings(
+                      temp2Controller: temp2Controller,
+                    ),
+                  ),
+                );
+              },
+              child: Container(
+                width: MediaQuery.of(context).size.width / 1.5,
+                height: MediaQuery.of(context).size.height / 10,
+                alignment: Alignment.center,
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                    border: Border.all(width: 2, color: Colors.white),
+                    borderRadius: BorderRadius.circular(10)),
+                child: const Text(
+                  "Sensor 2",
+                  style: TextStyle(fontSize: 40),
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 25,
+            ),
+            InkWell(
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => SensorThreeSettings(
+                      temp3Controller: temp3Controller,
+                    ),
+                  ),
+                );
+              },
+              child: Container(
+                width: MediaQuery.of(context).size.width / 1.5,
+                height: MediaQuery.of(context).size.height / 10,
+                alignment: Alignment.center,
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                    border: Border.all(width: 2, color: Colors.white),
+                    borderRadius: BorderRadius.circular(10)),
+                child: const Text(
+                  "Sensor 3",
+                  style: TextStyle(fontSize: 40),
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 25,
+            ),
+            InkWell(
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => SensorFourSettings(
+                      temp4Controller: temp4Controller,
+                    ),
+                  ),
+                );
+              },
+              child: Container(
+                width: MediaQuery.of(context).size.width / 1.5,
+                height: MediaQuery.of(context).size.height / 10,
+                alignment: Alignment.center,
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                    border: Border.all(width: 2, color: Colors.white),
+                    borderRadius: BorderRadius.circular(10)),
+                child: const Text(
+                  "Sensor 4",
+                  style: TextStyle(fontSize: 40),
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 25,
+            ),
+            InkWell(
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => SensorFiveSettings(
+                      temp5Controller: temp5Controller,
+                    ),
+                  ),
+                );
+              },
+              child: Container(
+                width: MediaQuery.of(context).size.width / 1.5,
+                height: MediaQuery.of(context).size.height / 10,
+                alignment: Alignment.center,
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                    border: Border.all(width: 2, color: Colors.white),
+                    borderRadius: BorderRadius.circular(10)),
+                child: const Text(
+                  "Sensor 5",
+                  style: TextStyle(fontSize: 40),
+                ),
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                FloatingActionButton(
+                  onPressed: () {},
+                  child: const Icon(Icons.add),
+                ),
+                const SizedBox(
+                  width: 20,
+                )
+              ],
+            )
+          ],
+        ),
+      ]),
     );
   }
 }
