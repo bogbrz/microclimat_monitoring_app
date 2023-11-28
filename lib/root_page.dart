@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:microclimat_monitoring_app/features/home_page/home.dart';
+import 'package:microclimat_monitoring_app/features/settings_pages/setting_page.dart';
 
 class RootPage extends StatefulWidget {
   const RootPage({super.key});
@@ -19,11 +20,7 @@ class _RootPageState extends State<RootPage> {
           if (selectedIndex == 0) {
             return const HomePage();
           } else {
-            return const Scaffold(
-              body: Center(
-                child: Text("Space for extra features"),
-              ),
-            );
+            return  const SettingsPage();
           }
         },
       ),
@@ -53,3 +50,5 @@ class _RootPageState extends State<RootPage> {
     );
   }
 }
+
+

@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:microclimat_monitoring_app/cubits/sensor_one_cubit/cubit/sensor_one_cubit.dart';
 import 'package:microclimat_monitoring_app/domain/models/sensor_model.dart';
+import 'package:microclimat_monitoring_app/features/sensor_pages/sensor_one/sensor_one_settings.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 class SensorPage extends StatefulWidget {
-  const SensorPage({
+  SensorPage({
     required this.sensorNumber,
     super.key,
   });
@@ -28,6 +29,20 @@ class _SensorOnePageState extends State<SensorPage> {
         return Scaffold(
             appBar: AppBar(
               title: Text("Sensor ${widget.sensorNumber}"),
+              actions: [
+                InkWell(
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: ((context) => SensorOneSettings()),
+                        ),
+                      );
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.only(right: 8),
+                      child: Icon(Icons.settings),
+                    ))
+              ],
             ),
             body: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -111,8 +126,6 @@ class _SensorOnePageState extends State<SensorPage> {
                     primaryXAxis: CategoryAxis(
                       labelAlignment: LabelAlignment.center,
                       interval: 1,
-                      visibleMinimum: 1,
-                      visibleMaximum: 8,
                       isInversed: false,
                     ),
                     primaryYAxis: NumericAxis(plotBands: <PlotBand>[
@@ -123,12 +136,12 @@ class _SensorOnePageState extends State<SensorPage> {
                           horizontalTextAlignment: TextAnchor.middle,
                           verticalTextAlignment: TextAnchor.start,
                           text: "Critical value",
-                          start: 25,
-                          end: 26,
+                          start: 24,
+                          end: 25,
                           color: Colors.red),
                       PlotBand(
-                          start: 10,
-                          end: 11,
+                          start: 14,
+                          end: 15,
                           verticalTextPadding: '5',
                           horizontalTextPadding: '5',
                           horizontalTextAlignment: TextAnchor.middle,

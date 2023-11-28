@@ -1,15 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:injectable/injectable.dart';
 
-@injectable
 class SensorOneDataSource {
   Stream<QuerySnapshot<Map<String, dynamic>>> sensorOneData() {
     return FirebaseFirestore.instance
-        .collection('sensors')
-        .doc('sensor1')
-        .collection('day')
-        .doc('1')
-        .collection('records')
+        .collection('sensor1')
         .orderBy('hour')
         .snapshots();
   }
@@ -21,13 +15,7 @@ class SensorOneDataSource {
     required int noise,
     required int sensorId,
   }) async {
-    await FirebaseFirestore.instance
-        .collection('sensors')
-        .doc("sensor1")
-        .collection("day")
-        .doc('1')
-        .collection("records")
-        .add(
+    await FirebaseFirestore.instance.collection("sensor1").add(
       {
         "hour": hour,
         "temp": temp,
@@ -38,14 +26,37 @@ class SensorOneDataSource {
     );
   }
 
-  Future<void> removeGeneratedData({required String id}) async {
+  Future<void> updateMinMax(
+      {required int maxTemp,
+      required int minTemp,
+      required int maxNoise,
+      required int minNoise,
+      required int maxHumidity,
+      required int minHumidity}) async {
+    final DocumentReference<Map<String, dynamic>> documentReference =
+        FirebaseFirestore.instance.collection("settings").doc();
+    documentReference.update({
+      "maxTemp": maxTemp,
+      "minTemp": minTemp,
+      "maxNoise": maxNoise,
+      "minNoise": minNoise,
+      "maxHumidity": maxHumidity,
+      "minHumidity": minHumidity
+    });
+  }
+
+  Stream<QuerySnapshot<Map<String, dynamic>>> sensorOneMinMaxData() {
     return FirebaseFirestore.instance
-        .collection('sensors')
-        .doc('sensor1')
-        .collection('day')
-        .doc('1')
-        .collection('records')
-        .doc(id)
-        .delete();
+        .collection('settings')
+        .orderBy('hour')
+        .snapshots();
+  }
+
+  Future<void> removeGeneratedData() async {
+    return FirebaseFirestore.instance
+        .collection('sensor1')
+        .doc()
+        .delete()
+        .then((doc) => print("Document 1 deleted"));
   }
 }

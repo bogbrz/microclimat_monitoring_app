@@ -247,7 +247,7 @@ class _HomePageState extends State<HomePage> {
                     padding: EdgeInsets.all(8.0),
                     child: SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
-                      child: Center(child: GeneratorOneWidget()),
+                      child: Center(child: GeneratorOneWidget( )),
                     ),
                   ),
                   SizedBox(
