@@ -127,6 +127,13 @@ class SensorOneCubit extends Cubit<SensorOneState> {
     });
   }
 
+    Future<void> startMinMax() async {
+    
+      
+  }
+
+ 
+
   Future<void> addDataOne() async {
     for (int i = 0; i <= 24; i++) {
       int randomTemp = Random().nextInt(30);
@@ -148,6 +155,8 @@ class SensorOneCubit extends Cubit<SensorOneState> {
       );
     }
   }
+
+ 
 
   Future<void> removeGeneratedData() async {
     try {

@@ -9,8 +9,10 @@ import 'package:microclimat_monitoring_app/cubits/sensor_two_cubit/cubit/sensor_
 
 class GeneratorOneWidget extends StatelessWidget {
   const GeneratorOneWidget({
+  
     super.key,
   });
+
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +29,8 @@ class GeneratorOneWidget extends StatelessWidget {
             ),
             InkWell(
               onTap: () {
-                getIt<SensorOneCubit>().addDataOne();
+                getIt<SensorOneCubit>()
+                    .addDataOne();
                 getIt<SensorTwoCubit>().addDataTwo();
                 getIt<SensorThreeCubit>().addDataThree();
                 getIt<SensorFourCubit>().addDataFour();

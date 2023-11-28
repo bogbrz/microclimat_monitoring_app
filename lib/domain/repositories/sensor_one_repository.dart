@@ -1,4 +1,5 @@
 import 'package:microclimat_monitoring_app/data_source/sensor_one_data_source.dart';
+
 import 'package:microclimat_monitoring_app/domain/models/sensor_model.dart';
 
 class SensorOneRepository {
@@ -21,19 +22,24 @@ class SensorOneRepository {
     });
   }
 
-  Future<void> addData(
-      {required int hour,
-      required int temp,
-      required int humidity,
-      required int noise,
-      required int sensorId}) async {
+  Future<void> addData({
+    required int hour,
+    required int temp,
+    required int humidity,
+    required int noise,
+    required int sensorId,
+  }) async {
     await sensorOneDataSource.addData(
-        hour: hour,
-        temp: temp,
-        humidity: humidity,
-        noise: noise,
-        sensorId: sensorId);
+      hour: hour,
+      temp: temp,
+      humidity: humidity,
+      noise: noise,
+      sensorId: sensorId,
+    );
   }
+
+ 
+  
 
   Future<void> removeGeneratedData() async {
     return sensorOneDataSource.removeGeneratedData();

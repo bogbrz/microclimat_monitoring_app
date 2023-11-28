@@ -26,6 +26,32 @@ class SensorOneDataSource {
     );
   }
 
+  Future<void> updateMinMax(
+      {required int maxTemp,
+      required int minTemp,
+      required int maxNoise,
+      required int minNoise,
+      required int maxHumidity,
+      required int minHumidity}) async {
+    final DocumentReference<Map<String, dynamic>> documentReference =
+        FirebaseFirestore.instance.collection("settings").doc();
+    documentReference.update({
+      "maxTemp": maxTemp,
+      "minTemp": minTemp,
+      "maxNoise": maxNoise,
+      "minNoise": minNoise,
+      "maxHumidity": maxHumidity,
+      "minHumidity": minHumidity
+    });
+  }
+
+  Stream<QuerySnapshot<Map<String, dynamic>>> sensorOneMinMaxData() {
+    return FirebaseFirestore.instance
+        .collection('settings')
+        .orderBy('hour')
+        .snapshots();
+  }
+
   Future<void> removeGeneratedData() async {
     return FirebaseFirestore.instance
         .collection('sensor1')

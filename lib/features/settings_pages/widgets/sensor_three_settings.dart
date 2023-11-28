@@ -3,10 +3,20 @@ import 'package:flutter/material.dart';
 class SensorThreeSettings extends StatelessWidget {
   const SensorThreeSettings({
     super.key,
-    required this.temp3Controller,
+    required this.temp3Max,
+    required this.temp3Min,
+    required this.noise3Max,
+    required this.noise3Min,
+    required this.humidity3Max,
+    required this.humidity3Min,
   });
 
-  final TextEditingController? temp3Controller;
+  final TextEditingController? temp3Min;
+  final TextEditingController? temp3Max;
+  final TextEditingController? humidity3Min;
+  final TextEditingController? humidity3Max;
+  final TextEditingController? noise3Min;
+  final TextEditingController? noise3Max;
 
   @override
   Widget build(BuildContext context) {
@@ -38,29 +48,30 @@ class SensorThreeSettings extends StatelessWidget {
                   height: 60,
                   width: 60,
                   child: TextField(
-                    controller: temp3Controller,
+                    controller: temp3Min,
                     keyboardType: TextInputType.number,
                     decoration: const InputDecoration(
                         contentPadding: EdgeInsets.all(8),
                         border: OutlineInputBorder(),
                         hintText: 'Min'),
                   )),
-              const SizedBox(
+              SizedBox(
                   height: 60,
                   width: 60,
                   child: TextField(
+                    controller: temp3Max,
                     keyboardType: TextInputType.number,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                         contentPadding: EdgeInsets.all(8),
                         border: OutlineInputBorder(),
                         hintText: 'Max'),
                   )),
             ],
           ),
-          const Row(
+          Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              SizedBox(
+              const SizedBox(
                 width: 104,
                 child: Text(
                   "Humidity",
@@ -74,8 +85,9 @@ class SensorThreeSettings extends StatelessWidget {
                   height: 60,
                   width: 60,
                   child: TextField(
+                    controller: humidity3Min,
                     keyboardType: TextInputType.number,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                         contentPadding: EdgeInsets.all(8),
                         border: OutlineInputBorder(),
                         hintText: 'Min'),
@@ -84,18 +96,19 @@ class SensorThreeSettings extends StatelessWidget {
                   height: 60,
                   width: 60,
                   child: TextField(
+                    controller: humidity3Max,
                     keyboardType: TextInputType.number,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                         contentPadding: EdgeInsets.all(8),
                         border: OutlineInputBorder(),
                         hintText: 'Max'),
                   )),
             ],
           ),
-          const Row(
+          Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              SizedBox(
+              const SizedBox(
                 width: 104,
                 child: Text(
                   "Noise",
@@ -109,8 +122,9 @@ class SensorThreeSettings extends StatelessWidget {
                   height: 60,
                   width: 60,
                   child: TextField(
+                    controller: noise3Min,
                     keyboardType: TextInputType.number,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                         contentPadding: EdgeInsets.all(8),
                         border: OutlineInputBorder(),
                         hintText: 'Min'),
@@ -119,8 +133,9 @@ class SensorThreeSettings extends StatelessWidget {
                   height: 60,
                   width: 60,
                   child: TextField(
+                    controller: humidity3Max,
                     keyboardType: TextInputType.number,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                         contentPadding: EdgeInsets.all(8),
                         border: OutlineInputBorder(),
                         hintText: 'Max'),
